@@ -1,5 +1,7 @@
 from django.db import models
 
+from .logging import PaymentLogger, PayoutLogger
+
 
 class SnippePayment(models.Model):
     """Stores a payment record from the Snippe API."""
@@ -39,6 +41,15 @@ class SnippePayment(models.Model):
     def __str__(self):
         return f"{self.reference} — {self.status} ({self.amount} {self.currency})"
 
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = SnippePayment.objects.filter(pk=self.pk).first()
+            if old_instance and old_instance.status != self.status:
+                PaymentLogger.log_payment_status_change(
+                    self.reference, old_instance.status, self.status
+                )
+        super().save(*args, **kwargs)
+
 
 class SnippePayout(models.Model):
     """Stores a payout record from the Snippe API."""
@@ -77,3 +88,12 @@ class SnippePayout(models.Model):
 
     def __str__(self):
         return f"{self.reference} — {self.status} ({self.amount} {self.currency})"
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = SnippePayout.objects.filter(pk=self.pk).first()
+            if old_instance and old_instance.status != self.status:
+                PayoutLogger.log_payout_status_change(
+                    self.reference, old_instance.status, self.status
+                )
+        super().save(*args, **kwargs)

@@ -9,6 +9,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .conf import get_setting
 from .models import SnippePayment, SnippePayout
 from . import signals
+from .exceptions import WebhookVerificationError, WebhookPayloadError
+from .logging import PaymentLogger, PayoutLogger
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +34,7 @@ class SnippeWebhookView(View):
             data = json.loads(body)
         except (ValueError, UnicodeDecodeError) as e:
             logger.warning("Snippe webhook: invalid JSON body — %s", e)
-            return HttpResponse(status=400)
+            raise WebhookPayloadError(f"Invalid JSON body: {e}") from e
 
         # Verify signature if webhook secret is configured
         signing_key = get_setting("WEBHOOK_SECRET")
@@ -40,7 +42,7 @@ class SnippeWebhookView(View):
             signature = request.headers.get("X-Webhook-Signature", "")
             timestamp = request.headers.get("X-Webhook-Timestamp", "")
             try:
-                from snippe import verify_webhook, WebhookVerificationError
+                from snippe import verify_webhook
                 verify_webhook(
                     body=body,
                     signature=signature,
@@ -49,63 +51,80 @@ class SnippeWebhookView(View):
                 )
             except Exception as e:
                 logger.warning("Snippe webhook: verification failed — %s", e)
-                return HttpResponse(status=400)
+                raise WebhookVerificationError(f"Webhook verification failed: {e}") from e
 
         event = data.get("event")
         reference = data.get("reference") or data.get("data", {}).get("reference")
 
         if not event or not reference:
-            return HttpResponse(status=400)
+            logger.error("Snippe webhook: missing event or reference in payload")
+            raise WebhookPayloadError("Missing 'event' or 'reference' in webhook payload")
 
-        logger.info("Snippe webhook received: %s for %s", event, reference)
+        PaymentLogger.log_webhook_received(event, reference)
 
         # Route to handler
-        handler = getattr(self, f"handle_{event.replace('.', '_')}", None)
-        if handler:
-            handler(reference, data)
-        else:
-            logger.debug("Snippe webhook: no handler for event %s", event)
+        try:
+            handler = getattr(self, f"handle_{event.replace('.', '_')}", None)
+            if handler:
+                handler(reference, data)
+            else:
+                logger.debug("Snippe webhook: no handler for event %s", event)
+        except Exception as e:
+            logger.error("Snippe webhook handler error for %s: %s", event, e, exc_info=True)
+            raise
 
         return HttpResponse(status=200)
 
     def handle_payment_completed(self, reference, data):
-        payment = SnippePayment.objects.filter(reference=reference).first()
-        if payment:
+        try:
+            payment = SnippePayment.objects.get(reference=reference)
             payment.status = SnippePayment.Status.COMPLETED
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_completed.send(sender=SnippePayment, payment=payment)
+        except SnippePayment.DoesNotExist:
+            logger.error("Payment %s not found when handling completion", reference)
 
     def handle_payment_failed(self, reference, data):
-        payment = SnippePayment.objects.filter(reference=reference).first()
-        if payment:
+        try:
+            payment = SnippePayment.objects.get(reference=reference)
             payment.status = SnippePayment.Status.FAILED
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_failed.send(sender=SnippePayment, payment=payment)
+        except SnippePayment.DoesNotExist:
+            logger.error("Payment %s not found when handling failure", reference)
 
     def handle_payment_expired(self, reference, data):
-        payment = SnippePayment.objects.filter(reference=reference).first()
-        if payment:
+        try:
+            payment = SnippePayment.objects.get(reference=reference)
             payment.status = SnippePayment.Status.EXPIRED
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_expired.send(sender=SnippePayment, payment=payment)
+        except SnippePayment.DoesNotExist:
+            logger.error("Payment %s not found when handling expiration", reference)
 
     def handle_payment_voided(self, reference, data):
-        payment = SnippePayment.objects.filter(reference=reference).first()
-        if payment:
+        try:
+            payment = SnippePayment.objects.get(reference=reference)
             payment.status = SnippePayment.Status.VOIDED
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_voided.send(sender=SnippePayment, payment=payment)
+        except SnippePayment.DoesNotExist:
+            logger.error("Payment %s not found when handling void", reference)
 
     def handle_payout_completed(self, reference, data):
-        payout = SnippePayout.objects.filter(reference=reference).first()
-        if payout:
+        try:
+            payout = SnippePayout.objects.get(reference=reference)
             payout.status = SnippePayout.Status.COMPLETED
             payout.save(update_fields=["status", "updated_at"])
             signals.payout_completed.send(sender=SnippePayout, payout=payout)
+        except SnippePayout.DoesNotExist:
+            logger.error("Payout %s not found when handling completion", reference)
 
     def handle_payout_failed(self, reference, data):
-        payout = SnippePayout.objects.filter(reference=reference).first()
-        if payout:
+        try:
+            payout = SnippePayout.objects.get(reference=reference)
             payout.status = SnippePayout.Status.FAILED
             payout.save(update_fields=["status", "updated_at"])
             signals.payout_failed.send(sender=SnippePayout, payout=payout)
+        except SnippePayout.DoesNotExist:
+            logger.error("Payout %s not found when handling failure", reference)
