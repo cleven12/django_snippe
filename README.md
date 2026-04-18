@@ -1,5 +1,12 @@
 # django-snippe
 
+[![Django](https://img.shields.io/badge/django-4%2B-darkgreen)](https://www.djangoproject.com/)
+[![Python](https://img.shields.io/badge/python-3.9%2B-blue)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tanzania](https://img.shields.io/badge/Tanzania-Made-orange)](https://github.com/cleven12)
+
+**Topics:** django • python • payments • fintech • mobile-money • payment-gateway • webhooks • api-integration • east-africa • tanzania • kenya • uganda • snippe • payouts • audit-logging • backend • django-package • open-source • developer-tools • fintech-api
+
 Django integration for the [Snippe Payment API](https://snippe.sh) — accept mobile money, card, and QR code payments in East Africa, directly from your Django project.
 
 > Built on top of the official [snippe-python-sdk](https://github.com/Neurotech-HQ/snippe-python-sdk).
