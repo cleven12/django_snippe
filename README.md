@@ -53,37 +53,45 @@ Set this URL in your Snippe dashboard so Snippe can send you payment events.
 
 ## Creating payments
 
-Use `get_client()` to get a ready-to-use Snippe client:
+Use the service helpers to call the Snippe API and save the record to your database in one step:
 
 ```python
-from django_snippe.conf import get_client
+from django_snippe.services import create_mobile_payment, create_card_payment, create_qr_payment
 from snippe import Customer
 
-client = get_client()
+customer = Customer(firstname="John", lastname="Doe")
 
-# Mobile money payment
-payment = client.create_mobile_payment(
+# Mobile money payment (USSD push)
+payment = create_mobile_payment(
     amount=5000,
     currency="TZS",
     phone_number="0712345678",
-    customer=Customer(firstname="John", lastname="Doe"),
+    customer=customer,
+    webhook_url="https://yourdomain.com/payments/webhook/",
+)
+# payment is a SnippePayment model instance, already saved to the database
+
+# Card payment — redirect the customer to payment.payment_url
+payment = create_card_payment(
+    amount=5000,
+    currency="TZS",
+    phone_number="0712345678",
+    customer=customer,
+    callback_url="https://yourdomain.com/payments/done/",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+)
+
+# QR code payment — display payment.payment_qr_code to the customer
+payment = create_qr_payment(
+    amount=5000,
+    currency="TZS",
+    phone_number="0712345678",
+    customer=customer,
     webhook_url="https://yourdomain.com/payments/webhook/",
 )
 ```
 
-Save the record to your database:
-
-```python
-from django_snippe.models import SnippePayment
-
-SnippePayment.objects.create(
-    reference=payment.reference,
-    payment_type="mobile",
-    amount=5000,
-    currency="TZS",
-    phone_number="0712345678",
-)
-```
+All helpers return a `SnippePayment` instance. If you need lower-level control, `get_client()` from `django_snippe.conf` still gives you direct SDK access.
 
 ## Reacting to payment events with signals
 
@@ -134,15 +142,25 @@ Supports all payment types from the Snippe SDK:
 ## Payouts
 
 ```python
-from django_snippe.conf import get_client
+from django_snippe.services import create_mobile_payout, create_bank_payout
 
-client = get_client()
-
-payout = client.create_mobile_payout(
+# Mobile money payout
+payout = create_mobile_payout(
     amount=5000,
     recipient_name="Jane Doe",
     recipient_phone="255781000000",
     narration="Salary payment",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+)
+# payout is a SnippePayout model instance, already saved to the database
+
+# Bank transfer payout
+payout = create_bank_payout(
+    amount=50000,
+    recipient_name="Jane Doe",
+    recipient_bank="CRDB",
+    recipient_account="0150123456789",
+    narration="Invoice payment",
     webhook_url="https://yourdomain.com/payments/webhook/",
 )
 ```
