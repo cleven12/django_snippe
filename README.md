@@ -14,9 +14,9 @@ Django integration for the [Snippe Payment API](https://snippe.sh) — accept mo
 
 ## Installation
 
-```bash
-pip install django-snippe
-```
+
+>><del>pip install django-snippe</del>
+
 
 Add to `INSTALLED_APPS` and run migrations:
 
