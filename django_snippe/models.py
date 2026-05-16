@@ -1,4 +1,8 @@
 from django.db import models
+from django.core.validators import MinValueValidator
+
+from .logging import PaymentLogger, PayoutLogger
+from .validators import CurrencyValidator, PhoneValidator
 
 
 class SnippePayment(models.Model):
@@ -18,9 +22,9 @@ class SnippePayment(models.Model):
 
     reference = models.CharField(max_length=100, unique=True)
     payment_type = models.CharField(max_length=20, choices=PaymentType.choices)
-    amount = models.PositiveIntegerField()
-    currency = models.CharField(max_length=10)
-    phone_number = models.CharField(max_length=20)
+    amount = models.PositiveIntegerField(validators=[MinValueValidator(100)])
+    currency = models.CharField(max_length=10, validators=[CurrencyValidator.validate_currency])
+    phone_number = models.CharField(max_length=20, validators=[PhoneValidator.validate_phone])
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
     payment_url = models.URLField(blank=True, null=True)
     payment_qr_code = models.TextField(blank=True, null=True)
@@ -39,6 +43,15 @@ class SnippePayment(models.Model):
     def __str__(self):
         return f"{self.reference} — {self.status} ({self.amount} {self.currency})"
 
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = SnippePayment.objects.filter(pk=self.pk).first()
+            if old_instance and old_instance.status != self.status:
+                PaymentLogger.log_payment_status_change(
+                    self.reference, old_instance.status, self.status
+                )
+        super().save(*args, **kwargs)
+
 
 class SnippePayout(models.Model):
     """Stores a payout record from the Snippe API."""
@@ -55,10 +68,10 @@ class SnippePayout(models.Model):
 
     reference = models.CharField(max_length=100, unique=True)
     channel = models.CharField(max_length=20, choices=Channel.choices)
-    amount = models.PositiveIntegerField()
-    currency = models.CharField(max_length=10, default="TZS")
-    recipient_name = models.CharField(max_length=100)
-    recipient_phone = models.CharField(max_length=20, blank=True, null=True)
+    amount = models.PositiveIntegerField(validators=[MinValueValidator(100)])
+    currency = models.CharField(max_length=10, default="TZS", validators=[CurrencyValidator.validate_currency])
+    recipient_name = models.CharField(max_length=100, validators=[lambda x: len(x.strip()) >= 2 or None])
+    recipient_phone = models.CharField(max_length=20, blank=True, null=True, validators=[PhoneValidator.validate_phone])
     recipient_bank = models.CharField(max_length=50, blank=True, null=True)
     recipient_account = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
@@ -77,3 +90,12 @@ class SnippePayout(models.Model):
 
     def __str__(self):
         return f"{self.reference} — {self.status} ({self.amount} {self.currency})"
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = SnippePayout.objects.filter(pk=self.pk).first()
+            if old_instance and old_instance.status != self.status:
+                PayoutLogger.log_payout_status_change(
+                    self.reference, old_instance.status, self.status
+                )
+        super().save(*args, **kwargs)

@@ -11,6 +11,8 @@ from .models import SnippePayment, SnippePayout
 from . import signals
 from .exceptions import WebhookVerificationError, WebhookPayloadError
 
+from .logging import PaymentLogger, PayoutLogger
+
 logger = logging.getLogger(__name__)
 
 
@@ -59,7 +61,7 @@ class SnippeWebhookView(View):
             logger.error("Snippe webhook: missing event or reference in payload")
             raise WebhookPayloadError("Missing 'event' or 'reference' in webhook payload")
 
-        logger.info("Snippe webhook received: %s for %s", event, reference)
+        PaymentLogger.log_webhook_received(event, reference)
 
         # Route to handler
         try:
@@ -80,7 +82,9 @@ class SnippeWebhookView(View):
             payment.status = SnippePayment.Status.COMPLETED
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_completed.send(sender=SnippePayment, payment=payment)
+
             logger.info("Payment %s marked as completed", reference)
+
         except SnippePayment.DoesNotExist:
             logger.error("Payment %s not found when handling completion", reference)
 
@@ -90,17 +94,6 @@ class SnippeWebhookView(View):
             payment.status = SnippePayment.Status.FAILED
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_failed.send(sender=SnippePayment, payment=payment)
-            logger.info("Payment %s marked as failed", reference)
-        except SnippePayment.DoesNotExist:
-            logger.error("Payment %s not found when handling failure", reference)
-
-    def handle_payment_expired(self, reference, data):
-        try:
-            payment = SnippePayment.objects.get(reference=reference)
-            payment.status = SnippePayment.Status.EXPIRED
-            payment.save(update_fields=["status", "updated_at"])
-            signals.payment_expired.send(sender=SnippePayment, payment=payment)
-            logger.info("Payment %s marked as expired", reference)
         except SnippePayment.DoesNotExist:
             logger.error("Payment %s not found when handling expiration", reference)
 
