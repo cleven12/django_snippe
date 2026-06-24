@@ -20,11 +20,10 @@ class SnippeWebhookView(View):
     """
     Handles incoming webhook POST requests from Snippe.
 
-    Add to your urls.py:
-        path("webhooks/snippe/", SnippeWebhookView.as_view(), name="snippe-webhook"),
+    Usage in urls.py:
+        path("payments/", include("django_snippe.urls"))
 
-    Then set your webhook URL in Snippe dashboard to:
-        https://yourdomain.com/webhooks/snippe/
+    This registers: POST /payments/webhook/
     """
 
     def post(self, request, *args, **kwargs):
