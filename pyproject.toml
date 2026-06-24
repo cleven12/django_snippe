@@ -4,35 +4,71 @@ build-backend = "hatchling.build"
 
 [project]
 name = "django-snippe"
-version = "0.1.0"
-description = "Django integration for the Snippe payment gateway"
+version = "0.2.0"
+description = "Django integration for the Snippe payment gateway - mobile money, cards, and QR payments for East Africa"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
+authors = [
+    { name = "cleven", email = "contact@example.com" },
+]
+maintainers = [
+    { name = "cleven", email = "contact@example.com" },
+]
 dependencies = [
     "django>=4.0",
     "snippe>=0.1.0",
 ]
-keywords = ["django", "payments", "snippe", "mobile money", "tanzania", "kenya", "uganda"]
+keywords = [
+    "django",
+    "payments",
+    "snippe",
+    "mobile-money",
+    "mpesa",
+    "airtel-money",
+    "tanzania",
+    "kenya",
+    "uganda",
+    "fintech",
+]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
     "Framework :: Django",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
     "Framework :: Django :: 4.2",
     "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Topic :: Software Development :: Libraries",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Office/Business :: Financial :: Point-Of-Sale",
     "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
 
 [project.urls]
 Homepage = "https://github.com/cleven12/django-snippe"
+Documentation = "https://github.com/cleven12/django-snippe#readme"
+Repository = "https://github.com/cleven12/django-snippe"
 Issues = "https://github.com/cleven12/django-snippe/issues"
+Changelog = "https://github.com/cleven12/django-snippe/releases"
+
+[tool.hatch.build.targets.wheel]
+packages = ["django_snippe"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "django_snippe/",
+    "README.md",
+    "LICENSE",
+    "pyproject.toml",
+]
