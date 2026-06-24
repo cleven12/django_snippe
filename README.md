@@ -1,8 +1,8 @@
 # django-snippe
 
-Django integration for the [Snippe Payment API](https://snippe.sh) — accept mobile money, card, and QR code payments in East Africa, directly from your Django project.
+Django payment integration for Snippe - accept mobile money, card, and QR code payments in East Africa.
 
-> Built on top of the official [snippe-python-sdk](https://github.com/Neurotech-HQ/snippe-python-sdk).
+Built on [snippe-python-sdk](https://github.com/Neurotech-HQ/snippe-python-sdk).
 
 ## What it adds on top of the SDK
 

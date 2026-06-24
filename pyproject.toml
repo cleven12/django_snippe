@@ -13,7 +13,7 @@ dependencies = [
     "django>=4.0",
     "snippe>=0.1.0",
 ]
-keywords = ["django", "snippe", "payments", "mobile money", "fintech", "tanzania"]
+keywords = ["django", "payments", "snippe", "mobile money", "tanzania", "kenya", "uganda"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Framework :: Django",
@@ -29,6 +29,8 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Libraries",
+    "Topic :: Office/Business :: Financial :: Point-Of-Sale",
+    "Topic :: Internet :: WWW/HTTP",
 ]
 
 [project.urls]
