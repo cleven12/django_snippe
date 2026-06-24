@@ -287,6 +287,12 @@ pip install --index-url https://test.pypi.org/simple/ django-snippe
 
 Once comfortable, repeat the process on the real PyPI (use environment `pypi` and the same workflow).
 
+**Important gotchas (learned the hard way):**
+
+- "Repository name" in the publisher form **must exactly match** your GitHub repo slug (e.g. `django_snippe`, not `django-snippe`).
+- Run the workflow from a branch that contains the current `publish.yml` (use the branch selector in "Run workflow").
+- The GitHub Environment (`testpypi` / `pypi`) must exist under repo Settings → Environments before the first run.
+
 ### Testing uploads with TestPyPI
 
 1. Create account at https://test.pypi.org
@@ -315,7 +321,9 @@ twine upload dist/*
 
 ## Status
 
-Beta. The package builds cleanly, installs from source or wheel, and provides complete functionality.
+Beta. TestPyPI publishing verified using Trusted Publishers.
+
+The package builds cleanly, installs from source or wheel, and provides complete functionality.
 
 Contributions welcome.
 
