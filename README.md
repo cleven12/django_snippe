@@ -282,8 +282,10 @@ PyPI + TestPyPI support "Trusted Publishing" via GitHub OIDC. No tokens or passw
 You can now install it for testing:
 
 ```bash
-pip install --index-url https://test.pypi.org/simple/ django-snippe
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ django-snippe
 ```
+
+> Note: `--extra-index-url` is required because your dependencies (Django, snippe SDK, etc.) live on the real PyPI, not TestPyPI.
 
 Once comfortable, repeat the process on the real PyPI (use environment `pypi` and the same workflow).
 
@@ -308,7 +310,7 @@ python -m twine upload --repository testpypi dist/*
 Install test version:
 
 ```bash
-pip install --index-url https://test.pypi.org/simple/ django-snippe
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ django-snippe
 ```
 
 ### Manual publish (once ready)
