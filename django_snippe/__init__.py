@@ -1,3 +1,5 @@
 """Django integration for the Snippe payment gateway."""
 
-default_app_config = "django_snippe.apps.DjangoSnippeConfig"
+from .__version__ import __version__
+
+__all__ = ["__version__"]
