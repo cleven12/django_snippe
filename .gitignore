@@ -2,8 +2,10 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 dist/
+dist_check/
 build/
 .env
 .venv/
+.venv_check/
 venv/
 *.sqlite3
