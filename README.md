@@ -227,6 +227,17 @@ payout = PayoutHelper.create_mobile_payout(
     narration="Salary payment",
     webhook_url="https://yourdomain.com/payments/webhook/",
 )
+# payout is a SnippePayout model instance, already saved to the database
+
+# Bank transfer payout
+payout = create_bank_payout(
+    amount=50000,
+    recipient_name="Jane Doe",
+    recipient_bank="CRDB",
+    recipient_account="0150123456789",
+    narration="Invoice payment",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+)
 ```
 
 ## Supported currencies

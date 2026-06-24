@@ -10,6 +10,7 @@ from .conf import get_setting
 from .models import SnippePayment, SnippePayout
 from . import signals
 from .exceptions import WebhookVerificationError, WebhookPayloadError
+
 from .logging import PaymentLogger, PayoutLogger
 
 logger = logging.getLogger(__name__)
@@ -80,6 +81,9 @@ class SnippeWebhookView(View):
             payment.status = SnippePayment.Status.COMPLETED
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_completed.send(sender=SnippePayment, payment=payment)
+
+            logger.info("Payment %s marked as completed", reference)
+
         except SnippePayment.DoesNotExist:
             logger.error("Payment %s not found when handling completion", reference)
 
@@ -90,15 +94,6 @@ class SnippeWebhookView(View):
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_failed.send(sender=SnippePayment, payment=payment)
         except SnippePayment.DoesNotExist:
-            logger.error("Payment %s not found when handling failure", reference)
-
-    def handle_payment_expired(self, reference, data):
-        try:
-            payment = SnippePayment.objects.get(reference=reference)
-            payment.status = SnippePayment.Status.EXPIRED
-            payment.save(update_fields=["status", "updated_at"])
-            signals.payment_expired.send(sender=SnippePayment, payment=payment)
-        except SnippePayment.DoesNotExist:
             logger.error("Payment %s not found when handling expiration", reference)
 
     def handle_payment_voided(self, reference, data):
@@ -107,6 +102,7 @@ class SnippeWebhookView(View):
             payment.status = SnippePayment.Status.VOIDED
             payment.save(update_fields=["status", "updated_at"])
             signals.payment_voided.send(sender=SnippePayment, payment=payment)
+            logger.info("Payment %s marked as voided", reference)
         except SnippePayment.DoesNotExist:
             logger.error("Payment %s not found when handling void", reference)
 
@@ -116,6 +112,7 @@ class SnippeWebhookView(View):
             payout.status = SnippePayout.Status.COMPLETED
             payout.save(update_fields=["status", "updated_at"])
             signals.payout_completed.send(sender=SnippePayout, payout=payout)
+            logger.info("Payout %s marked as completed", reference)
         except SnippePayout.DoesNotExist:
             logger.error("Payout %s not found when handling completion", reference)
 
@@ -125,5 +122,6 @@ class SnippeWebhookView(View):
             payout.status = SnippePayout.Status.FAILED
             payout.save(update_fields=["status", "updated_at"])
             signals.payout_failed.send(sender=SnippePayout, payout=payout)
+            logger.info("Payout %s marked as failed", reference)
         except SnippePayout.DoesNotExist:
             logger.error("Payout %s not found when handling failure", reference)
