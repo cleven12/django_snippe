@@ -56,11 +56,11 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/cleven12/django-snippe"
-Documentation = "https://github.com/cleven12/django-snippe#readme"
-Repository = "https://github.com/cleven12/django-snippe"
-Issues = "https://github.com/cleven12/django-snippe/issues"
-Changelog = "https://github.com/cleven12/django-snippe/releases"
+Homepage = "https://github.com/cleven12/django_snippe"
+Documentation = "https://github.com/cleven12/django_snippe#readme"
+Repository = "https://github.com/cleven12/django_snippe"
+Issues = "https://github.com/cleven12/django_snippe/issues"
+Changelog = "https://github.com/cleven12/django_snippe/releases"
 
 [tool.hatch.build.targets.wheel]
 packages = ["django_snippe"]

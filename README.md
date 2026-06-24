@@ -57,20 +57,20 @@ pip install django-snippe
 **From Git (latest development version)**
 
 ```bash
-pip install git+https://github.com/cleven12/django-snippe.git
+pip install git+https://github.com/cleven12/django_snippe.git
 ```
 
 Or a specific branch/tag:
 
 ```bash
-pip install git+https://github.com/cleven12/django-snippe.git@feature/helpers
+pip install git+https://github.com/cleven12/django_snippe.git@feature/helpers
 ```
 
 **From local source (editable development install)**
 
 ```bash
-git clone https://github.com/cleven12/django-snippe.git
-cd django-snippe
+git clone https://github.com/cleven12/django_snippe.git
+cd django_snippe
 pip install -e .
 ```
 
@@ -261,7 +261,7 @@ PyPI + TestPyPI support "Trusted Publishing" via GitHub OIDC. No tokens or passw
 
    - **Project Name**: `django-snippe`
    - **Owner**: your GitHub username or org (see your repo URL)
-   - **Repository name**: `django-snippe`
+   - **Repository name**: `django_snippe`
    - **Workflow name**: `publish.yml`
    - **Environment name**: `testpypi`
 
