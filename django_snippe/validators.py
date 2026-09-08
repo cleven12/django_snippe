@@ -2,6 +2,8 @@
 
 from typing import Tuple, List
 
+from django.core.exceptions import ValidationError
+
 
 SUPPORTED_CURRENCIES = {"TZS", "KES", "UGX"}
 
@@ -50,6 +52,34 @@ def _is_valid_east_africa_phone(phone: str) -> bool:
     if cleaned.startswith(("255", "254", "256")) and len(cleaned) >= 12:
         return True
     return False
+
+
+class CurrencyValidator:
+    """Django model field validator for currency codes."""
+
+    @staticmethod
+    def validate_currency(value: str) -> None:
+        if value not in SUPPORTED_CURRENCIES:
+            raise ValidationError(
+                f"{value!r} is not a supported currency. Use one of {', '.join(sorted(SUPPORTED_CURRENCIES))}."
+            )
+
+
+class PhoneValidator:
+    """Django model field validator for East African phone numbers."""
+
+    @staticmethod
+    def validate_phone(value: str) -> None:
+        if not _is_valid_east_africa_phone(value):
+            raise ValidationError(
+                f"{value!r} is not a valid East African mobile number."
+            )
+
+
+def validate_recipient_name(value: str) -> None:
+    """Django model field validator for payout recipient names."""
+    if not value or len(value.strip()) < 2:
+        raise ValidationError("recipient_name must be at least 2 characters.")
 
 
 class PaymentValidator:

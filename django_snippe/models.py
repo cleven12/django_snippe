@@ -2,7 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator
 
 from .logging import PaymentLogger, PayoutLogger
-from .validators import CurrencyValidator, PhoneValidator
+from .validators import CurrencyValidator, PhoneValidator, validate_recipient_name
 
 
 class SnippePayment(models.Model):
@@ -70,7 +70,7 @@ class SnippePayout(models.Model):
     channel = models.CharField(max_length=20, choices=Channel.choices)
     amount = models.PositiveIntegerField(validators=[MinValueValidator(100)])
     currency = models.CharField(max_length=10, default="TZS", validators=[CurrencyValidator.validate_currency])
-    recipient_name = models.CharField(max_length=100, validators=[lambda x: len(x.strip()) >= 2 or None])
+    recipient_name = models.CharField(max_length=100, validators=[validate_recipient_name])
     recipient_phone = models.CharField(max_length=20, blank=True, null=True, validators=[PhoneValidator.validate_phone])
     recipient_bank = models.CharField(max_length=50, blank=True, null=True)
     recipient_account = models.CharField(max_length=50, blank=True, null=True)
