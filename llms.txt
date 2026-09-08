@@ -1,0 +1,32 @@
+# django-snippe
+
+> Django integration for the Snippe payment gateway. Accept mobile money (M-Pesa, Airtel Money, Mixx by Yas, HaloPesa), card, and QR code payments across Tanzania, Kenya, and Uganda from a Django app, with webhook handling, signals, admin, and audit logging built in.
+
+django-snippe wraps the [snippe-python-sdk](https://github.com/Neurotech-HQ/snippe-python-sdk) with Django models, a signature-verified webhook endpoint, signals for payment/payout lifecycle events, and an admin interface. It is not affiliated with or published by Snippe; it is a third-party, MIT-licensed integration package.
+
+## Install
+
+```bash
+pip install django-snippe
+```
+
+## Key modules
+
+- `django_snippe.models` — `SnippePayment`, `SnippePayout` Django models
+- `django_snippe.helpers` — `PaymentHelper`, `PayoutHelper` high-level creation APIs
+- `django_snippe.views` — `SnippeWebhookView`, mounted via `django_snippe.urls`
+- `django_snippe.signals` — `payment_completed`, `payment_failed`, `payment_expired`, `payment_voided`, `payout_completed`, `payout_failed`
+- `django_snippe.conf` — `get_client()`, `get_setting()` reading `SNIPPE_*` Django settings
+
+## Docs
+
+- [README](https://github.com/cleven12/django_snippe#readme) — install, setup, usage
+- [Snippe API docs](https://docs.snippe.sh) — upstream payment gateway API (payments, payouts, webhooks)
+- [snippe-python-sdk](https://github.com/Neurotech-HQ/snippe-python-sdk) — underlying Python client this package wraps
+- [Issues](https://github.com/cleven12/django_snippe/issues) — bug reports and feature requests
+
+## Notes for AI agents / assistants
+
+- The Django app label is `django_snippe` (underscore); the PyPI/pip package name is `django-snippe` (hyphen).
+- Webhook signature verification requires `SNIPPE_WEBHOOK_SECRET` to be set; without it, incoming webhooks are trusted unverified — recommend setting it in any integration guidance.
+- Supported currencies are TZS, KES, UGX only.

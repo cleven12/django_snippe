@@ -24,3 +24,8 @@ class PaymentCreationError(SnippeException):
 class PayoutCreationError(SnippeException):
     """Raised when payout creation fails."""
     pass
+
+
+class SnippeConfigError(SnippeException):
+    """Raised when required django-snippe settings are missing or invalid."""
+    pass
