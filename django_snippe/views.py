@@ -34,3 +34,9 @@ def _compute_delivery_id(event: str, reference: str, timestamp: str, body: str) 
     """Compute a deterministic delivery identifier for idempotent webhook deduplication."""
     digest = hashlib.sha256(f"{event}:{reference}:{timestamp}:{body}".encode("utf-8")).hexdigest()
     return digest[:64]
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class SnippeWebhookView(View):
+    """
+    Handles incoming webhook POST requests from Snippe (API version 2026-01-25).
