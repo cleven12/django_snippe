@@ -244,3 +244,9 @@ class TestSessionHelper:
             currency="TZS",
             allowed_methods=["mobile_money", "card"],
             customer={"first_name": "Jane", "last_name": "Doe", "email": "jane@example.com"},
+        )
+        assert isinstance(session, SnippeSession)
+        assert session.reference == "SES-100"
+        assert session.checkout_url == "https://checkout.snippe.sh/s/SES-100"
+
+        cancelled = SessionHelper.cancel_checkout_session("SES-100")
