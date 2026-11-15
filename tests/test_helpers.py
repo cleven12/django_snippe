@@ -40,3 +40,9 @@ class TestPaymentHelper:
         assert isinstance(payment, SnippePayment)
         assert payment.reference == "MOB-1"
         assert payment.payment_type == SnippePayment.PaymentType.MOBILE
+        assert payment.idempotency_key == "idem-mob-1"
+        assert SnippePayment.objects.filter(reference="MOB-1").exists()
+
+    def test_create_mobile_payment_rejects_invalid_phone(self):
+        with pytest.raises(PaymentCreationError):
+            PaymentHelper.create_mobile_payment(
