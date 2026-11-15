@@ -82,3 +82,9 @@ urlpatterns = [
 ```python
 from django_snippe.helpers import PaymentHelper
 
+payment = PaymentHelper.create_mobile_payment(
+    amount=5000,
+    currency="TZS",
+    phone_number="0712345678",
+    customer_firstname="John",
+    customer_lastname="Doe",
