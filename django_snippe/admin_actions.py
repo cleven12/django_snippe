@@ -58,3 +58,9 @@ def void_payment(modeladmin, request, queryset):
 
 
 void_payment.short_description = "Void selected payments"
+
+
+def mark_payout_completed(modeladmin, request, queryset):
+    """Mark selected pending payouts as completed."""
+    count = 0
+    for payout in queryset.filter(status="pending"):
