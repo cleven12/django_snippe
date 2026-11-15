@@ -226,3 +226,9 @@ def test_webhook_handles_session_events(mock_setting, client):
     s_comp.refresh_from_db()
     s_exp.refresh_from_db()
     s_canc.refresh_from_db()
+    assert s_comp.status == SnippeSession.Status.COMPLETED
+    assert s_exp.status == SnippeSession.Status.EXPIRED
+    assert s_canc.status == SnippeSession.Status.CANCELLED
+
+
+@patch("django_snippe.views.get_setting", return_value=None)
