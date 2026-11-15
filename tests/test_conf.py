@@ -10,3 +10,9 @@ def test_get_setting_returns_configured_value(settings):
     settings.SNIPPE_API_KEY = "snp_live_abc"
     assert get_setting("API_KEY") == "snp_live_abc"
 
+
+def test_get_setting_returns_default_when_missing():
+    assert get_setting("MISSING_SETTING", default="fallback") == "fallback"
+
+
+def test_get_setting_raises_when_required_and_missing():
