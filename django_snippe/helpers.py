@@ -16,3 +16,9 @@ class PaymentHelper:
     @staticmethod
     def create_mobile_payment(
         amount: int,
+        currency: str,
+        phone_number: str,
+        customer_firstname: str,
+        customer_lastname: str,
+        webhook_url: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
