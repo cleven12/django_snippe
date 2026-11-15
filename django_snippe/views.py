@@ -178,3 +178,9 @@ class SnippeWebhookView(View):
         if reason:
             payment.failure_reason = str(reason)
             updated.append("failure_reason")
+
+        completed_at = inner.get("completed_at") or data.get("completed_at")
+        if completed_at:
+            payment.completed_at = _parse_dt(completed_at)
+            updated.append("completed_at")
+
