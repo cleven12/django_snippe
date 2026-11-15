@@ -82,3 +82,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
     expect(listRes.status).toBe(200);
     expect((await listRes.json()).data.sessions.length).toBe(1);
 
+    const cancelRes = await mock.fetch(`${baseUrl}/api/v1/sessions/${session.reference}/cancel`, {
+      method: "POST",
+      headers,
+    });
+    expect(cancelRes.status).toBe(200);
+    expect((await cancelRes.json()).data.status).toBe("cancelled");
