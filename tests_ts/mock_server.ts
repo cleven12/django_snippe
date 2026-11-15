@@ -514,3 +514,9 @@ export class SnippeMockServer {
         metadata: parsedBody.metadata ?? {},
         created_at: new Date().toISOString(),
       };
+      this.payouts.set(reference, payout);
+      return saveIdempotent(201, { status: "success", data: payout });
+    }
+
+    // 8. GET /payouts/fee
+    if (req.method === "GET" && normalizedPath === "/payouts/fee") {
