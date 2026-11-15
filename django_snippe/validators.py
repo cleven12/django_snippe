@@ -82,3 +82,9 @@ def normalize_phone_e164(phone: str, default_country_code: str = "255") -> str:
         return cleaned
     if cleaned.startswith("0") and len(cleaned) == 10:
         return f"{default_country_code}{cleaned[1:]}"
+    if len(cleaned) == 9 and cleaned[0] in {"6", "7", "1"}:
+        return f"{default_country_code}{cleaned}"
+    return cleaned
+
+
+def _is_valid_east_africa_phone(phone: str) -> bool:
