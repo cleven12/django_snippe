@@ -118,3 +118,9 @@ class TestPaymentHelper:
         assert res["status"] == "pushed"
 
     def test_get_payment_by_reference(self):
+        SnippePayment.objects.create(
+            reference="LOOKUP-1",
+            payment_type=SnippePayment.PaymentType.MOBILE,
+            amount=1000,
+            currency="TZS",
+            phone_number="0712345678",
