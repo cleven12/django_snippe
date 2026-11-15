@@ -76,3 +76,9 @@ urlpatterns = [
 ```
 
 ## Quick Start
+
+### 1. Collect a Mobile Money Payment (USSD Push)
+
+```python
+from django_snippe.helpers import PaymentHelper
+
