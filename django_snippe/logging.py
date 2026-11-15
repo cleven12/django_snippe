@@ -88,3 +88,9 @@ class PayoutLogger:
         """Log when a payout record is created."""
         message = (
             f"Payout created | ref={reference} | channel={channel} | "
+            f"amount={amount} {currency} | recipient={recipient_name} | user={_get_user(user)}"
+        )
+        logger.info(message)
+
+    @staticmethod
+    def log_payout_status_change(
