@@ -130,3 +130,9 @@ payout = PayoutHelper.create_mobile_payout(
     narration="January 2026 contractor payout",
     idempotency_key="payout-emp-01",
 )
+```
+
+### 4. Subscribe to Lifecycle Signals
+
+```python
+from django.dispatch import receiver
