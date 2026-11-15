@@ -64,3 +64,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
   });
 
   test("POST /v1/payments creates a card payment and returns hosted payment_url", async () => {
+    const res = await mock.fetch(`${baseUrl}/v1/payments`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        payment_type: "card",
+        details: {
