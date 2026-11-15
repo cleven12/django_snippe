@@ -400,3 +400,9 @@ def create_session(
     """Create a hosted checkout session via POST /api/v1/sessions and store SnippeSession."""
     client = get_client()
     payload: Dict[str, Any] = {
+        "currency": currency,
+        "allow_custom_amount": allow_custom_amount,
+    }
+    if amount is not None:
+        payload["amount"] = amount
+    if allowed_methods is not None:
