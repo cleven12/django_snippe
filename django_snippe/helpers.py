@@ -280,3 +280,9 @@ class PaymentHelper:
 
     @staticmethod
     def search_payments(query: str, limit: int = 20, offset: int = 0) -> Dict[str, Any]:
+        """Search payments via the Snippe API search endpoint."""
+        return services.search_payments(query=query, limit=limit, offset=offset)
+
+    @staticmethod
+    def get_balance() -> Any:
+        """Fetch current Snippe merchant balance."""
