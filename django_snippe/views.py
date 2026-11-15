@@ -22,3 +22,9 @@ logger = logging.getLogger(__name__)
 
 def _extract_event_and_reference(
     data: Dict[str, Any],
+) -> tuple[Optional[str], Optional[str], Dict[str, Any]]:
+    """Extract event name, reference, and inner data dict from 2026-01-25 or flat webhook payloads."""
+    inner = data.get("data") if isinstance(data.get("data"), dict) else data
+    event = data.get("event") or data.get("type") or inner.get("event")
+    reference = data.get("reference") or inner.get("reference")
+    return event, reference, inner
