@@ -28,3 +28,9 @@ class SnippeException(Exception):
             "code": self.code,
             "error_code": self.error_code,
             "message": self.message,
+        }
+
+
+class SnippeConfigError(SnippeException):
+    """Raised when required django-snippe settings are missing or invalid."""
+
