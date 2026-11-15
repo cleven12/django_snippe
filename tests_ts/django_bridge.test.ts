@@ -22,3 +22,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
         method: "POST",
         headers,
         body: JSON.stringify({
+          payment_type: "mobile",
+          details: { amount: 7500, currency: "TZS" },
+          phone_number: "0754123456",
+          customer: { firstname: "John", lastname: "Sarwi" },
+        }),
+      })
