@@ -238,3 +238,4 @@ class Migration(migrations.Migration):
                 validators=[django_snippe.validators.PhoneValidator.validate_phone],
             ),
         ),
+    ]
