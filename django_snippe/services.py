@@ -382,3 +382,9 @@ def sync_payout_status(reference: str) -> SnippePayout:
 
 def list_payouts(limit: int = 20, offset: int = 0) -> Any:
     """List payouts from GET /v1/payouts with pagination."""
+    client = get_client()
+    return client.list_payouts(limit=limit, offset=offset)
+
+
+def create_session(
+    amount: Optional[int] = None,
