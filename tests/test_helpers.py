@@ -190,3 +190,9 @@ class TestPayoutHelper:
         assert payout.reference == "PO-BANK-1"
         assert payout.channel == SnippePayout.Channel.BANK
         assert payout.recipient_bank == "CRDB"
+
+    def test_create_mobile_payout_rejects_short_name(self):
+        with pytest.raises(PayoutCreationError):
+            PayoutHelper.create_mobile_payout(
+                amount=5000,
+                currency="TZS",
