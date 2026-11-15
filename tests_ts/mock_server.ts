@@ -628,3 +628,9 @@ export class SnippeMockServer {
         },
       });
     }
+
+    // 13. POST /sessions/:reference/cancel
+    const cancelSessionMatch = normalizedPath.match(/^\/sessions\/([^/]+)\/cancel$/);
+    if (req.method === "POST" && cancelSessionMatch) {
+      const scopeErr = this.checkScope(apiKey, "collection:create");
+      if (scopeErr) return scopeErr;
