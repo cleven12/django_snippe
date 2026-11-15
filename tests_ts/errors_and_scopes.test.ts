@@ -52,3 +52,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
   });
 
   test("Supports Idempotency-Key deduplication and returns 422 on payload mismatch", async () => {
+    const headers = {
+      Authorization: "Bearer snp_live_key",
+      "Content-Type": "application/json",
+      "Idempotency-Key": "idem-order-2026-01",
+    };
+    const body1 = JSON.stringify({
