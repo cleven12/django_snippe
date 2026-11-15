@@ -64,3 +64,9 @@ class SnippeNotFoundError(SnippeException):
 
     default_code = 404
     default_error_code = "not_found"
+
+
+class SnippeConflictError(SnippeException):
+    """Raised on HTTP 409 when a duplicate reference or conflicting state occurs."""
+
+    default_code = 409
