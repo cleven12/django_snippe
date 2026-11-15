@@ -40,3 +40,9 @@ def get_api_version() -> str:
     """Return the configured Snippe API version (defaults to 2026-01-25)."""
     return str(get_setting("API_VERSION", default=API_VERSION))
 
+
+def get_default_currency() -> str:
+    """Return the default currency code (defaults to TZS per Snippe 2026-01-25 spec)."""
+    return str(get_setting("DEFAULT_CURRENCY", default=DEFAULT_CURRENCY)).upper()
+
+
