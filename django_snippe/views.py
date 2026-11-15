@@ -100,3 +100,9 @@ class SnippeWebhookView(View):
             err = WebhookPayloadError("Missing 'event' or 'reference' in webhook payload")
             if raise_exceptions:
                 raise err
+            return JsonResponse(err.to_dict(), status=400)
+
+        PaymentLogger.log_webhook_received(event, reference)
+
+        delivery_id = (
+            request.headers.get("X-Webhook-Id")
