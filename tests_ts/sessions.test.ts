@@ -58,3 +58,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
       }),
     });
     expect(res.status).toBe(201);
+    const json = await res.json();
+    expect(json.data.allow_custom_amount).toBe(true);
+    expect(json.data.amount).toBeNull();
+  });
+
+  test("GET /api/v1/sessions, GET /api/v1/sessions/:reference, and POST /api/v1/sessions/:reference/cancel", async () => {
