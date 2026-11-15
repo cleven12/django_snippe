@@ -196,3 +196,9 @@ class SnippeWebhookView(View):
             fields = self._apply_payment_metadata(payment, data, inner)
             payment.save(update_fields=fields)
             signals.payment_completed.send(sender=SnippePayment, payment=payment)
+            logger.info("Payment %s marked as completed", reference)
+        except SnippePayment.DoesNotExist:
+            logger.error("Payment %s not found when handling completion", reference)
+
+    def handle_payment_failed(
+        self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
