@@ -154,3 +154,9 @@ class PaymentValidator:
 
     @staticmethod
     def validate_payment_data(
+        amount: int,
+        currency: str,
+        phone_number: str,
+        payment_type: str,
+        *,
+        enforce_minimum: bool = False,
