@@ -106,3 +106,9 @@ session = SessionHelper.create_checkout_session(
     currency="TZS",
     allowed_methods=["mobile_money", "card"],
     customer={
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane@example.com",
+        "phone": "+255781000000",
+    },
+    redirect_url="https://yourdomain.com/checkout/complete/",
