@@ -454,3 +454,9 @@ def create_session(
 
 def get_session(reference: str) -> SnippeSession:
     """Retrieve session details from GET /api/v1/sessions/{reference} and sync local record."""
+    client = get_client()
+    response = client._client.get(f"/sessions/{reference}")
+    data = client._handle_response(response)
+
+    session, _ = SnippeSession.objects.update_or_create(
+        reference=data.get("reference", reference),
