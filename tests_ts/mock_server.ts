@@ -172,3 +172,9 @@ export class SnippeMockServer {
   public server: ReturnType<typeof Bun.serve> | null = null;
   public payments = new Map<string, StoredPayment>();
   public payouts = new Map<string, StoredPayout>();
+  public sessions = new Map<string, StoredSession>();
+  public idempotencyStore = new Map<string, { bodyHash: string; status: number; response: unknown }>();
+  public keyScopes = new Map<string, Set<ApiScope>>();
+  public availableBalance = 10_000_000;
+  public totalBalance = 10_500_000;
+  public forceRateLimit = false;
