@@ -184,3 +184,9 @@ def create_mobile_payment(
         webhook_url,
         metadata,
         callback_url=callback_url,
+        customer=customer,
+        idempotency_key=idempotency_key,
+    )
+
+
+def create_card_payment(
