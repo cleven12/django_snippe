@@ -28,3 +28,9 @@ def mark_payment_failed(modeladmin, request, queryset):
     messages.success(request, f"Marked {count} payment(s) as failed")
 
 
+mark_payment_failed.short_description = "Mark selected payments as failed"
+
+
+def retry_payment(modeladmin, request, queryset):
+    """Retry failed payments by resetting their status to pending."""
+    count = 0
