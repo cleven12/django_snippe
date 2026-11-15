@@ -292,3 +292,9 @@ class PaymentHelper:
     def get_payment_by_reference(reference: str) -> Optional[SnippePayment]:
         """Look up a local SnippePayment by its reference."""
         return SnippePayment.objects.filter(reference=reference).first()
+
+    @staticmethod
+    def get_pending_payments(limit: int = 100) -> List[SnippePayment]:
+        """Return up to limit pending payments."""
+        return list(SnippePayment.objects.filter(status=SnippePayment.Status.PENDING)[:limit])
+
