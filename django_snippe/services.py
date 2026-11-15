@@ -376,3 +376,9 @@ def sync_payout_status(reference: str) -> SnippePayout:
     existing = SnippePayout.objects.filter(reference=reference).first()
     webhook_url = existing.webhook_url if existing else None
     res_meta = getattr(result, "metadata", None)
+    metadata = res_meta if isinstance(res_meta, dict) else (existing.metadata if existing else {})
+    return _save_payout(result, webhook_url, metadata)
+
+
+def list_payouts(limit: int = 20, offset: int = 0) -> Any:
+    """List payouts from GET /v1/payouts with pagination."""
