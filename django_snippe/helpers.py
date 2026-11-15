@@ -466,3 +466,9 @@ class PayoutHelper:
     @staticmethod
     def get_failed_payouts(limit: int = 100) -> List[SnippePayout]:
         """Return up to limit failed payouts."""
+        return list(SnippePayout.objects.filter(status=SnippePayout.Status.FAILED)[:limit])
+
+
+class SessionHelper:
+    """High-level helper methods for Snippe 2026-01-25 hosted checkout sessions."""
+
