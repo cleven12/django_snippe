@@ -220,3 +220,9 @@ class TestSessionHelper:
     @patch("django_snippe.services.get_client")
     def test_create_and_cancel_checkout_session(self, mock_get_client):
         client = MagicMock()
+        del client.create_session
+        del client.cancel_session
+        client._handle_response.side_effect = [
+            {
+                "reference": "SES-100",
+                "amount": 15000,
