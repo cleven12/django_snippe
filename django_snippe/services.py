@@ -214,3 +214,9 @@ def create_card_payment(
         "idempotency_key": idempotency_key,
     }
     if redirect_url is not None:
+        kwargs["redirect_url"] = redirect_url
+    if cancel_url is not None:
+        kwargs["cancel_url"] = cancel_url
+    result = client.create_card_payment(**kwargs)
+    return _save_payment(
+        result,
