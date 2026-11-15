@@ -214,3 +214,9 @@ class PayoutValidator:
         enforce_minimum: bool = False,
         idempotency_key: Optional[str] = None,
     ) -> Tuple[bool, List[str]]:
+        """Validate payout input parameters."""
+        errors: List[str] = []
+
+        if not isinstance(amount, int) or isinstance(amount, bool) or amount <= 0:
+            errors.append("amount must be a positive integer")
+        elif enforce_minimum:
