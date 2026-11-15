@@ -238,3 +238,9 @@ def create_qr_payment(
     callback_url: Optional[str] = None,
     webhook_url: Optional[str] = None,
     metadata: Optional[Dict[str, Any]] = None,
+    idempotency_key: Optional[str] = None,
+) -> SnippePayment:
+    """Create a dynamic QR code payment and store SnippePayment."""
+    client = get_client()
+    result = client.create_qr_payment(
+        amount=amount,
