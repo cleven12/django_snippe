@@ -46,3 +46,9 @@ def test_webhook_rejects_invalid_json(mock_setting, client):
     body = response.json()
     assert body["status"] == "error"
     assert body["error_code"] == "invalid_webhook_payload"
+
+
+@patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_requires_event_and_reference(mock_setting, client):
+    response = _post(client, {"event": "payment.completed"})
+    assert response.status_code == 400
