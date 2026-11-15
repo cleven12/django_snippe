@@ -10,3 +10,9 @@ Customer / Merchant App
    v
 PaymentHelper / PayoutHelper / SessionHelper  -->  Snippe API (https://api.snippe.sh)
    |                                                      |
+   +-- SnippePayment / SnippePayout / SnippeSession       |
+                                                          v
+                                            Webhook (POST /payments/webhook/)
+                                                          |
+                                                          v
+                                            HMAC-SHA256 Verification + Idempotency
