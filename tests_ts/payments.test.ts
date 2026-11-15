@@ -34,3 +34,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
         metadata: { order_id: "ORD-101" },
       }),
     });
+    expect(res.status).toBe(201);
+    const json = await res.json();
+    expect(json.status).toBe("success");
+    expect(json.data.reference).toStartWith("pay_");
+    expect(json.data.status).toBe("pending");
+    expect(json.data.amount).toBe(5000);
