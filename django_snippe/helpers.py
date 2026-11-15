@@ -460,3 +460,9 @@ class PayoutHelper:
 
     @staticmethod
     def get_pending_payouts(limit: int = 100) -> List[SnippePayout]:
+        """Return up to limit pending payouts."""
+        return list(SnippePayout.objects.filter(status=SnippePayout.Status.PENDING)[:limit])
+
+    @staticmethod
+    def get_failed_payouts(limit: int = 100) -> List[SnippePayout]:
+        """Return up to limit failed payouts."""
