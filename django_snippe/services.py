@@ -322,3 +322,9 @@ def create_mobile_payout(
     narration: Optional[str] = None,
     webhook_url: Optional[str] = None,
     metadata: Optional[Dict[str, Any]] = None,
+    idempotency_key: Optional[str] = None,
+) -> SnippePayout:
+    """Send a mobile money payout via POST /v1/payouts/send and store SnippePayout."""
+    client = get_client()
+    result = client.create_mobile_payout(
+        amount=amount,
