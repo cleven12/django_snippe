@@ -58,3 +58,9 @@ class PaymentHelper:
                 "customer": customer,
                 "webhook_url": webhook_url,
             }
+            if callback_url is not None:
+                call_kwargs["callback_url"] = callback_url
+            if metadata is not None:
+                call_kwargs["metadata"] = metadata
+            if idempotency_key is not None:
+                call_kwargs["idempotency_key"] = idempotency_key
