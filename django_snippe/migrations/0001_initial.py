@@ -34,3 +34,9 @@ class Migration(migrations.Migration):
                 (
                     "status",
                     models.CharField(
+                        choices=[
+                            ("pending", "Pending"),
+                            ("completed", "Completed"),
+                            ("failed", "Failed"),
+                            ("expired", "Expired"),
+                            ("voided", "Voided"),
