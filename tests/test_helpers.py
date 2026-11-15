@@ -100,3 +100,9 @@ class TestPaymentHelper:
             amount=10000,
             currency="TZS",
             phone_number="0712345678",
+            customer_firstname="Baraka",
+            customer_lastname="Mushi",
+        )
+
+        assert payment.payment_type == SnippePayment.PaymentType.QR
+        assert payment.payment_qr_code == "BASE64QR"
