@@ -40,3 +40,9 @@ def _compute_delivery_id(event: str, reference: str, timestamp: str, body: str) 
 class SnippeWebhookView(View):
     """
     Handles incoming webhook POST requests from Snippe (API version 2026-01-25).
+
+    Usage in urls.py:
+        path("payments/", include("django_snippe.urls"))
+
+    This registers: POST /payments/webhook/
+    """
