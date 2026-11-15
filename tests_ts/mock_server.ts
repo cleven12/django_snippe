@@ -616,3 +616,9 @@ export class SnippeMockServer {
 
       const limit = Math.min(100, Number(url.searchParams.get("limit") ?? 20));
       const offset = Number(url.searchParams.get("offset") ?? 0);
+      const all = Array.from(this.sessions.values());
+
+      return Response.json({
+        status: "success",
+        data: {
+          sessions: all.slice(offset, offset + limit),
