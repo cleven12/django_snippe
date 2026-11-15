@@ -94,3 +94,9 @@ def get_async_client():
 
     api_key = get_setting("API_KEY", required=True)
     base_url = get_setting("BASE_URL")
+    timeout = get_setting("TIMEOUT", default=DEFAULT_TIMEOUT)
+
+    try:
+        kwargs = {"api_key": api_key, "timeout": timeout}
+        if base_url:
+            kwargs["base_url"] = base_url
