@@ -4,3 +4,9 @@ from datetime import datetime
 from typing import Any, Dict, List, Optional, Sequence
 
 from .conf import get_client, get_default_currency
+from .models import SnippePayment, SnippePayout, SnippeSession
+
+
+def _opt_str(obj: Any, attr: str) -> Optional[str]:
+    """Return string attribute if present and a real str, otherwise None."""
+    val = getattr(obj, attr, None)
