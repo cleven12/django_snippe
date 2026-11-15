@@ -502,3 +502,5 @@ def cancel_session(reference: str) -> SnippeSession:
     return SnippeSession.objects.create(
         reference=reference,
         status=data.get("status", SnippeSession.Status.CANCELLED),
+        currency=data.get("currency", "TZS"),
+    )
