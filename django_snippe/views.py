@@ -298,3 +298,9 @@ class SnippeWebhookView(View):
         try:
             session = SnippeSession.objects.get(reference=reference)
             session.status = SnippeSession.Status.COMPLETED
+            session.save(update_fields=["status", "updated_at"])
+            signals.session_completed.send(sender=SnippeSession, session=session)
+            logger.info("Session %s marked as completed", reference)
+        except SnippeSession.DoesNotExist:
+            logger.error("Session %s not found when handling completion", reference)
+
