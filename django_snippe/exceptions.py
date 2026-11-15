@@ -16,3 +16,9 @@ class SnippeException(Exception):
         code: Optional[int] = None,
         error_code: Optional[str] = None,
     ) -> None:
+        super().__init__(message)
+        self.message = message
+        self.code = code if code is not None else self.default_code
+        self.error_code = error_code if error_code is not None else self.default_error_code
+
+    def to_dict(self) -> dict:
