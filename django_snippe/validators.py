@@ -268,3 +268,9 @@ class SessionValidator:
         currency: str = "TZS",
         allow_custom_amount: bool = False,
         allowed_methods: Optional[Sequence[str]] = None,
+    ) -> Tuple[bool, List[str]]:
+        """Validate checkout session creation parameters."""
+        errors: List[str] = []
+
+        if not allow_custom_amount:
+            min_amount = get_min_payment_amount()
