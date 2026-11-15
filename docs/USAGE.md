@@ -64,3 +64,9 @@ card_payment = PaymentHelper.create_card_payment(
     phone_number="0712345678",
     customer_firstname="Amina",
     customer_lastname="Yusuf",
+    redirect_url="https://yourdomain.com/payments/success/",
+    cancel_url="https://yourdomain.com/payments/cancel/",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+)
+
+# 3. Dynamic QR Payment (returns payment_qr_code and payment_token)
