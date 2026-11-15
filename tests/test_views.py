@@ -130,3 +130,9 @@ def test_webhook_marks_payment_failed_with_reason(mock_setting, client):
     payment.refresh_from_db()
     assert payment.status == SnippePayment.Status.FAILED
     assert payment.failure_reason == "Insufficient balance"
+
+
+@patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_marks_payment_expired_and_voided(mock_setting, client):
+    exp_payment = _make_payment(reference="WH-EXP")
+    void_payment = _make_payment(reference="WH-VOID")
