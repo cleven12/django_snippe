@@ -130,3 +130,9 @@ payment = PaymentHelper.create_mobile_payment(
     currency="TZS",
     phone_number="0754123456",
     customer_firstname="John",
+    customer_lastname="Sarwi",
+    idempotency_key="bridge-pay-1",
+)
+assert payment.reference == "${payResp.data.reference}"
+assert payment.status == "pending"
+
