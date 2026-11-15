@@ -112,3 +112,9 @@ print(session.checkout_url)
 # Cancel an active session if needed
 SessionHelper.cancel_checkout_session(session.reference)
 ```
+
+## Sending Payouts / Disbursements (`/v1/payouts/send`)
+
+```python
+from django_snippe.helpers import PayoutHelper
+
