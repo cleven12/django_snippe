@@ -16,3 +16,9 @@ class PaymentLogger:
         reference: str,
         payment_type: str,
         amount: int,
+        currency: str,
+        phone_number: str,
+        user: Any = None,
+    ) -> None:
+        """Log when a payment record is created."""
+        message = (
