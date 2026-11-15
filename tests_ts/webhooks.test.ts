@@ -28,3 +28,9 @@ describe("Snippe 2026-01-25 Webhooks & HMAC-SHA256 Signature Verification", () =
     const payload = buildWebhookPayload2026({
       event: "payment.completed",
       reference: "pay_sig_1",
+      status: "completed",
+      amount: 15000,
+      timestamp: Number(ts),
+    });
+    const rawBody = JSON.stringify(payload);
+    const sig = signWebhookPayload(rawBody, ts, secret);
