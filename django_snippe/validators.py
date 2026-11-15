@@ -58,3 +58,9 @@ MAX_IDEMPOTENCY_KEY_LENGTH = 30
 
 EAST_AFRICA_PHONE_REGEX_PARTS = [
     r"^(\+?255|0)[67]\d{8}$",
+    r"^(\+?254|0)[17]\d{8}$",
+    r"^(\+?256|0)7\d{8}$",
+]
+
+
+def _normalize_phone(phone: str) -> str:
