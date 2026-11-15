@@ -640,3 +640,9 @@ export class SnippeMockServer {
       if (!session) {
         return this.errorJson(404, "not_found", `Session ${reference} not found`);
       }
+      session.status = "cancelled";
+      return Response.json({ status: "success", data: session });
+    }
+
+    // 14. GET /sessions/:reference
+    const getSessionMatch = normalizedPath.match(/^\/sessions\/([^/]+)$/);
