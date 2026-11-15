@@ -76,3 +76,9 @@ def _normalize_phone(phone: str) -> str:
 def normalize_phone_e164(phone: str, default_country_code: str = "255") -> str:
     """Normalize phone number into 12-digit country code format (e.g. 255712345678)."""
     if not phone or not isinstance(phone, str):
+        return ""
+    cleaned = "".join(c for c in phone if c.isdigit())
+    if cleaned.startswith(("255", "254", "256")) and len(cleaned) == 12:
+        return cleaned
+    if cleaned.startswith("0") and len(cleaned) == 10:
+        return f"{default_country_code}{cleaned[1:]}"
