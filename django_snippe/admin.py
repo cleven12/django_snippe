@@ -64,3 +64,9 @@ class SnippeSessionAdmin(admin.ModelAdmin):
     ]
     list_filter = ["status", "currency", "allow_custom_amount"]
     search_fields = ["reference", "customer_name", "customer_email", "customer_phone"]
+    readonly_fields = ["reference", "created_at", "updated_at"]
+    ordering = ["-created_at"]
+    actions = [cancel_selected_sessions]
+
+
+@admin.register(SnippeWebhookEvent)
