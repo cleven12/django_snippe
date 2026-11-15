@@ -106,3 +106,8 @@ class Migration(migrations.Migration):
             ],
             options={
                 "verbose_name": "Payout",
+                "verbose_name_plural": "Payouts",
+                "ordering": ["-created_at"],
+            },
+        ),
+    ]
