@@ -220,3 +220,9 @@ class PaymentHelper:
             )
             call_kwargs: Dict[str, Any] = {
                 "amount": amount,
+                "currency": currency,
+                "phone_number": phone_number,
+                "customer": customer,
+                "webhook_url": webhook_url,
+            }
+            if callback_url is not None:
