@@ -262,3 +262,9 @@ class PaymentHelper:
 
     @staticmethod
     def trigger_push(reference: str, phone_number: Optional[str] = None) -> Dict[str, Any]:
+        """Trigger a manual USSD push for an existing payment reference."""
+        try:
+            result = services.trigger_payment_push(reference, phone_number=phone_number)
+            PaymentLogger.log_payment_push_triggered(reference, phone_number=phone_number)
+            return result
+        except Exception as exc:
