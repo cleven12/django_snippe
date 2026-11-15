@@ -34,3 +34,9 @@ def _make_payment(reference="WH-REF", status=SnippePayment.Status.PENDING):
         payment_type=SnippePayment.PaymentType.MOBILE,
         amount=1000,
         currency="TZS",
+        phone_number="0712345678",
+        status=status,
+    )
+
+
+@patch("django_snippe.views.get_setting", return_value=None)
