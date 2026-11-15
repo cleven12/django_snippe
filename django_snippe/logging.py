@@ -10,3 +10,9 @@ logger = logging.getLogger("django_snippe.audit")
 
 class PaymentLogger:
     """Logs payment lifecycle activities for audit trails."""
+
+    @staticmethod
+    def log_payment_created(
+        reference: str,
+        payment_type: str,
+        amount: int,
