@@ -106,3 +106,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
   test("POST /v1/payments/{reference}/push triggers manual USSD push on pending payment", async () => {
     const createRes = await mock.fetch(`${baseUrl}/v1/payments`, {
       method: "POST",
+      headers,
+      body: JSON.stringify({
+        payment_type: "mobile",
+        details: { amount: 5000, currency: "TZS" },
+        phone_number: "0712345678",
+        customer: { firstname: "John", lastname: "Doe" },
