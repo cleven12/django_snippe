@@ -316,3 +316,9 @@ class PayoutHelper:
         narration: Optional[str] = None,
         webhook_url: Optional[str] = None,
         metadata: Optional[Dict[str, Any]] = None,
+        idempotency_key: Optional[str] = None,
+    ) -> SnippePayout:
+        """
+        Create a mobile money payout and persist SnippePayout.
+
+        Raises:
