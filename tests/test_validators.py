@@ -16,3 +16,9 @@ def test_currency_validator_accepts_supported_currencies(currency):
 
 
 def test_currency_validator_rejects_unsupported_currency():
+    with pytest.raises(ValidationError):
+        CurrencyValidator.validate_currency("USD")
+
+
+@pytest.mark.parametrize(
+    "phone",
