@@ -1,0 +1,6 @@
+{
+  "name": "django-snippe-test-suite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fast local Bun + TypeScript contract and E2E test suite for django-snippe (Snippe API 2026-01-25)",
+  "scripts": {
