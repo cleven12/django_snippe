@@ -178,3 +178,9 @@ In Snippe API `2026-01-25`, payment creation requests pass `amount` as a flat in
 | `session_expired` | `session` (`SnippeSession`) | `session.expired` |
 | `session_cancelled` | `session` (`SnippeSession`) | `session.cancelled` |
 
+## Synchronous and Asynchronous Clients
+
+For direct SDK access:
+
+```python
+from django_snippe.conf import get_client, get_async_client
