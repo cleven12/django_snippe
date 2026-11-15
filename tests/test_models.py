@@ -76,3 +76,9 @@ class TestSnippePayment:
 class TestSnippePayout:
     def test_create_and_str(self):
         payout = make_payout()
+        assert payout.pk is not None
+        assert payout.status == SnippePayout.Status.PENDING
+        assert "PAYOUT-1" in str(payout)
+
+    def test_full_clean_rejects_short_recipient_name(self):
+        payout = SnippePayout(
