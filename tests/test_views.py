@@ -172,3 +172,9 @@ def test_webhook_marks_payout_completed_failed_and_reversed(mock_setting, client
         amount=10000,
         currency="TZS",
         recipient_name="Vendor Ltd",
+        recipient_bank="CRDB",
+        recipient_account="0150000000000",
+    )
+
+    assert (
+        _post(client, {"event": "payout.completed", "reference": payout_ok.reference}).status_code
