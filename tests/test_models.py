@@ -58,3 +58,9 @@ class TestSnippePayment:
         payment = SnippePayment(
             reference="PAY-3",
             payment_type=SnippePayment.PaymentType.MOBILE,
+            amount=5000,
+            currency="TZS",
+            phone_number="not-a-phone",
+        )
+        with pytest.raises(ValidationError):
+            payment.full_clean()
