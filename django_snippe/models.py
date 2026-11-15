@@ -196,3 +196,9 @@ class SnippeSession(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Checkout Session"
+        verbose_name_plural = "Checkout Sessions"
+
+    def __str__(self) -> str:
