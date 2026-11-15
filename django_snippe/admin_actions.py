@@ -112,3 +112,7 @@ def cancel_selected_sessions(modeladmin, request, queryset):
         SessionLogger.log_session_status_change(
             session.reference, "active", "cancelled", reason="Cancelled from admin"
         )
+    messages.warning(request, f"Cancelled {count} checkout session(s)")
+
+
+cancel_selected_sessions.short_description = "Cancel selected active checkout sessions"
