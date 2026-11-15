@@ -136,3 +136,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
         payment_type: "mobile",
         details: { amount: 6000, currency: "TZS" },
         phone_number: "0712111222",
+        customer: { firstname: "Neema", lastname: "Kweka" },
+      }),
+    });
+    const p1 = (await c1.json()).data;
+
+    const getRes = await mock.fetch(`${baseUrl}/v1/payments/${p1.reference}`, { headers });
