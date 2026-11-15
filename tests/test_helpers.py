@@ -112,3 +112,9 @@ class TestPaymentHelper:
     def test_trigger_push_and_search(self, mock_get_client):
         client = MagicMock()
         client._handle_response.return_value = {"status": "pushed", "reference": "MOB-1"}
+        mock_get_client.return_value = client
+
+        res = PaymentHelper.trigger_push("MOB-1", phone_number="255712345678")
+        assert res["status"] == "pushed"
+
+    def test_get_payment_by_reference(self):
