@@ -16,3 +16,9 @@ from .exceptions import WebhookPayloadError, WebhookVerificationError
 from .logging import PaymentLogger
 from .models import SnippePayment, SnippePayout, SnippeSession, SnippeWebhookEvent
 from .services import _parse_dt
+
+logger = logging.getLogger(__name__)
+
+
+def _extract_event_and_reference(
+    data: Dict[str, Any],
