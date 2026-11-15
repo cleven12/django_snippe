@@ -166,3 +166,9 @@ class PaymentValidator:
         Validate payment creation parameters.
 
         Returns:
+            Tuple of (is_valid, list_of_error_messages).
+        """
+        errors: List[str] = []
+
+        if not isinstance(amount, int) or isinstance(amount, bool) or amount <= 0:
+            errors.append("amount must be a positive integer")
