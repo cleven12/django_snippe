@@ -16,3 +16,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
   afterAll(() => {
     mock.stop();
   });
+
+  beforeEach(() => {
+    mock.reset();
+  });
+
+  test("POST /api/v1/sessions creates a fixed-amount hosted checkout session", async () => {
