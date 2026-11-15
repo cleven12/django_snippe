@@ -34,3 +34,7 @@ __all__ = [
     "SnippeServerError",
     "WebhookVerificationError",
     "WebhookPayloadError",
+    "PaymentCreationError",
+    "PayoutCreationError",
+    "SessionCreationError",
+]
