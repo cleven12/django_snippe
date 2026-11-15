@@ -100,3 +100,6 @@ def get_async_client():
         kwargs = {"api_key": api_key, "timeout": timeout}
         if base_url:
             kwargs["base_url"] = base_url
+        return AsyncSnippe(**kwargs)
+    except Exception as exc:
+        raise SnippeConfigError(f"Failed to initialize AsyncSnippe client: {exc}") from exc
