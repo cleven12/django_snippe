@@ -34,3 +34,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
     mock.keyScopes.set(readOnlyKey, new Set(["collection:read"]));
 
     const res = await mock.fetch(`${baseUrl}/v1/payouts/send`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${readOnlyKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
