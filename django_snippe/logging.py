@@ -148,3 +148,8 @@ class SessionLogger:
 
 def _get_user(user: Any) -> str:
     """Extract a readable user identifier from a Django user object."""
+    if user is None or isinstance(user, AnonymousUser):
+        return "anonymous"
+    if hasattr(user, "username") and user.username:
+        return str(user.username)
+    return str(user)
