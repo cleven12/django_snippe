@@ -58,3 +58,9 @@ class PaymentLogger:
 
     @staticmethod
     def log_webhook_processing(
+        event: str,
+        reference: str,
+        success: bool,
+        error: Optional[str] = None,
+    ) -> None:
+        """Log webhook processing outcome."""
