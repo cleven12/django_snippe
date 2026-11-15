@@ -208,3 +208,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="snippepayout",
             name="amount",
+            field=models.PositiveIntegerField(
+                validators=[django.core.validators.MinValueValidator(100)]
+            ),
+        ),
+        migrations.AlterField(
+            model_name="snippepayout",
