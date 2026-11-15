@@ -124,3 +124,9 @@ class SnippeWebhookView(View):
                 "event_type": event,
                 "reference": reference,
                 "payload": data,
+                "signature": signature,
+                "timestamp": timestamp,
+                "processed": False,
+                "error_message": None,
+            },
+        )
