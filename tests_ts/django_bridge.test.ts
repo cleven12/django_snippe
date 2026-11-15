@@ -190,3 +190,4 @@ print("BRIDGE_OK")
     expect(exitCode).toBe(0);
     expect(stdout).toContain("BRIDGE_OK");
   });
+});
