@@ -148,3 +148,9 @@ def _save_payout(
         "metadata": resolved_meta,
         "completed_at": _parse_dt(_opt_str(result, "completed_at")),
     }
+    payout, _ = SnippePayout.objects.update_or_create(
+        reference=result.reference,
+        defaults=defaults,
+    )
+    return payout
+
