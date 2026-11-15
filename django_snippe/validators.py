@@ -238,3 +238,9 @@ class PayoutValidator:
             if not _is_valid_east_africa_phone(recipient_phone):
                 errors.append(
                     "recipient_phone must be a valid East African mobile number for mobile payouts"
+                )
+        elif channel == "bank":
+            if recipient_bank:
+                try:
+                    validate_bank_code(recipient_bank)
+                except ValidationError as exc:
