@@ -22,3 +22,9 @@ def test_get_setting_raises_when_required_and_missing():
 
 @patch("snippe.Snippe")
 def test_get_client_builds_client_from_settings(mock_snippe_cls, settings):
+    settings.SNIPPE_API_KEY = "snp_live_abc"
+    settings.SNIPPE_TIMEOUT = 15.0
+    get_client()
+    assert mock_snippe_cls.called
+
+
