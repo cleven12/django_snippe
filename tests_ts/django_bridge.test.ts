@@ -58,3 +58,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
         body: JSON.stringify({
           amount: 15000,
           currency: "TZS",
+          allowed_methods: ["mobile_money", "card"],
+        }),
+      })
+    ).json();
+
+    const webhookSecret = "whsec_bridge_2026_secret";
