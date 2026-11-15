@@ -298,3 +298,9 @@ export class SnippeMockServer {
           status,
           response: bodyObj,
         });
+      }
+      return Response.json(bodyObj, { status });
+    };
+
+    // 1. POST /payments
+    if (req.method === "POST" && normalizedPath === "/payments") {
