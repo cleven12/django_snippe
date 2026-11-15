@@ -64,3 +64,9 @@ class PaymentHelper:
                 call_kwargs["metadata"] = metadata
             if idempotency_key is not None:
                 call_kwargs["idempotency_key"] = idempotency_key
+
+            api_payment = client.create_mobile_payment(**call_kwargs)
+
+            payment = SnippePayment.objects.create(
+                reference=api_payment.reference,
+                payment_type=SnippePayment.PaymentType.MOBILE,
