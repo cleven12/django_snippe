@@ -214,3 +214,9 @@ class SnippeSession(models.Model):
             old_instance = SnippeSession.objects.filter(pk=self.pk).first()
             if old_instance and old_instance.status != self.status:
                 SessionLogger.log_session_status_change(
+                    self.reference, old_instance.status, self.status
+                )
+        super().save(*args, **kwargs)
+
+
+class SnippeWebhookEvent(models.Model):
