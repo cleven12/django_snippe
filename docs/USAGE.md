@@ -118,3 +118,9 @@ SessionHelper.cancel_checkout_session(session.reference)
 ```python
 from django_snippe.helpers import PayoutHelper
 
+# Mobile Money Payout (M-Pesa, Airtel Money, Mixx by Yas, HaloPesa)
+mobile_payout = PayoutHelper.create_mobile_payout(
+    amount=50000,
+    currency="TZS",
+    recipient_name="Jane Doe",
+    recipient_phone="255781000000",
