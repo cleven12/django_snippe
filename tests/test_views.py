@@ -10,3 +10,9 @@ from django_snippe import signals
 from django_snippe.models import SnippePayment, SnippePayout, SnippeSession, SnippeWebhookEvent
 
 pytestmark = pytest.mark.django_db
+
+WEBHOOK_URL = "/payments/webhook/"
+
+
+def _post(client, payload, headers=None):
+    return client.post(
