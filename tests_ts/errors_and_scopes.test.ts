@@ -70,3 +70,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
     expect(r2.status).toBe(201);
     expect((await r1.json()).data.reference).toBe((await r2.json()).data.reference);
 
+    const bodyMismatch = JSON.stringify({
+      payment_type: "mobile",
+      details: { amount: 9000, currency: "TZS" },
+      phone_number: "0712345678",
+      customer: { firstname: "John", lastname: "Doe" },
+    });
