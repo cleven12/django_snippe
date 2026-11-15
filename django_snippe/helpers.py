@@ -394,3 +394,9 @@ class PayoutHelper:
         Create a bank transfer payout and persist SnippePayout.
 
         Raises:
+            PayoutCreationError: If input validation or the Snippe API request fails.
+        """
+        valid, errors = PayoutValidator.validate_payout_data(
+            amount,
+            currency,
+            "bank",
