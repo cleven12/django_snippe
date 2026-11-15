@@ -448,3 +448,9 @@ export class SnippeMockServer {
           phone_number: payment.phone_number,
         },
       });
+    }
+
+    // 6. GET /payments/:reference
+    const getPayMatch = normalizedPath.match(/^\/payments\/([^/]+)$/);
+    if (req.method === "GET" && getPayMatch) {
+      const scopeErr = this.checkScope(apiKey, "collection:read");
