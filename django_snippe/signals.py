@@ -4,3 +4,9 @@ from django.dispatch import Signal
 
 # Payment signals (provides: payment=SnippePayment)
 payment_completed = Signal()
+payment_failed = Signal()
+payment_expired = Signal()
+payment_voided = Signal()
+
+# Payout signals (provides: payout=SnippePayout)
+payout_completed = Signal()
