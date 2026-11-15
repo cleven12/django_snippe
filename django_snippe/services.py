@@ -52,3 +52,9 @@ def _save_payment(
     webhook_url: Optional[str],
     metadata: Optional[Dict[str, Any]],
     *,
+    callback_url: Optional[str] = None,
+    customer: Any = None,
+    idempotency_key: Optional[str] = None,
+) -> SnippePayment:
+    """Persist or update a SnippePayment model from an SDK Payment response."""
+    cust_first = _opt_str(customer, "firstname")
