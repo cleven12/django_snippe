@@ -418,3 +418,9 @@ def create_session(
 
     headers: Dict[str, str] = {}
     if idempotency_key:
+        headers["Idempotency-Key"] = idempotency_key
+
+    response = client._client.post("/sessions", json=payload, headers=headers)
+    data = client._handle_response(response)
+
+    cust = data.get("customer") or customer or {}
