@@ -34,3 +34,9 @@ class Migration(migrations.Migration):
                 ("allow_custom_amount", models.BooleanField(default=False)),
                 ("allowed_methods", models.JSONField(blank=True, default=list)),
                 (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("active", "Active"),
+                            ("completed", "Completed"),
+                            ("expired", "Expired"),
