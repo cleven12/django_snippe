@@ -106,3 +106,9 @@ session = SessionHelper.create_checkout_session(
     metadata={"cart_id": "CART-99"},
 )
 
+# Redirect the customer to session.checkout_url
+print(session.checkout_url)
+
+# Cancel an active session if needed
+SessionHelper.cancel_checkout_session(session.reference)
+```
