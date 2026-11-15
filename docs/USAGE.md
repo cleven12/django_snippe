@@ -142,3 +142,9 @@ bank_payout = PayoutHelper.create_bank_payout(
 ```
 
 ## Webhooks & Signals (`2026-01-25` Payload Schema)
+
+In Snippe API `2026-01-25`, payment creation requests pass `amount` as a flat integer (e.g. `50000`), while incoming webhook payloads wrap `data.amount` as an object:
+
+```json
+{
+  "id": "evt_01J...",
