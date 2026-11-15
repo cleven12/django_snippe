@@ -160,3 +160,9 @@ export function buildWebhookPayload2026(params: {
         value: params.amount,
         currency: params.currency ?? "TZS",
       },
+      payment_channel: params.payment_channel ?? "M-PESA",
+      payment_fee: params.payment_fee ?? Math.round(params.amount * 0.01),
+      completed_at: params.status === "completed" ? nowIso : null,
+      failure_reason: params.failure_reason ?? null,
+    },
+  };
