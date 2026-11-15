@@ -382,3 +382,9 @@ class PayoutHelper:
     def create_bank_payout(
         amount: int,
         currency: str,
+        recipient_name: str,
+        recipient_bank: str,
+        recipient_account: str,
+        narration: Optional[str] = None,
+        webhook_url: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
