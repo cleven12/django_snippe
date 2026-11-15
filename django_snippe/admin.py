@@ -10,3 +10,9 @@ from .admin_actions import (
     mark_payout_failed,
     retry_payment,
     retry_payout,
+    void_payment,
+)
+from .models import SnippePayment, SnippePayout, SnippeSession, SnippeWebhookEvent
+
+
+@admin.register(SnippePayment)
