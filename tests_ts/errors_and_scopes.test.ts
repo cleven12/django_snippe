@@ -40,3 +40,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        amount: 5000,
+        channel: "mobile",
+        recipient_name: "John Doe",
+        recipient_phone: "255712345678",
+      }),
+    });
