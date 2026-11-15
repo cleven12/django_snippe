@@ -346,3 +346,9 @@ def create_bank_payout(
     narration: Optional[str] = None,
     webhook_url: Optional[str] = None,
     metadata: Optional[Dict[str, Any]] = None,
+    idempotency_key: Optional[str] = None,
+) -> SnippePayout:
+    """Send a bank transfer payout via POST /v1/payouts/send and store SnippePayout."""
+    client = get_client()
+    result = client.create_bank_payout(
+        amount=amount,
