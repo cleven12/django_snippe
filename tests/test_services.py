@@ -94,3 +94,9 @@ def test_admin_bulk_actions():
     )
     s1 = SnippeSession.objects.create(
         reference="ADM-S1",
+        amount=5000,
+        currency="TZS",
+        status="active",
+    )
+
+    site = AdminSite()
