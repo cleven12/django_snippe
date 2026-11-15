@@ -310,3 +310,9 @@ class PayoutHelper:
     @staticmethod
     def create_mobile_payout(
         amount: int,
+        currency: str,
+        recipient_name: str,
+        recipient_phone: str,
+        narration: Optional[str] = None,
+        webhook_url: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
