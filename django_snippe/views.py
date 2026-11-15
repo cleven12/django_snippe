@@ -190,3 +190,9 @@ class SnippeWebhookView(View):
         self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
     ) -> None:
         inner = inner or data
+        try:
+            payment = SnippePayment.objects.get(reference=reference)
+            payment.status = SnippePayment.Status.COMPLETED
+            fields = self._apply_payment_metadata(payment, data, inner)
+            payment.save(update_fields=fields)
+            signals.payment_completed.send(sender=SnippePayment, payment=payment)
