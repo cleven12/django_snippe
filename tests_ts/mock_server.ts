@@ -478,3 +478,9 @@ export class SnippeMockServer {
       }
       if (recipientName.length < 2) {
         return this.errorJson(400, "validation_error", "recipient_name is required");
+      }
+      if (!["mobile", "bank"].includes(channel)) {
+        return this.errorJson(400, "validation_error", `Unsupported payout channel: ${channel}`);
+      }
+
+      const feeValue = channel === "bank" ? 1500 : 500;
