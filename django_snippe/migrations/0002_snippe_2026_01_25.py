@@ -178,3 +178,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="snippepayout",
             name="total_amount",
+            field=models.PositiveIntegerField(default=0),
+        ),
+        migrations.AlterField(
+            model_name="snippepayment",
+            name="amount",
+            field=models.PositiveIntegerField(
