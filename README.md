@@ -88,3 +88,9 @@ payment = PaymentHelper.create_mobile_payment(
     phone_number="0712345678",
     customer_firstname="John",
     customer_lastname="Doe",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+    idempotency_key="order-1001-attempt-1",
+)
+
+# Re-trigger USSD push if the customer missed the prompt
+PaymentHelper.trigger_push(payment.reference)
