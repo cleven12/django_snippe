@@ -88,3 +88,9 @@ class Migration(migrations.Migration):
                     models.CharField(
                         choices=[
                             ("pending", "Pending"),
+                            ("completed", "Completed"),
+                            ("failed", "Failed"),
+                            ("reversed", "Reversed"),
+                        ],
+                        default="pending",
+                        max_length=20,
