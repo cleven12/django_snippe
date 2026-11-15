@@ -334,3 +334,9 @@ def create_mobile_payout(
         webhook_url=webhook_url,
         metadata=metadata,
         idempotency_key=idempotency_key,
+    )
+    return _save_payout(result, webhook_url, metadata, idempotency_key=idempotency_key)
+
+
+def create_bank_payout(
+    amount: int,
