@@ -100,3 +100,9 @@ class TestSnippePayout:
             recipient_name="Jane Doe",
         )
         with pytest.raises(ValidationError):
+            payout.full_clean()
+
+    def test_status_change_is_logged(self, caplog):
+        payout = make_payout()
+        with caplog.at_level("INFO", logger="django_snippe.audit"):
+            payout.status = SnippePayout.Status.COMPLETED
