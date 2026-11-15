@@ -88,3 +88,9 @@ class TestSnippePayout:
             currency="TZS",
             recipient_name="J",
         )
+        with pytest.raises(ValidationError):
+            payout.full_clean()
+
+    def test_full_clean_rejects_unsupported_currency(self):
+        payout = SnippePayout(
+            reference="PAYOUT-3",
