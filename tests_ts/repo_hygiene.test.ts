@@ -10,3 +10,9 @@ const EMOJI_REGEX =
 function walkFiles(dir: string, results: string[] = []): string[] {
   for (const entry of readdirSync(dir)) {
     if (
+      [
+        ".git",
+        ".venv",
+        ".venv_check",
+        "node_modules",
+        "__pycache__",
