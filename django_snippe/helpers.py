@@ -508,3 +508,9 @@ class SessionHelper:
                 customer=customer,
                 redirect_url=redirect_url,
                 webhook_url=webhook_url,
+                metadata=metadata,
+                idempotency_key=idempotency_key,
+            )
+            SessionLogger.log_session_created(session.reference, session.amount, session.currency)
+            return session
+        except Exception as exc:
