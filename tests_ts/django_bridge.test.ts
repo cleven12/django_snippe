@@ -34,3 +34,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
       await mock.fetch(`${baseUrl}/payments/${payResp.data.reference}/push`, {
         method: "POST",
         headers,
+        body: JSON.stringify({ phone_number: "255754123456" }),
+      })
+    ).json();
+
+    const payoutResp = await (
+      await mock.fetch(`${baseUrl}/payouts/send`, {
