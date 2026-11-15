@@ -22,3 +22,9 @@ export interface StoredPayment {
   payment_qr_code?: string;
   payment_token?: string;
   webhook_url?: string;
+  callback_url?: string;
+  redirect_url?: string;
+  cancel_url?: string;
+  metadata: Record<string, unknown>;
+  fee_amount: number;
+  net_amount: number;
