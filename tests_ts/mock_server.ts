@@ -658,3 +658,6 @@ export class SnippeMockServer {
       return Response.json({ status: "success", data: session });
     }
 
+    return this.errorJson(404, "not_found", `Endpoint ${req.method} ${url.pathname} not found`);
+  }
+}
