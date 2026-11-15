@@ -118,3 +118,9 @@ class PaymentHelper:
         valid, errors = PaymentValidator.validate_payment_data(
             amount,
             currency,
+            phone_number or "0712345678",
+            "card",
+            idempotency_key=idempotency_key,
+        )
+        if not valid:
+            raise PaymentCreationError(f"Invalid payment data: {', '.join(errors)}")
