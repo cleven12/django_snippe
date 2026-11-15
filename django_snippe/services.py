@@ -310,3 +310,9 @@ def search_payments(query: str, limit: int = 20, offset: int = 0) -> Dict[str, A
 
 
 def get_account_balance() -> Any:
+    """Retrieve current Snippe account balance via GET /v1/payments/balance."""
+    client = get_client()
+    return client.get_balance()
+
+
+def create_mobile_payout(
