@@ -28,3 +28,9 @@ keywords = [
     "airtel-money",
     "tanzania",
     "kenya",
+    "uganda",
+    "fintech",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
