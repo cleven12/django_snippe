@@ -478,3 +478,9 @@ def get_session(reference: str) -> SnippeSession:
 
 
 def list_sessions(limit: int = 20, offset: int = 0) -> List[Dict[str, Any]]:
+    """List hosted checkout sessions from GET /api/v1/sessions."""
+    client = get_client()
+    response = client._client.get("/sessions", params={"limit": limit, "offset": offset})
+    data = client._handle_response(response)
+    if isinstance(data, list):
+        return data
