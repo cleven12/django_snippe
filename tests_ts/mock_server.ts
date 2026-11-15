@@ -40,3 +40,9 @@ export interface StoredPayout {
   reference: string;
   status: "pending" | "completed" | "failed" | "reversed";
   amount: { value: number; currency: string };
+  fees: { value: number; currency: string };
+  total: { value: number; currency: string };
+  channel: { type: "mobile" | "bank"; provider: string };
+  recipient: {
+    name: string;
+    phone?: string;
