@@ -100,3 +100,9 @@ class TestPayoutValidator:
 
     def test_requires_recipient_name(self):
         valid, errors = PayoutValidator.validate_payout_data(
+            amount=5000, currency="TZS", channel="bank", recipient_name=" "
+        )
+        assert valid is False
+        assert any("recipient_name" in e for e in errors)
+
+    def test_bank_channel_does_not_require_phone(self):
