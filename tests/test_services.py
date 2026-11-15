@@ -58,3 +58,9 @@ def test_services_create_mobile_card_qr_and_sync(mock_get_client):
         currency="TZS",
         phone_number="0712345678",
         customer={"firstname": "John", "lastname": "Doe"},
+    )
+    assert p.reference == "SRV-PAY-1"
+    assert p.status == "pending"
+
+    synced = services.sync_payment_status("SRV-PAY-1")
+    assert synced.status == "completed"
