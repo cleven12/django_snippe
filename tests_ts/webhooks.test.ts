@@ -22,3 +22,9 @@ describe("Snippe 2026-01-25 Webhooks & HMAC-SHA256 Signature Verification", () =
     expect(payload.data.amount).toEqual({ value: 50000, currency: "TZS" });
     expect(payload.data.reference).toBe("pay_2026_abc");
   });
+
+  test("HMAC-SHA256 X-Webhook-Signature validates authentic payload and rejects tampered body", () => {
+    const ts = String(Math.floor(Date.now() / 1000));
+    const payload = buildWebhookPayload2026({
+      event: "payment.completed",
+      reference: "pay_sig_1",
