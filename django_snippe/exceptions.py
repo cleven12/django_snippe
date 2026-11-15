@@ -52,3 +52,9 @@ class SnippeAuthenticationError(SnippeException):
     default_error_code = "unauthorized"
 
 
+class SnippePermissionError(SnippeException):
+    """Raised on HTTP 403 when the API key lacks the required scope."""
+
+    default_code = 403
+    default_error_code = "forbidden_scope"
+
