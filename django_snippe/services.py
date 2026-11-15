@@ -262,3 +262,9 @@ def create_qr_payment(
         customer=customer,
         idempotency_key=idempotency_key,
     )
+
+
+def trigger_payment_push(
+    reference: str,
+    phone_number: Optional[str] = None,
+) -> Dict[str, Any]:
