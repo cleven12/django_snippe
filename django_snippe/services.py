@@ -112,3 +112,9 @@ def _save_payout(
     amount_val, currency_val = _extract_amount_and_currency(
         getattr(result, "amount", 0), get_default_currency()
     )
+    fees_val, _ = _extract_amount_and_currency(getattr(result, "fees", 0), currency_val)
+    total_val, _ = _extract_amount_and_currency(getattr(result, "total", 0), currency_val)
+
+    channel_obj = getattr(result, "channel", None)
+    channel_type = _opt_str(channel_obj, "type") if channel_obj else "mobile"
+    provider = _opt_str(channel_obj, "provider") if channel_obj else None
