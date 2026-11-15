@@ -28,3 +28,9 @@ def _extract_event_and_reference(
     event = data.get("event") or data.get("type") or inner.get("event")
     reference = data.get("reference") or inner.get("reference")
     return event, reference, inner
+
+
+def _compute_delivery_id(event: str, reference: str, timestamp: str, body: str) -> str:
+    """Compute a deterministic delivery identifier for idempotent webhook deduplication."""
+    digest = hashlib.sha256(f"{event}:{reference}:{timestamp}:{body}".encode("utf-8")).hexdigest()
+    return digest[:64]
