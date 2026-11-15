@@ -40,3 +40,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
         recipient_name: "Jane Doe",
         narration: "Salary payment January 2026",
         metadata: { employee_id: "EMP-001" },
+      }),
+    });
+    expect(res.status).toBe(201);
+    const json = await res.json();
+    expect(json.data.reference).toStartWith("po_");
+    expect(json.data.amount).toEqual({ value: 50000, currency: "TZS" });
