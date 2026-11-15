@@ -94,3 +94,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
         details: { amount: 12000, currency: "TZS" },
         phone_number: "0712345678",
         customer: { firstname: "Baraka", lastname: "Mushi" },
+      }),
+    });
+    expect(res.status).toBe(201);
+    const json = await res.json();
+    expect(json.data.payment_type).toBe("dynamic-qr");
+    expect(json.data.payment_qr_code).toBeDefined();
