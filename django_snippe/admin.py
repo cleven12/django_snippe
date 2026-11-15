@@ -34,3 +34,9 @@ class SnippePaymentAdmin(admin.ModelAdmin):
 class SnippePayoutAdmin(admin.ModelAdmin):
     list_display = [
         "reference",
+        "channel",
+        "amount",
+        "currency",
+        "recipient_name",
+        "status",
+        "created_at",
