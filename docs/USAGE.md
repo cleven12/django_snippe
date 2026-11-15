@@ -82,3 +82,9 @@ qr_payment = PaymentHelper.create_qr_payment(
 # 4. Sync Status, Search, and Check Account Balance
 synced = PaymentHelper.sync_payment(mobile_payment.reference)
 results = PaymentHelper.search_payments("0712345678", limit=20, offset=0)
+balance = PaymentHelper.get_balance()
+```
+
+## Hosted Checkout Sessions (`/api/v1/sessions`)
+
+```python
