@@ -70,3 +70,9 @@ class TestPaymentValidator:
         valid, errors = PaymentValidator.validate_payment_data(
             amount=5000, currency="TZS", phone_number="123", payment_type="mobile"
         )
+        assert valid is False
+        assert any("phone_number" in e for e in errors)
+
+    def test_card_payment_does_not_require_phone(self):
+        valid, errors = PaymentValidator.validate_payment_data(
+            amount=5000, currency="TZS", phone_number="", payment_type="card"
