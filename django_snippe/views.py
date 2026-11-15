@@ -292,3 +292,9 @@ class SnippeWebhookView(View):
             logger.error("Payout %s not found when handling reversal", reference)
 
     def handle_session_completed(
+        self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
+    ) -> None:
+        inner = inner or data
+        try:
+            session = SnippeSession.objects.get(reference=reference)
+            session.status = SnippeSession.Status.COMPLETED
