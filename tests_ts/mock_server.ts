@@ -466,3 +466,9 @@ export class SnippeMockServer {
 
     // 7. POST /payouts/send
     if (req.method === "POST" && normalizedPath === "/payouts/send") {
+      const scopeErr = this.checkScope(apiKey, "disbursement:create");
+      if (scopeErr) return scopeErr;
+
+      const amount = Number(parsedBody.amount ?? 0);
+      const channel = String(parsedBody.channel ?? "mobile") as "mobile" | "bank";
+      const recipientName = String(parsedBody.recipient_name ?? "").trim();
