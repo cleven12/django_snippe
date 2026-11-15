@@ -106,3 +106,9 @@ def cancel_selected_sessions(modeladmin, request, queryset):
     """Cancel selected active checkout sessions."""
     count = 0
     for session in queryset.filter(status="active"):
+        session.status = session.Status.CANCELLED
+        session.save()
+        count += 1
+        SessionLogger.log_session_status_change(
+            session.reference, "active", "cancelled", reason="Cancelled from admin"
+        )
