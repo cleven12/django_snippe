@@ -40,3 +40,9 @@ class SnippePayment(models.Model):
     payment_token = models.CharField(max_length=100, blank=True, null=True)
     callback_url = models.URLField(blank=True, null=True)
     webhook_url = models.URLField(blank=True, null=True)
+    customer_firstname = models.CharField(max_length=100, blank=True, null=True)
+    customer_lastname = models.CharField(max_length=100, blank=True, null=True)
+    customer_email = models.EmailField(blank=True, null=True)
+    idempotency_key = models.CharField(
+        max_length=30,
+        blank=True,
