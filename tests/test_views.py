@@ -70,3 +70,9 @@ def test_webhook_marks_payment_completed(mock_setting, client):
         response = _post(client, {"event": "payment.completed", "reference": payment.reference})
     finally:
         signals.payment_completed.disconnect(_receiver)
+
+    assert response.status_code == 200
+    payment.refresh_from_db()
+    assert payment.status == SnippePayment.Status.COMPLETED
+    assert received["payment"].reference == payment.reference
+
