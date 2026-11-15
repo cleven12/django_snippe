@@ -358,3 +358,9 @@ def create_bank_payout(
         narration=narration,
         webhook_url=webhook_url,
         metadata=metadata,
+        idempotency_key=idempotency_key,
+    )
+    return _save_payout(result, webhook_url, metadata, idempotency_key=idempotency_key)
+
+
+def calculate_payout_fee(amount: int) -> Any:
