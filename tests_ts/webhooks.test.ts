@@ -34,3 +34,9 @@ describe("Snippe 2026-01-25 Webhooks & HMAC-SHA256 Signature Verification", () =
     });
     const rawBody = JSON.stringify(payload);
     const sig = signWebhookPayload(rawBody, ts, secret);
+
+    expect(verifyWebhookSignature(rawBody, sig, ts, secret)).toBe(true);
+    expect(verifyWebhookSignature(rawBody, `sha256=${sig}`, ts, secret)).toBe(true);
+    expect(verifyWebhookSignature(rawBody + " ", sig, ts, secret)).toBe(false);
+    expect(verifyWebhookSignature(rawBody, sig, ts, "wrong_secret")).toBe(false);
+  });
