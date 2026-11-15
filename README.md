@@ -10,3 +10,9 @@ Production-ready Django integration for the [Snippe](https://snippe.sh) payment 
 
 ---
 
+## Key Features (Snippe API 2026-01-25)
+
+- **Django ORM Models & Migrations**: `SnippePayment`, `SnippePayout`, `SnippeSession`, and `SnippeWebhookEvent` for complete transaction persistence and auditability.
+- **Collections (`/v1/payments`)**: Mobile money USSD push (`mobile`), hosted card redirects (`card`), dynamic QR codes (`dynamic-qr`), manual USSD push retry (`/v1/payments/{reference}/push`), status sync, search, pagination, and account balance checks.
+- **Hosted Checkout Sessions (`/api/v1/sessions`)**: Create, inspect, list, and cancel Snippe-hosted checkout sessions with fixed or custom amounts.
+- **Disbursements / Payouts (`/v1/payouts/send`)**: Instant mobile money and Tanzanian bank transfer payouts (CRDB, NMB, NBC, ABSA, Equity, Stanbic, and 35+ supported banks) with fee calculation.
