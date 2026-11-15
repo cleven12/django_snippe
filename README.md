@@ -58,3 +58,9 @@ SNIPPE_API_VERSION = "2026-01-25"
 SNIPPE_DEFAULT_CURRENCY = "TZS"
 ```
 
+Run database migrations:
+
+```bash
+python manage.py migrate
+```
+
