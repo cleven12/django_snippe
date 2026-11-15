@@ -262,3 +262,9 @@ def test_webhook_verifies_signature_when_secret_configured(mock_verify, mock_set
 
 
 @patch(
+    "django_snippe.views.get_setting",
+    side_effect=lambda name, default=None, required=False: (
+        "whsec_test" if name == "WEBHOOK_SECRET" else default
+    ),
+)
+@patch("snippe.verify_webhook", side_effect=Exception("bad signature"))
