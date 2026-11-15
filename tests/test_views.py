@@ -244,3 +244,9 @@ def test_webhook_unknown_event_is_ignored_gracefully(mock_setting, client):
     "django_snippe.views.get_setting",
     side_effect=lambda name, default=None, required=False: (
         "whsec_test" if name == "WEBHOOK_SECRET" else default
+    ),
+)
+@patch("snippe.verify_webhook")
+def test_webhook_verifies_signature_when_secret_configured(mock_verify, mock_setting, client):
+    payment = _make_payment(reference="WH-SIGNED")
+    response = _post(
