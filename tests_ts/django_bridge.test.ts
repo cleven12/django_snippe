@@ -172,3 +172,9 @@ assert payment.status == "completed"
 assert payment.fee_amount == 75
 assert payment.payment_channel == "M-PESA"
 assert SnippeWebhookEvent.objects.filter(reference=payment.reference, processed=True).exists()
+print("BRIDGE_OK")
+`;
+
+    const proc = Bun.spawn([pythonBin, "-c", pyScript], {
+      cwd: repoRoot,
+      stdout: "pipe",
