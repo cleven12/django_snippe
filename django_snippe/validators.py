@@ -250,3 +250,9 @@ class PayoutValidator:
         else:
             errors.append(f"unsupported channel: {channel}")
 
+        if idempotency_key is not None:
+            try:
+                validate_idempotency_key(idempotency_key)
+            except ValidationError as exc:
+                errors.extend(exc.messages)
+
