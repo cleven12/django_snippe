@@ -4,3 +4,9 @@
   "private": true,
   "description": "Fast local Bun + TypeScript contract and E2E test suite for django-snippe (Snippe API 2026-01-25)",
   "scripts": {
+    "test": "bun test",
+    "test:payments": "bun test tests_ts/payments.test.ts",
+    "test:payouts": "bun test tests_ts/payouts.test.ts",
+    "test:sessions": "bun test tests_ts/sessions.test.ts",
+    "test:webhooks": "bun test tests_ts/webhooks.test.ts",
+    "test:errors": "bun test tests_ts/errors_and_scopes.test.ts",
