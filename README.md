@@ -166,3 +166,7 @@ ruff check django_snippe tests
 Pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 To report a security vulnerability privately, follow the instructions in [SECURITY.md](SECURITY.md).
+
+## License
+
+MIT License - Copyright (c) [cleven](https://github.com/cleven12). See [LICENSE](LICENSE).
