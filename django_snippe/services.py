@@ -226,3 +226,9 @@ def create_card_payment(
         metadata,
         callback_url=redirect_url or callback_url,
         customer=customer,
+        idempotency_key=idempotency_key,
+    )
+
+
+def create_qr_payment(
+    amount: int,
