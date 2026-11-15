@@ -118,3 +118,9 @@ def _save_payout(
     channel_obj = getattr(result, "channel", None)
     channel_type = _opt_str(channel_obj, "type") if channel_obj else "mobile"
     provider = _opt_str(channel_obj, "provider") if channel_obj else None
+
+    recipient_obj = getattr(result, "recipient", None)
+    res_metadata = getattr(result, "metadata", None)
+    resolved_meta = (
+        metadata
+        if isinstance(metadata, dict)
