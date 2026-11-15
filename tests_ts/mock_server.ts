@@ -130,3 +130,9 @@ export function buildWebhookPayload2026(params: {
   payment_fee?: number;
   customer?: Record<string, unknown>;
   metadata?: Record<string, unknown>;
+  failure_reason?: string;
+  timestamp?: number;
+}) {
+  const ts = params.timestamp ?? Math.floor(Date.now() / 1000);
+  const nowIso = new Date(ts * 1000).toISOString();
+  return {
