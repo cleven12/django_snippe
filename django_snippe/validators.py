@@ -226,3 +226,9 @@ class PayoutValidator:
 
         if not currency or currency not in SUPPORTED_CURRENCIES:
             errors.append(f"currency must be one of {', '.join(sorted(SUPPORTED_CURRENCIES))}")
+
+        if (
+            not recipient_name
+            or not isinstance(recipient_name, str)
+            or len(recipient_name.strip()) < 2
+        ):
