@@ -94,3 +94,9 @@ class SnippeServerError(SnippeException):
     default_error_code = "internal_server_error"
 
 
+class WebhookVerificationError(SnippeException):
+    """Raised when X-Webhook-Signature HMAC verification fails."""
+
+    default_code = 401
+    default_error_code = "invalid_webhook_signature"
+
