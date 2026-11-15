@@ -136,3 +136,9 @@ class PaymentHelper:
             )
             call_kwargs: Dict[str, Any] = {
                 "amount": amount,
+                "currency": currency,
+                "customer": customer,
+                "webhook_url": webhook_url,
+            }
+            if phone_number:
+                call_kwargs["phone_number"] = phone_number
