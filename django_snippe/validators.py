@@ -286,3 +286,9 @@ class SessionValidator:
         elif amount is not None:
             if not isinstance(amount, int) or isinstance(amount, bool) or amount <= 0:
                 errors.append("amount must be a positive integer when provided")
+
+        if not currency or currency not in SUPPORTED_CURRENCIES:
+            errors.append(f"currency must be one of {', '.join(sorted(SUPPORTED_CURRENCIES))}")
+
+        if allowed_methods is not None:
+            if not isinstance(allowed_methods, (list, tuple)) or len(allowed_methods) == 0:
