@@ -10,3 +10,9 @@ class SnippeException(Exception):
     default_error_code: str = "snippe_error"
 
     def __init__(
+        self,
+        message: str = "An error occurred with Snippe.",
+        *,
+        code: Optional[int] = None,
+        error_code: Optional[str] = None,
+    ) -> None:
