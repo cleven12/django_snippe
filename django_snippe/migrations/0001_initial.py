@@ -28,3 +28,9 @@ class Migration(migrations.Migration):
                         max_length=20,
                     ),
                 ),
+                ("amount", models.PositiveIntegerField()),
+                ("currency", models.CharField(max_length=10)),
+                ("phone_number", models.CharField(max_length=20)),
+                (
+                    "status",
+                    models.CharField(
