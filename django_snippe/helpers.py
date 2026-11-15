@@ -418,3 +418,9 @@ class PayoutHelper:
                 "narration": narration,
                 "webhook_url": webhook_url,
             }
+            if metadata is not None:
+                call_kwargs["metadata"] = metadata
+            if idempotency_key is not None:
+                call_kwargs["idempotency_key"] = idempotency_key
+
+            api_payout = client.create_bank_payout(**call_kwargs)
