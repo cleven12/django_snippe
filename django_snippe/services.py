@@ -64,3 +64,9 @@ def _save_payment(
         cust_first = customer.get("firstname") or customer.get("first_name")
         cust_last = customer.get("lastname") or customer.get("last_name")
         cust_email = customer.get("email")
+
+    res_metadata = getattr(result, "metadata", None)
+    resolved_meta = (
+        metadata
+        if isinstance(metadata, dict)
+        else (res_metadata if isinstance(res_metadata, dict) else {})
