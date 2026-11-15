@@ -58,3 +58,9 @@ def get_min_payout_amount() -> int:
 
 def get_webhook_tolerance() -> int:
     """Return webhook timestamp tolerance in seconds (300s default)."""
+    return int(get_setting("WEBHOOK_TOLERANCE", default=DEFAULT_WEBHOOK_TOLERANCE))
+
+
+def get_client():
+    """
+    Return an initialized synchronous Snippe API client from Django settings.
