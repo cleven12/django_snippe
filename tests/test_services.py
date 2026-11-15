@@ -82,3 +82,9 @@ def test_admin_bulk_actions():
         currency="TZS",
         phone_number="0712345678",
         status="failed",
+    )
+    po1 = SnippePayout.objects.create(
+        reference="ADM-PO1",
+        channel="mobile",
+        amount=5000,
+        currency="TZS",
