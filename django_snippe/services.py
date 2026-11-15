@@ -316,3 +316,9 @@ def get_account_balance() -> Any:
 
 
 def create_mobile_payout(
+    amount: int,
+    recipient_name: str,
+    recipient_phone: str,
+    narration: Optional[str] = None,
+    webhook_url: Optional[str] = None,
+    metadata: Optional[Dict[str, Any]] = None,
