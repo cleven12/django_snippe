@@ -40,3 +40,9 @@ class TestSnippePayment:
 
     def test_reference_must_be_unique(self):
         make_payment(reference="DUPLICATE")
+        with pytest.raises(Exception):
+            make_payment(reference="DUPLICATE")
+
+    def test_full_clean_rejects_unsupported_currency(self):
+        payment = SnippePayment(
+            reference="PAY-2",
