@@ -178,3 +178,9 @@ def create_mobile_payment(
         idempotency_key=idempotency_key,
     )
     return _save_payment(
+        result,
+        phone_number,
+        SnippePayment.PaymentType.MOBILE,
+        webhook_url,
+        metadata,
+        callback_url=callback_url,
