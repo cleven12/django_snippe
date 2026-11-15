@@ -52,3 +52,9 @@ class SnippePayoutAdmin(admin.ModelAdmin):
     ]
 
 
+@admin.register(SnippeSession)
+class SnippeSessionAdmin(admin.ModelAdmin):
+    list_display = [
+        "reference",
+        "amount",
+        "currency",
