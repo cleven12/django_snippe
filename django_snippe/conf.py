@@ -16,3 +16,9 @@ DEFAULT_WEBHOOK_TOLERANCE = 300
 
 
 def get_setting(name: str, default: Any = None, required: bool = False) -> Any:
+    """
+    Retrieve a Snippe setting from Django settings.py.
+
+    Args:
+        name: Setting suffix without the SNIPPE_ prefix.
+        default: Fallback value if the setting is not defined.
