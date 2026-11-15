@@ -76,3 +76,9 @@ export interface StoredSession {
 
 export function detectMobileProvider(phone: string): string {
   const digits = phone.replace(/\D/g, "");
+  const local = digits.startsWith("255") ? "0" + digits.slice(3) : digits;
+  if (local.startsWith("074") || local.startsWith("075") || local.startsWith("076")) {
+    return "M-PESA";
+  }
+  if (local.startsWith("078") || local.startsWith("068") || local.startsWith("069")) {
+    return "AIRTEL-MONEY";
