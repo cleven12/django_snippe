@@ -58,3 +58,9 @@ class TestPaymentValidator:
         )
         assert valid is False
         assert any("amount" in e for e in errors)
+
+    def test_rejects_unsupported_currency(self):
+        valid, errors = PaymentValidator.validate_payment_data(
+            amount=5000, currency="USD", phone_number="0712345678", payment_type="mobile"
+        )
+        assert valid is False
