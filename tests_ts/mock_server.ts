@@ -280,3 +280,9 @@ export class SnippeMockServer {
         const existing = this.idempotencyStore.get(`${req.method}:${normalizedPath}:${idempKey}`);
         if (existing) {
           if (existing.bodyHash !== rawBody) {
+            return this.errorJson(
+              422,
+              "idempotency_key_mismatch",
+              "Idempotency-Key was already used with different request parameters"
+            );
+          }
