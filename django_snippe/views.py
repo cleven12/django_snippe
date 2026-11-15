@@ -256,3 +256,9 @@ class SnippeWebhookView(View):
                 updated.append("completed_at")
             payout.save(update_fields=updated)
             signals.payout_completed.send(sender=SnippePayout, payout=payout)
+            logger.info("Payout %s marked as completed", reference)
+        except SnippePayout.DoesNotExist:
+            logger.error("Payout %s not found when handling completion", reference)
+
+    def handle_payout_failed(
+        self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
