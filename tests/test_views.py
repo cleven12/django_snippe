@@ -64,3 +64,9 @@ def test_webhook_marks_payment_completed(mock_setting, client):
 
     def _receiver(sender, payment, **kwargs):
         received["payment"] = payment
+
+    signals.payment_completed.connect(_receiver)
+    try:
+        response = _post(client, {"event": "payment.completed", "reference": payment.reference})
+    finally:
+        signals.payment_completed.disconnect(_receiver)
