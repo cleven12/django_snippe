@@ -508,3 +508,9 @@ export class SnippeMockServer {
           phone: parsedBody.recipient_phone,
           bank: parsedBody.recipient_bank,
           account: parsedBody.recipient_account,
+        },
+        narration: parsedBody.narration,
+        webhook_url: parsedBody.webhook_url,
+        metadata: parsedBody.metadata ?? {},
+        created_at: new Date().toISOString(),
+      };
