@@ -22,3 +22,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("reference", models.CharField(max_length=100, unique=True)),
+                ("amount", models.PositiveIntegerField(blank=True, null=True)),
+                (
+                    "currency",
+                    models.CharField(
+                        default="TZS",
+                        max_length=10,
