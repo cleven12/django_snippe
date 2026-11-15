@@ -118,3 +118,9 @@ print(session.checkout_url)
 ```
 
 ### 3. Send a Mobile Money or Bank Payout
+
+```python
+from django_snippe.helpers import PayoutHelper
+
+payout = PayoutHelper.create_mobile_payout(
+    amount=50000,
