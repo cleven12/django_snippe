@@ -136,3 +136,6 @@ def test_admin_bulk_actions():
 
     admin_actions.cancel_selected_sessions(
         ses_admin, _make_request(), SnippeSession.objects.filter(pk=s1.pk)
+    )
+    s1.refresh_from_db()
+    assert s1.status == "cancelled"
