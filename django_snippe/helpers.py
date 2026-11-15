@@ -520,3 +520,9 @@ class SessionHelper:
     @staticmethod
     def cancel_checkout_session(reference: str) -> SnippeSession:
         """Cancel an active checkout session by reference."""
+        try:
+            return services.cancel_session(reference)
+        except Exception as exc:
+            SessionLogger.log_session_failed(reference, str(exc))
+            raise SessionCreationError(
+                f"Failed to cancel checkout session {reference}: {exc}"
