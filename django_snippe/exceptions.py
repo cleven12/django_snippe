@@ -100,3 +100,9 @@ class WebhookVerificationError(SnippeException):
     default_code = 401
     default_error_code = "invalid_webhook_signature"
 
+
+class WebhookPayloadError(SnippeException):
+    """Raised when a webhook payload is malformed or missing required fields."""
+
+    default_code = 400
+    default_error_code = "invalid_webhook_payload"
