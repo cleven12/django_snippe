@@ -88,3 +88,9 @@ class PaymentHelper:
             PaymentLogger.log_payment_created(
                 payment.reference, "mobile", amount, currency, phone_number
             )
+            return payment
+
+        except Exception as exc:
+            PaymentLogger.log_payment_failed(phone_number, str(exc))
+            raise PaymentCreationError(f"Failed to create mobile payment: {exc}") from exc
+
