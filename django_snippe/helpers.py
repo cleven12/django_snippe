@@ -376,3 +376,9 @@ class PayoutHelper:
 
         except Exception as exc:
             PayoutLogger.log_payout_failed(recipient_phone, str(exc))
+            raise PayoutCreationError(f"Failed to create mobile payout: {exc}") from exc
+
+    @staticmethod
+    def create_bank_payout(
+        amount: int,
+        currency: str,
