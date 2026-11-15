@@ -142,3 +142,9 @@ def test_webhook_marks_payment_expired_and_voided(mock_setting, client):
 
     assert r1.status_code == 200
     assert r2.status_code == 200
+    exp_payment.refresh_from_db()
+    void_payment.refresh_from_db()
+    assert exp_payment.status == SnippePayment.Status.EXPIRED
+    assert void_payment.status == SnippePayment.Status.VOIDED
+
+
