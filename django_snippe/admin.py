@@ -70,3 +70,9 @@ class SnippeSessionAdmin(admin.ModelAdmin):
 
 
 @admin.register(SnippeWebhookEvent)
+class SnippeWebhookEventAdmin(admin.ModelAdmin):
+    list_display = ["delivery_id", "event_type", "reference", "processed", "created_at"]
+    list_filter = ["event_type", "processed"]
+    search_fields = ["delivery_id", "reference", "event_type"]
+    readonly_fields = [
+        "delivery_id",
