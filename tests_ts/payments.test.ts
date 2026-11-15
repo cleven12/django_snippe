@@ -16,3 +16,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
   afterAll(() => {
     mock.stop();
   });
+
+  beforeEach(() => {
+    mock.reset();
+  });
+
+  test("POST /v1/payments creates a mobile money payment (USSD push)", async () => {
