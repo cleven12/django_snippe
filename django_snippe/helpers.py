@@ -52,3 +52,9 @@ class PaymentHelper:
                 email=customer_email,
             )
             call_kwargs: Dict[str, Any] = {
+                "amount": amount,
+                "currency": currency,
+                "phone_number": phone_number,
+                "customer": customer,
+                "webhook_url": webhook_url,
+            }
