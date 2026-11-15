@@ -64,3 +64,9 @@ class SnippePayment(models.Model):
         ordering = ["-created_at"]
         verbose_name = "Payment"
         verbose_name_plural = "Payments"
+
+    def __str__(self) -> str:
+        return f"{self.reference} - {self.status} ({self.amount} {self.currency})"
+
+    @property
+    def is_terminal(self) -> bool:
