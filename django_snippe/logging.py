@@ -136,3 +136,9 @@ class SessionLogger:
     ) -> None:
         """Log when a checkout session status transitions."""
         message = f"Session status changed | ref={reference} | {old_status} -> {new_status}"
+        if reason:
+            message += f" | reason={reason}"
+        logger.info(message)
+
+    @staticmethod
+    def log_session_failed(reference: str, error_message: str) -> None:
