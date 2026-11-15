@@ -88,3 +88,9 @@ def normalize_phone_e164(phone: str, default_country_code: str = "255") -> str:
 
 
 def _is_valid_east_africa_phone(phone: str) -> bool:
+    """Return True if phone is a valid Tanzanian, Kenyan, or Ugandan mobile number."""
+    if not phone or not isinstance(phone, str):
+        return False
+    cleaned = _normalize_phone(phone)
+    if len(cleaned) != 10:
+        return False
