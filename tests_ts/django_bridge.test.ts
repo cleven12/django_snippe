@@ -160,3 +160,9 @@ assert session.status == "active"
 raw_body = ${JSON.stringify(rawWebhookBody)}
 c = Client()
 resp = c.post(
+    "/payments/webhook/",
+    data=raw_body,
+    content_type="application/json",
+    HTTP_X_WEBHOOK_SIGNATURE="${webhookSig}",
+    HTTP_X_WEBHOOK_TIMESTAMP="${ts}",
+)
