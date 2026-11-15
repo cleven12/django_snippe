@@ -214,3 +214,9 @@ def test_webhook_handles_session_events(mock_setting, client):
     assert (
         _post(client, {"event": "session.completed", "reference": s_comp.reference}).status_code
         == 200
+    )
+    assert (
+        _post(client, {"event": "session.expired", "reference": s_exp.reference}).status_code == 200
+    )
+    assert (
+        _post(client, {"event": "session.cancelled", "reference": s_canc.reference}).status_code
