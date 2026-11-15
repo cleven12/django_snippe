@@ -16,3 +16,9 @@ from .exceptions import (
     SnippeServerError,
     SnippeValidationError,
     WebhookPayloadError,
+    WebhookVerificationError,
+)
+
+__all__ = [
+    "__version__",
+    "API_VERSION",
