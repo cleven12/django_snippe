@@ -334,3 +334,9 @@ export class SnippeMockServer {
       const record: StoredPayment = {
         reference,
         status: "pending",
+        amount,
+        currency: currency as StoredPayment["currency"],
+        payment_type: paymentType,
+        phone_number: phone,
+        customer: parsedBody.customer ?? {},
+        payment_url:
