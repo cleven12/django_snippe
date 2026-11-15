@@ -412,3 +412,9 @@ def create_session(
     if redirect_url:
         payload["redirect_url"] = redirect_url
     if webhook_url:
+        payload["webhook_url"] = webhook_url
+    if metadata:
+        payload["metadata"] = metadata
+
+    headers: Dict[str, str] = {}
+    if idempotency_key:
