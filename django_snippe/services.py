@@ -124,3 +124,9 @@ def _save_payout(
     resolved_meta = (
         metadata
         if isinstance(metadata, dict)
+        else (res_metadata if isinstance(res_metadata, dict) else {})
+    )
+
+    defaults = {
+        "channel": channel_type or SnippePayout.Channel.MOBILE,
+        "provider": provider,
