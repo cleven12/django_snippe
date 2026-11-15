@@ -610,3 +610,9 @@ export class SnippeMockServer {
     }
 
     // 12. GET /sessions
+    if (req.method === "GET" && normalizedPath === "/sessions") {
+      const scopeErr = this.checkScope(apiKey, "collection:read");
+      if (scopeErr) return scopeErr;
+
+      const limit = Math.min(100, Number(url.searchParams.get("limit") ?? 20));
+      const offset = Number(url.searchParams.get("offset") ?? 0);
