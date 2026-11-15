@@ -274,3 +274,9 @@ def trigger_payment_push(
     """
     client = get_client()
     payload = {"phone_number": phone_number} if phone_number else {}
+    response = client._client.post(f"/payments/{reference}/push", json=payload)
+    return client._handle_response(response)
+
+
+def sync_payment_status(reference: str) -> SnippePayment:
+    """Fetch latest payment status from GET /v1/payments/{reference} and update local record."""
