@@ -154,3 +154,9 @@ session = SessionHelper.create_checkout_session(
     currency="TZS",
     allowed_methods=["mobile_money", "card"],
 )
+assert session.reference == "${sessionResp.data.reference}"
+assert session.status == "active"
+
+raw_body = ${JSON.stringify(rawWebhookBody)}
+c = Client()
+resp = c.post(
