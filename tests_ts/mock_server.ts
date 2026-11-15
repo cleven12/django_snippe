@@ -502,3 +502,9 @@ export class SnippeMockServer {
         amount: { value: amount, currency: "TZS" },
         fees: { value: feeValue, currency: "TZS" },
         total: { value: totalValue, currency: "TZS" },
+        channel: { type: channel, provider },
+        recipient: {
+          name: recipientName,
+          phone: parsedBody.recipient_phone,
+          bank: parsedBody.recipient_bank,
+          account: parsedBody.recipient_account,
