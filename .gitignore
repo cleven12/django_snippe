@@ -4,3 +4,9 @@ __pycache__/
 dist/
 dist_check/
 build/
+.env
+.venv/
+.venv_check/
+venv/
+*.sqlite3
+.pytest_cache/
