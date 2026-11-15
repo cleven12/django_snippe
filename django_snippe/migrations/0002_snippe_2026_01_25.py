@@ -196,3 +196,9 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AlterField(
+            model_name="snippepayment",
+            name="phone_number",
+            field=models.CharField(
+                blank=True,
+                default="",
+                max_length=20,
