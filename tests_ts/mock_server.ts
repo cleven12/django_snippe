@@ -544,3 +544,9 @@ export class SnippeMockServer {
       const limit = Math.min(100, Number(url.searchParams.get("limit") ?? 20));
       const offset = Number(url.searchParams.get("offset") ?? 0);
       const items = Array.from(this.payouts.values());
+
+      return Response.json({
+        status: "success",
+        data: {
+          items: items.slice(offset, offset + limit),
+          total: items.length,
