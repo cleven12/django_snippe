@@ -118,3 +118,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
 
     const pushRes = await mock.fetch(`${baseUrl}/v1/payments/${created.reference}/push`, {
       method: "POST",
+      headers,
+      body: JSON.stringify({ phone_number: "255754000111" }),
+    });
+    expect(pushRes.status).toBe(200);
+    const pushJson = await pushRes.json();
+    expect(pushJson.data.status).toBe("pushed");
