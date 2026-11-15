@@ -154,3 +154,9 @@ git clone https://github.com/cleven12/django_snippe.git
 cd django_snippe
 
 # Run fast Bun + TypeScript contract & Django bridge tests (< 2s, no external keys required)
+bun test
+
+# Run Python / Django unit tests and linter
+pytest
+ruff check django_snippe tests
+```
