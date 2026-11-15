@@ -262,3 +262,9 @@ class PayoutValidator:
 class SessionValidator:
     """Validation helpers for Snippe 2026-01-25 hosted checkout sessions."""
 
+    @staticmethod
+    def validate_session_data(
+        amount: Optional[int],
+        currency: str = "TZS",
+        allow_custom_amount: bool = False,
+        allowed_methods: Optional[Sequence[str]] = None,
