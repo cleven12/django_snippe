@@ -112,3 +112,9 @@ def test_admin_bulk_actions():
 
     admin_actions.retry_payment(pay_admin, _make_request(), SnippePayment.objects.filter(pk=p2.pk))
     p2.refresh_from_db()
+    assert p2.status == "pending"
+
+    admin_actions.void_payment(pay_admin, _make_request(), SnippePayment.objects.filter(pk=p2.pk))
+    p2.refresh_from_db()
+    assert p2.status == "voided"
+
