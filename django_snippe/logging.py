@@ -76,3 +76,9 @@ class PaymentLogger:
 class PayoutLogger:
     """Logs payout disbursement activities for audit trails."""
 
+    @staticmethod
+    def log_payout_created(
+        reference: str,
+        channel: str,
+        amount: int,
+        currency: str,
