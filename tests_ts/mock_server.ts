@@ -244,3 +244,9 @@ export class SnippeMockServer {
     }
 
     const auth = req.headers.get("Authorization") ?? "";
+    if (!auth.startsWith("Bearer snp_") || auth.length <= "Bearer snp_".length) {
+      return this.errorJson(401, "unauthorized", "Missing or invalid Authorization Bearer token");
+    }
+    const apiKey = auth.slice("Bearer ".length).trim();
+
+    const url = new URL(req.url);
