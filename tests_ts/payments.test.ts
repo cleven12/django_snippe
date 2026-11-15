@@ -154,3 +154,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
     expect((await searchRes.json()).data.total).toBe(1);
 
     const balRes = await mock.fetch(`${baseUrl}/v1/payments/balance`, { headers });
+    expect(balRes.status).toBe(200);
+    const balJson = await balRes.json();
+    expect(balJson.data.available_balance).toBeGreaterThan(0);
+    expect(balJson.data.currency).toBe("TZS");
+  });
+});
