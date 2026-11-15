@@ -22,3 +22,9 @@ function walkFiles(dir: string, results: string[] = []): string[] {
     ) {
       continue;
     }
+    const full = join(dir, entry);
+    const st = statSync(full);
+    if (st.isDirectory()) {
+      walkFiles(full, results);
+    } else if (/\.(py|md|toml|yml|yaml|json|ts)$/.test(entry)) {
+      results.push(full);
