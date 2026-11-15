@@ -1,31 +1,6 @@
-"""Custom exceptions for django-snippe."""
+"""Structured exceptions for django-snippe aligned with Snippe API 2026-01-25."""
+
+from typing import Optional
 
 
 class SnippeException(Exception):
-    """Base exception for all django-snippe errors."""
-    pass
-
-
-class WebhookVerificationError(SnippeException):
-    """Raised when webhook signature verification fails."""
-    pass
-
-
-class WebhookPayloadError(SnippeException):
-    """Raised when webhook payload is invalid or malformed."""
-    pass
-
-
-class PaymentCreationError(SnippeException):
-    """Raised when payment creation fails."""
-    pass
-
-
-class PayoutCreationError(SnippeException):
-    """Raised when payout creation fails."""
-    pass
-
-
-class SnippeConfigError(SnippeException):
-    """Raised when required django-snippe settings are missing or invalid."""
-    pass
