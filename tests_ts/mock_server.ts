@@ -370,3 +370,9 @@ export class SnippeMockServer {
         data: {
           available_balance: this.availableBalance,
           balance: this.totalBalance,
+          currency: "TZS",
+        },
+      });
+    }
+
+    // 3. GET /payments/search
