@@ -76,3 +76,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
         amount: 100000,
         channel: "bank",
         recipient_bank: "CRDB",
+        recipient_account: "0150000000000",
+        recipient_name: "Vendor Ltd",
+        narration: "Invoice settlement",
+      }),
+    });
+    expect(res.status).toBe(201);
