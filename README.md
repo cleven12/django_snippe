@@ -52,3 +52,9 @@ INSTALLED_APPS = [
     "django_snippe",
 ]
 
+SNIPPE_API_KEY = "snp_live_your_api_key"
+SNIPPE_WEBHOOK_SECRET = "whsec_your_signing_secret"
+SNIPPE_API_VERSION = "2026-01-25"
+SNIPPE_DEFAULT_CURRENCY = "TZS"
+```
+
