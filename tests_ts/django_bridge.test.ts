@@ -76,3 +76,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
       payment_fee: 75,
       timestamp: Number(ts),
     });
+    const rawWebhookBody = JSON.stringify(sampleWebhook);
+    const webhookSig = signWebhookPayload(rawWebhookBody, ts, webhookSecret);
+
+    const repoRoot = resolve(import.meta.dir, "..");
+    const venvPython = resolve(repoRoot, ".venv/bin/python");
+    const pythonBin = existsSync(venvPython) ? venvPython : "python3";
