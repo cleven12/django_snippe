@@ -322,3 +322,9 @@ export class SnippeMockServer {
       if (!["mobile", "card", "dynamic-qr"].includes(paymentType)) {
         return this.errorJson(400, "validation_error", `Unsupported payment_type: ${paymentType}`);
       }
+      if (paymentType === "mobile" && !phone) {
+        return this.errorJson(400, "validation_error", "phone_number is required for mobile payments");
+      }
+
+      const reference = `pay_${crypto.randomUUID().slice(0, 12)}`;
+      const now = new Date();
