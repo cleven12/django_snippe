@@ -190,3 +190,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="snippepayment",
             name="currency",
+            field=models.CharField(
+                max_length=10,
+                validators=[django_snippe.validators.CurrencyValidator.validate_currency],
+            ),
+        ),
+        migrations.AlterField(
