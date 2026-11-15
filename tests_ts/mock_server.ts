@@ -460,3 +460,9 @@ export class SnippeMockServer {
       const payment = this.payments.get(reference);
       if (!payment) {
         return this.errorJson(404, "not_found", `Payment ${reference} not found`);
+      }
+      return Response.json({ status: "success", data: payment });
+    }
+
+    // 7. POST /payouts/send
+    if (req.method === "POST" && normalizedPath === "/payouts/send") {
