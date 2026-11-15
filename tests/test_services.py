@@ -124,3 +124,9 @@ def test_admin_bulk_actions():
     po1.refresh_from_db()
     assert po1.status == "failed"
 
+    admin_actions.retry_payout(po_admin, _make_request(), SnippePayout.objects.filter(pk=po1.pk))
+    po1.refresh_from_db()
+    assert po1.status == "pending"
+
+    admin_actions.mark_payout_completed(
+        po_admin, _make_request(), SnippePayout.objects.filter(pk=po1.pk)
