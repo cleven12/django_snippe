@@ -28,3 +28,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
       body: JSON.stringify({
         payment_type: "mobile",
         details: { amount: 5000, currency: "TZS" },
+        phone_number: "0712345678",
+        customer: { firstname: "John", lastname: "Doe", email: "john@example.com" },
+        webhook_url: "https://example.com/payments/webhook/",
+        metadata: { order_id: "ORD-101" },
+      }),
+    });
