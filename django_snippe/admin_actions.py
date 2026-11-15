@@ -70,3 +70,9 @@ def mark_payout_completed(modeladmin, request, queryset):
     messages.success(request, f"Marked {count} payout(s) as completed")
 
 
+mark_payout_completed.short_description = "Mark selected payouts as completed"
+
+
+def mark_payout_failed(modeladmin, request, queryset):
+    """Mark selected pending payouts as failed."""
+    count = 0
