@@ -310,3 +310,9 @@ export class SnippeMockServer {
       const details = parsedBody.details ?? parsedBody;
       const amount = Number(details.amount ?? parsedBody.amount ?? 0);
       const currency = String(details.currency ?? parsedBody.currency ?? "TZS");
+      const paymentType = String(parsedBody.payment_type ?? "mobile") as StoredPayment["payment_type"];
+      const phone = String(parsedBody.phone_number ?? "");
+
+      if (!Number.isInteger(amount) || amount < 500) {
+        return this.errorJson(400, "validation_error", "Minimum payment amount is 500 TZS");
+      }
