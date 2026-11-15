@@ -250,3 +250,9 @@ class PaymentHelper:
                 idempotency_key=idempotency_key,
                 metadata=metadata or {},
             )
+
+            PaymentLogger.log_payment_created(
+                payment.reference, "dynamic-qr", amount, currency, phone_number
+            )
+            return payment
+
