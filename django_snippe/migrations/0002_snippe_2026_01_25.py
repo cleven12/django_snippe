@@ -82,3 +82,9 @@ class Migration(migrations.Migration):
                 ("timestamp", models.CharField(blank=True, default="", max_length=64)),
                 ("processed", models.BooleanField(default=False)),
                 ("error_message", models.TextField(blank=True, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+            ],
+            options={
+                "verbose_name": "Webhook Event",
+                "verbose_name_plural": "Webhook Events",
+                "ordering": ["-created_at"],
