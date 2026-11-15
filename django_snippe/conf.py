@@ -64,3 +64,9 @@ def get_webhook_tolerance() -> int:
 def get_client():
     """
     Return an initialized synchronous Snippe API client from Django settings.
+
+    Raises:
+        SnippeConfigError: If SNIPPE_API_KEY is missing or client initialization fails.
+    """
+    from snippe import Snippe
+
