@@ -244,3 +244,9 @@ class PayoutValidator:
                 try:
                     validate_bank_code(recipient_bank)
                 except ValidationError as exc:
+                    errors.extend(exc.messages)
+            if recipient_account and len(str(recipient_account).strip()) < 5:
+                errors.append("recipient_account must be at least 5 characters")
+        else:
+            errors.append(f"unsupported channel: {channel}")
+
