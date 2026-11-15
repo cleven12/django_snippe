@@ -22,3 +22,9 @@ PaymentHelper / PayoutHelper / SessionHelper  -->  Snippe API (https://api.snipp
 ```
 
 ## Django Settings Reference
+
+| Setting | Required | Default | Description |
+|---|---|---|---|
+| `SNIPPE_API_KEY` | Yes | - | Your Snippe API key (`Bearer snp_...`) |
+| `SNIPPE_WEBHOOK_SECRET` | Recommended | `None` | Webhook signing key used to verify `X-Webhook-Signature` |
+| `SNIPPE_API_VERSION` | No | `"2026-01-25"` | Target Snippe API schema version |
