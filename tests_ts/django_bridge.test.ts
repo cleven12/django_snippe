@@ -52,3 +52,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
     ).json();
 
     const sessionResp = await (
+      await mock.fetch(`${baseUrl}/sessions`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          amount: 15000,
+          currency: "TZS",
