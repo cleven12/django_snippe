@@ -526,3 +526,9 @@ export class SnippeMockServer {
       const amount = Number(url.searchParams.get("amount") ?? 5000);
       const feeAmount = 500;
       return Response.json({
+        status: "success",
+        data: {
+          amount,
+          fee_amount: feeAmount,
+          total_amount: amount + feeAmount,
+          currency: "TZS",
