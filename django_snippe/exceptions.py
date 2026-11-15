@@ -22,3 +22,9 @@ class SnippeException(Exception):
         self.error_code = error_code if error_code is not None else self.default_error_code
 
     def to_dict(self) -> dict:
+        """Serialize error into the standard Snippe 2026-01-25 error envelope."""
+        return {
+            "status": "error",
+            "code": self.code,
+            "error_code": self.error_code,
+            "message": self.message,
