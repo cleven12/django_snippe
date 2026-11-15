@@ -34,3 +34,9 @@ pip install django-snippe
 pip install git+https://github.com/cleven12/django_snippe.git
 ```
 
+### Direct Package Copy (Without pip)
+
+```bash
+curl -L https://github.com/cleven12/django_snippe/archive/refs/heads/main.tar.gz | tar xz
+```
+
