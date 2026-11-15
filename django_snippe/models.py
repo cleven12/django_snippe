@@ -172,3 +172,9 @@ class SnippeSession(models.Model):
         COMPLETED = "completed", "Completed"
         EXPIRED = "expired", "Expired"
         CANCELLED = "cancelled", "Cancelled"
+
+    reference = models.CharField(max_length=100, unique=True)
+    amount = models.PositiveIntegerField(blank=True, null=True)
+    currency = models.CharField(
+        max_length=10,
+        default="TZS",
