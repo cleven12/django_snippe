@@ -16,3 +16,9 @@ export interface StoredPayment {
   amount: number;
   currency: "TZS" | "KES" | "UGX";
   payment_type: "mobile" | "card" | "dynamic-qr";
+  phone_number: string;
+  customer: Record<string, unknown>;
+  payment_url?: string;
+  payment_qr_code?: string;
+  payment_token?: string;
+  webhook_url?: string;
