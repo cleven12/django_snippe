@@ -4,3 +4,9 @@
  * idempotency keys, and HMAC-SHA256 webhook signatures for fast local testing.
  */
 
+export type ApiScope =
+  | "collection:read"
+  | "collection:create"
+  | "disbursement:read"
+  | "disbursement:create";
+
