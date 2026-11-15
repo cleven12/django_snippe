@@ -184,3 +184,9 @@ class SnippeWebhookView(View):
             payment.completed_at = _parse_dt(completed_at)
             updated.append("completed_at")
 
+        return updated
+
+    def handle_payment_completed(
+        self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
+    ) -> None:
+        inner = inner or data
