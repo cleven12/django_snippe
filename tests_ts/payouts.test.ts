@@ -100,3 +100,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
       body: JSON.stringify({
         amount: 10000,
         channel: "mobile",
+        recipient_phone: "255754000000",
+        recipient_name: "John Charles",
+      }),
+    });
+    const created = (await createRes.json()).data;
+
