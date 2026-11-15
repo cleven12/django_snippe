@@ -130,3 +130,9 @@ class CurrencyValidator:
     @staticmethod
     def validate_currency(value: str) -> None:
         if not value or str(value).upper() not in SUPPORTED_CURRENCIES:
+            supported = ", ".join(sorted(SUPPORTED_CURRENCIES))
+            raise ValidationError(f"{value!r} is not a supported currency. Use one of {supported}.")
+
+
+class PhoneValidator:
+    """Django model field validator for East African mobile numbers."""
