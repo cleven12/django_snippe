@@ -34,3 +34,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
           last_name: "Doe",
           email: "jane@example.com",
           phone: "+255781000000",
+        },
+        redirect_url: "https://example.com/thank-you",
+        webhook_url: "https://example.com/payments/webhook/",
+      }),
+    });
+    expect(res.status).toBe(201);
