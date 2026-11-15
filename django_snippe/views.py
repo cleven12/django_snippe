@@ -250,3 +250,9 @@ class SnippeWebhookView(View):
             payout = SnippePayout.objects.get(reference=reference)
             payout.status = SnippePayout.Status.COMPLETED
             updated = ["status", "updated_at"]
+            completed_at = inner.get("completed_at") or data.get("completed_at")
+            if completed_at:
+                payout.completed_at = _parse_dt(completed_at)
+                updated.append("completed_at")
+            payout.save(update_fields=updated)
+            signals.payout_completed.send(sender=SnippePayout, payout=payout)
