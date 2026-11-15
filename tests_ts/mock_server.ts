@@ -622,3 +622,9 @@ export class SnippeMockServer {
         status: "success",
         data: {
           sessions: all.slice(offset, offset + limit),
+          total: all.length,
+          limit,
+          offset,
+        },
+      });
+    }
