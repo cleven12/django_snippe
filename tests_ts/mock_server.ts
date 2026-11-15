@@ -142,3 +142,9 @@ export function buildWebhookPayload2026(params: {
     reference: params.reference,
     status: params.status,
     amount: {
+      value: params.amount,
+      currency: params.currency ?? "TZS",
+    },
+    payment_channel: params.payment_channel ?? "M-PESA",
+    payment_fee: params.payment_fee ?? Math.round(params.amount * 0.01),
+    customer: params.customer ?? { firstname: "John", lastname: "Doe" },
