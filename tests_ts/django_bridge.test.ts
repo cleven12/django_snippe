@@ -94,3 +94,9 @@ django.setup()
 call_command("migrate", verbosity=0)
 
 settings.SNIPPE_API_KEY = "snp_live_bridge_key"
+settings.SNIPPE_WEBHOOK_SECRET = "${webhookSecret}"
+
+import django_snippe.conf as snippe_conf
+from snippe import Snippe
+
+responses_map = {
