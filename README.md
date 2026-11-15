@@ -64,3 +64,9 @@ Run database migrations:
 python manage.py migrate
 ```
 
+Mount the webhook route in your project's `urls.py`:
+
+```python
+from django.urls import include, path
+
+urlpatterns = [
