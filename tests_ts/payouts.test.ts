@@ -52,3 +52,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
     expect(mock.availableBalance).toBe(initialBalance - 50500);
   });
 
+  test("POST /v1/payouts/send enforces minimum 5,000 TZS requirement", async () => {
+    const res = await mock.fetch(`${baseUrl}/v1/payouts/send`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        amount: 2000,
