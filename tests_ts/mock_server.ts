@@ -484,3 +484,9 @@ export class SnippeMockServer {
       }
 
       const feeValue = channel === "bank" ? 1500 : 500;
+      const totalValue = amount + feeValue;
+      if (totalValue > this.availableBalance) {
+        return this.errorJson(400, "insufficient_balance", "Insufficient balance for payout + fee");
+      }
+
+      this.availableBalance -= totalValue;
