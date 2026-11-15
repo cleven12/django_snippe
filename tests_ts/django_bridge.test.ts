@@ -148,3 +148,9 @@ payout = PayoutHelper.create_mobile_payout(
     idempotency_key="bridge-po-1",
 )
 assert payout.reference == "${payoutResp.data.reference}"
+
+session = SessionHelper.create_checkout_session(
+    amount=15000,
+    currency="TZS",
+    allowed_methods=["mobile_money", "card"],
+)
