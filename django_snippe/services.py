@@ -88,3 +88,9 @@ def _save_payment(
         "customer_email": cust_email,
         "idempotency_key": idempotency_key,
         "fee_amount": _opt_int(result, "fee_amount"),
+        "net_amount": _opt_int(result, "net_amount"),
+        "psp_reference": _opt_str(result, "psp_reference"),
+        "failure_reason": _opt_str(result, "failure_reason"),
+        "metadata": resolved_meta,
+        "expires_at": _parse_dt(_opt_str(result, "expires_at")),
+    }
