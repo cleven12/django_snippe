@@ -10,3 +10,9 @@ export type ApiScope =
   | "disbursement:read"
   | "disbursement:create";
 
+export interface StoredPayment {
+  reference: string;
+  status: "pending" | "completed" | "failed" | "expired" | "voided";
+  amount: number;
+  currency: "TZS" | "KES" | "UGX";
+  payment_type: "mobile" | "card" | "dynamic-qr";
