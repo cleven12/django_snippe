@@ -202,3 +202,9 @@ class PayoutValidator:
     """Validation helpers for payout disbursement creation."""
 
     @staticmethod
+    def validate_payout_data(
+        amount: int,
+        currency: str,
+        channel: str,
+        recipient_name: str,
+        recipient_phone: str = "",
