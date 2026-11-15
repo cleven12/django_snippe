@@ -388,3 +388,9 @@ export class SnippeMockServer {
         (p) =>
           p.reference.toLowerCase().includes(q) ||
           p.phone_number.toLowerCase().includes(q) ||
+          JSON.stringify(p.customer).toLowerCase().includes(q)
+      );
+
+      return Response.json({
+        status: "success",
+        data: {
