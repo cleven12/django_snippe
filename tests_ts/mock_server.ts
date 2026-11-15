@@ -94,3 +94,9 @@ export function detectMobileProvider(phone: string): string {
 
 export function signWebhookPayload(
   rawBody: string,
+  timestamp: string,
+  signingKey: string
+): string {
+  const hasher = new Bun.CryptoHasher("sha256", signingKey);
+  hasher.update(`${timestamp}.${rawBody}`);
+  return hasher.digest("hex");
