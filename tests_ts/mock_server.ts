@@ -34,3 +34,9 @@ export interface StoredPayment {
   created_at: string;
   completed_at?: string;
   failure_reason?: string;
+}
+
+export interface StoredPayout {
+  reference: string;
+  status: "pending" | "completed" | "failed" | "reversed";
+  amount: { value: number; currency: string };
