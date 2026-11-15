@@ -124,3 +124,9 @@ from django_snippe.helpers import PayoutHelper
 
 payout = PayoutHelper.create_mobile_payout(
     amount=50000,
+    currency="TZS",
+    recipient_name="Jane Doe",
+    recipient_phone="255781000000",
+    narration="January 2026 contractor payout",
+    idempotency_key="payout-emp-01",
+)
