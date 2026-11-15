@@ -40,3 +40,9 @@ describe("Snippe 2026-01-25 Webhooks & HMAC-SHA256 Signature Verification", () =
     expect(verifyWebhookSignature(rawBody + " ", sig, ts, secret)).toBe(false);
     expect(verifyWebhookSignature(rawBody, sig, ts, "wrong_secret")).toBe(false);
   });
+
+  test("Timestamp replay protection rejects expired webhook timestamps (>300s old)", () => {
+    const oldTs = String(Math.floor(Date.now() / 1000) - 600);
+    const rawBody = JSON.stringify({ event: "payment.completed", reference: "pay_old" });
+    const sig = signWebhookPayload(rawBody, oldTs, secret);
+
