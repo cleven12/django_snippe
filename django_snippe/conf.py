@@ -52,3 +52,9 @@ def get_min_payment_amount() -> int:
 
 
 def get_min_payout_amount() -> int:
+    """Return minimum payout amount in smallest currency unit (5000 TZS default)."""
+    return int(get_setting("MIN_PAYOUT_AMOUNT", default=DEFAULT_MIN_PAYOUT_AMOUNT))
+
+
+def get_webhook_tolerance() -> int:
+    """Return webhook timestamp tolerance in seconds (300s default)."""
