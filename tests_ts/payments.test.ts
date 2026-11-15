@@ -70,3 +70,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
       body: JSON.stringify({
         payment_type: "card",
         details: {
+          amount: 25000,
+          currency: "TZS",
+          redirect_url: "https://example.com/success",
+          cancel_url: "https://example.com/cancel",
+        },
+        phone_number: "0712345678",
