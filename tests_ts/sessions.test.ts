@@ -70,3 +70,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
       body: JSON.stringify({
         amount: 10000,
         currency: "TZS",
+      }),
+    });
+    const session = (await createRes.json()).data;
+
+    const getRes = await mock.fetch(`${baseUrl}/api/v1/sessions/${session.reference}`, { headers });
+    expect(getRes.status).toBe(200);
