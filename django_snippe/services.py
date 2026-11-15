@@ -244,3 +244,9 @@ def create_qr_payment(
     client = get_client()
     result = client.create_qr_payment(
         amount=amount,
+        currency=currency,
+        phone_number=phone_number,
+        customer=customer,
+        callback_url=callback_url,
+        webhook_url=webhook_url,
+        metadata=metadata,
