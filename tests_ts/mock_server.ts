@@ -28,3 +28,9 @@ export interface StoredPayment {
   metadata: Record<string, unknown>;
   fee_amount: number;
   net_amount: number;
+  psp_reference: string;
+  push_count: number;
+  expires_at: string;
+  created_at: string;
+  completed_at?: string;
+  failure_reason?: string;
