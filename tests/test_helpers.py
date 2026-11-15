@@ -154,3 +154,9 @@ class TestPayoutHelper:
     @patch("django_snippe.helpers.get_client")
     def test_create_mobile_payout_saves_record(self, mock_get_client):
         client = MagicMock()
+        api_payout = MagicMock()
+        api_payout.reference = "PO-1"
+        client.create_mobile_payout.return_value = api_payout
+        mock_get_client.return_value = client
+
+        payout = PayoutHelper.create_mobile_payout(
