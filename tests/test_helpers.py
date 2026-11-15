@@ -250,3 +250,8 @@ class TestSessionHelper:
         assert session.checkout_url == "https://checkout.snippe.sh/s/SES-100"
 
         cancelled = SessionHelper.cancel_checkout_session("SES-100")
+        assert cancelled.status == SnippeSession.Status.CANCELLED
+
+    def test_create_session_rejects_below_minimum_amount(self):
+        with pytest.raises(SessionCreationError):
+            SessionHelper.create_checkout_session(amount=100, currency="TZS")
