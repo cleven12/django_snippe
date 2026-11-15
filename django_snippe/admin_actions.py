@@ -82,3 +82,9 @@ def mark_payout_failed(modeladmin, request, queryset):
         count += 1
     messages.success(request, f"Marked {count} payout(s) as failed")
 
+
+mark_payout_failed.short_description = "Mark selected payouts as failed"
+
+
+def retry_payout(modeladmin, request, queryset):
+    """Retry failed payouts by resetting their status to pending."""
