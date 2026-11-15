@@ -130,3 +130,9 @@ class SessionLogger:
     @staticmethod
     def log_session_status_change(
         reference: str,
+        old_status: str,
+        new_status: str,
+        reason: Optional[str] = None,
+    ) -> None:
+        """Log when a checkout session status transitions."""
+        message = f"Session status changed | ref={reference} | {old_status} -> {new_status}"
