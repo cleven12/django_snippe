@@ -202,3 +202,9 @@ class SnippeSession(models.Model):
         verbose_name_plural = "Checkout Sessions"
 
     def __str__(self) -> str:
+        amt = (
+            f"{self.amount} {self.currency}"
+            if self.amount is not None
+            else f"custom {self.currency}"
+        )
+        return f"{self.reference} - {self.status} ({amt})"
