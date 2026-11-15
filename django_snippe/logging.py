@@ -124,3 +124,9 @@ class SessionLogger:
         """Log when a checkout session is created."""
         amount_str = f"{amount} {currency}" if amount is not None else f"custom {currency}"
         logger.info(
+            f"Session created | ref={reference} | amount={amount_str} | user={_get_user(user)}"
+        )
+
+    @staticmethod
+    def log_session_status_change(
+        reference: str,
