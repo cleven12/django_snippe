@@ -334,3 +334,9 @@ class PayoutHelper:
         )
         if not valid:
             raise PayoutCreationError(f"Invalid payout data: {', '.join(errors)}")
+
+        try:
+            client = get_client()
+            call_kwargs: Dict[str, Any] = {
+                "amount": amount,
+                "currency": currency,
