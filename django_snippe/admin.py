@@ -46,3 +46,9 @@ class SnippePayoutAdmin(admin.ModelAdmin):
     readonly_fields = ["reference", "created_at", "updated_at"]
     ordering = ["-created_at"]
     actions = [
+        mark_payout_completed,
+        mark_payout_failed,
+        retry_payout,
+    ]
+
+
