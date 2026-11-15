@@ -124,3 +124,9 @@ mobile_payout = PayoutHelper.create_mobile_payout(
     currency="TZS",
     recipient_name="Jane Doe",
     recipient_phone="255781000000",
+    narration="Salary payment January 2026",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+    idempotency_key="sal-2026-01-emp1",
+)
+
+# Bank Transfer Payout (CRDB, NMB, NBC, ABSA, STANBIC, EQUITY, etc.)
