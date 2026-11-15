@@ -112,3 +112,9 @@ session = SessionHelper.create_checkout_session(
         "phone": "+255781000000",
     },
     redirect_url="https://yourdomain.com/checkout/complete/",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+)
+print(session.checkout_url)
+```
+
+### 3. Send a Mobile Money or Bank Payout
