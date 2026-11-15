@@ -220,3 +220,9 @@ export class SnippeMockServer {
         status: "error",
         code,
         error_code,
+        message,
+      },
+      { status: code }
+    );
+  }
+
