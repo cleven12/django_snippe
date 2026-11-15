@@ -82,3 +82,9 @@ dev = [
 ]
 
 [tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+python_files = ["test_*.py"]
+addopts = "--reuse-db"
+
+[tool.ruff]
+line-length = 110
