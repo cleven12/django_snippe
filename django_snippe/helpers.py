@@ -442,3 +442,9 @@ class PayoutHelper:
             PayoutLogger.log_payout_created(
                 payout.reference, "bank", amount, currency, recipient_name
             )
+            return payout
+
+        except Exception as exc:
+            PayoutLogger.log_payout_failed(recipient_account, str(exc))
+            raise PayoutCreationError(f"Failed to create bank payout: {exc}") from exc
+
