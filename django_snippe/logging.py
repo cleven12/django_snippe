@@ -52,3 +52,9 @@ class PaymentLogger:
         logger.info(f"Payment USSD push triggered | ref={reference}{phone_part}")
 
     @staticmethod
+    def log_webhook_received(event: str, reference: str) -> None:
+        """Log incoming webhook events."""
+        logger.info(f"Webhook received | event={event} | ref={reference}")
+
+    @staticmethod
+    def log_webhook_processing(
