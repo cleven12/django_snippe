@@ -106,3 +106,9 @@ class WebhookPayloadError(SnippeException):
 
     default_code = 400
     default_error_code = "invalid_webhook_payload"
+
+
+class PaymentCreationError(SnippeException):
+    """Raised when payment creation or push trigger fails."""
+
+    default_code = 400
