@@ -178,3 +178,9 @@ export class SnippeMockServer {
   public availableBalance = 10_000_000;
   public totalBalance = 10_500_000;
   public forceRateLimit = false;
+
+  public start(port = 0): string {
+    try {
+      this.server = Bun.serve({
+        port,
+        fetch: (req) => this.handleRequest(req),
