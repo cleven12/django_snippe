@@ -148,3 +148,9 @@ In Snippe API `2026-01-25`, payment creation requests pass `amount` as a flat in
 ```json
 {
   "id": "evt_01J...",
+  "event": "payment.completed",
+  "data": {
+    "reference": "pay_9015c155",
+    "status": "completed",
+    "amount": {
+      "value": 50000,
