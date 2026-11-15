@@ -118,3 +118,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="snippepayment",
             name="failure_reason",
+            field=models.TextField(blank=True, null=True),
+        ),
+        migrations.AddField(
+            model_name="snippepayment",
+            name="fee_amount",
+            field=models.PositiveIntegerField(blank=True, null=True),
