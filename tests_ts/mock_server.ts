@@ -424,3 +424,9 @@ export class SnippeMockServer {
     // 5. POST /payments/:reference/push
     const pushMatch = normalizedPath.match(/^\/payments\/([^/]+)\/push$/);
     if (req.method === "POST" && pushMatch) {
+      const scopeErr = this.checkScope(apiKey, "collection:create");
+      if (scopeErr) return scopeErr;
+
+      const reference = pushMatch[1];
+      const payment = this.payments.get(reference);
+      if (!payment) {
