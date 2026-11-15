@@ -16,3 +16,9 @@ WEBHOOK_URL = "/payments/webhook/"
 
 def _post(client, payload, headers=None):
     return client.post(
+        WEBHOOK_URL,
+        data=json.dumps(payload),
+        content_type="application/json",
+        **(headers or {}),
+    )
+
