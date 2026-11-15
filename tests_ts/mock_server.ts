@@ -100,3 +100,9 @@ export function signWebhookPayload(
   const hasher = new Bun.CryptoHasher("sha256", signingKey);
   hasher.update(`${timestamp}.${rawBody}`);
   return hasher.digest("hex");
+}
+
+export function verifyWebhookSignature(
+  rawBody: string,
+  signature: string,
+  timestamp: string,
