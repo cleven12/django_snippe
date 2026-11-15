@@ -292,3 +292,9 @@ export class SnippeMockServer {
     }
 
     const saveIdempotent = (status: number, bodyObj: unknown): Response => {
+      if (idempKey) {
+        this.idempotencyStore.set(`${req.method}:${normalizedPath}:${idempKey}`, {
+          bodyHash: rawBody,
+          status,
+          response: bodyObj,
+        });
