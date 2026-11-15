@@ -58,3 +58,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
       "Idempotency-Key": "idem-order-2026-01",
     };
     const body1 = JSON.stringify({
+      payment_type: "mobile",
+      details: { amount: 5000, currency: "TZS" },
+      phone_number: "0712345678",
+      customer: { firstname: "John", lastname: "Doe" },
+    });
+
