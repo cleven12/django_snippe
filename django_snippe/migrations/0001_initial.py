@@ -22,3 +22,9 @@ class Migration(migrations.Migration):
                     models.CharField(
                         choices=[
                             ("mobile", "Mobile Money"),
+                            ("card", "Card"),
+                            ("dynamic-qr", "QR Code"),
+                        ],
+                        max_length=20,
+                    ),
+                ),
