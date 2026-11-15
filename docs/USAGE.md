@@ -166,3 +166,9 @@ In Snippe API `2026-01-25`, payment creation requests pass `amount` as a flat in
 `SnippeWebhookView` automatically parses both nested `2026-01-25` payloads and top-level payloads, verifies `X-Webhook-Signature` and `X-Webhook-Timestamp`, stores the delivery in `SnippeWebhookEvent` for idempotency, updates the corresponding model, and dispatches the appropriate signal:
 
 | Signal | Arguments | Triggered Event |
+|---|---|---|
+| `payment_completed` | `payment` (`SnippePayment`) | `payment.completed` |
+| `payment_failed` | `payment` (`SnippePayment`) | `payment.failed` |
+| `payment_expired` | `payment` (`SnippePayment`) | `payment.expired` |
+| `payment_voided` | `payment` (`SnippePayment`) | `payment.voided` |
+| `payout_completed` | `payout` (`SnippePayout`) | `payout.completed` |
