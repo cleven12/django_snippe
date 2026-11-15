@@ -76,3 +76,9 @@ def get_client():
 
     try:
         kwargs = {"api_key": api_key, "timeout": timeout}
+        if base_url:
+            kwargs["base_url"] = base_url
+        return Snippe(**kwargs)
+    except Exception as exc:
+        raise SnippeConfigError(f"Failed to initialize Snippe client: {exc}") from exc
+
