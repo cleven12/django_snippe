@@ -124,3 +124,9 @@ export function buildWebhookPayload2026(params: {
   event: string;
   reference: string;
   status: string;
+  amount: number;
+  currency?: string;
+  payment_channel?: string;
+  payment_fee?: number;
+  customer?: Record<string, unknown>;
+  metadata?: Record<string, unknown>;
