@@ -166,3 +166,9 @@ class Migration(migrations.Migration):
             field=models.CharField(
                 blank=True,
                 max_length=30,
+                null=True,
+                validators=[django_snippe.validators.validate_idempotency_key],
+            ),
+        ),
+        migrations.AddField(
+            model_name="snippepayout",
