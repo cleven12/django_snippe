@@ -376,3 +376,9 @@ export class SnippeMockServer {
     }
 
     // 3. GET /payments/search
+    if (req.method === "GET" && normalizedPath === "/payments/search") {
+      const scopeErr = this.checkScope(apiKey, "collection:read");
+      if (scopeErr) return scopeErr;
+
+      const q = (url.searchParams.get("q") ?? "").toLowerCase();
+      const limit = Math.min(100, Number(url.searchParams.get("limit") ?? 20));
