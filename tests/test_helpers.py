@@ -130,3 +130,9 @@ class TestPaymentHelper:
         assert PaymentHelper.get_payment_by_reference("MISSING") is None
 
     def test_get_pending_and_failed_payments(self):
+        SnippePayment.objects.create(
+            reference="P1",
+            payment_type=SnippePayment.PaymentType.MOBILE,
+            amount=1000,
+            currency="TZS",
+            phone_number="0712345678",
