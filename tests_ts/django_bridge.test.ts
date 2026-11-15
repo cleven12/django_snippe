@@ -40,3 +40,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
 
     const payoutResp = await (
       await mock.fetch(`${baseUrl}/payouts/send`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          amount: 10000,
+          channel: "mobile",
+          recipient_name: "Cleven Godson",
