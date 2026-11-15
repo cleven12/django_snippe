@@ -136,3 +136,9 @@ class TestPaymentHelper:
             amount=1000,
             currency="TZS",
             phone_number="0712345678",
+            status=SnippePayment.Status.PENDING,
+        )
+        SnippePayment.objects.create(
+            reference="P2",
+            payment_type=SnippePayment.PaymentType.MOBILE,
+            amount=1000,
