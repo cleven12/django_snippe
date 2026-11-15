@@ -10,3 +10,8 @@ build/
 venv/
 *.sqlite3
 .pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+node_modules/
+.claude/
