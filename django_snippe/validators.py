@@ -208,3 +208,9 @@ class PayoutValidator:
         channel: str,
         recipient_name: str,
         recipient_phone: str = "",
+        recipient_bank: str = "",
+        recipient_account: str = "",
+        *,
+        enforce_minimum: bool = False,
+        idempotency_key: Optional[str] = None,
+    ) -> Tuple[bool, List[str]]:
