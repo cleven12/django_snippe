@@ -46,3 +46,9 @@ describe("Repository Hygiene & Zero AI Artifact Checks", () => {
     const violations: string[] = [];
     for (const file of files) {
       const content = readFileSync(file, "utf-8");
+      if (EMOJI_REGEX.test(content)) {
+        violations.push(file.replace(REPO_ROOT + "/", ""));
+      }
+    }
+    expect(violations).toEqual([]);
+  });
