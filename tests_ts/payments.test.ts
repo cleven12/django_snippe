@@ -40,3 +40,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
     expect(json.data.reference).toStartWith("pay_");
     expect(json.data.status).toBe("pending");
     expect(json.data.amount).toBe(5000);
+    expect(json.data.currency).toBe("TZS");
+    expect(json.data.payment_type).toBe("mobile");
+    expect(json.data.push_count).toBe(1);
+  });
+
+  test("POST /v1/payments enforces minimum 500 TZS requirement", async () => {
