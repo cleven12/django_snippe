@@ -124,3 +124,9 @@ services_mod.get_client = patched_get_client
 
 from django_snippe.helpers import PaymentHelper, PayoutHelper, SessionHelper
 from django_snippe.models import SnippePayment, SnippePayout, SnippeSession, SnippeWebhookEvent
+
+payment = PaymentHelper.create_mobile_payment(
+    amount=7500,
+    currency="TZS",
+    phone_number="0754123456",
+    customer_firstname="John",
