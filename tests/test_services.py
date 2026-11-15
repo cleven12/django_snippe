@@ -16,3 +16,9 @@ pytestmark = pytest.mark.django_db
 
 def _make_request():
     rf = RequestFactory()
+    request = rf.post("/admin/")
+    setattr(request, "session", "session")
+    messages = FallbackStorage(request)
+    setattr(request, "_messages", messages)
+    return request
+
