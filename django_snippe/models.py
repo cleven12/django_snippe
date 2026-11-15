@@ -130,3 +130,9 @@ class SnippePayout(models.Model):
         null=True,
         validators=[validate_idempotency_key],
     )
+    failure_reason = models.TextField(blank=True, null=True)
+    webhook_url = models.URLField(blank=True, null=True)
+    metadata = models.JSONField(default=dict, blank=True)
+    completed_at = models.DateTimeField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
