@@ -34,3 +34,9 @@ def _extract_amount_and_currency(
     raw_amount: Any, fallback_currency: str = "TZS"
 ) -> tuple[int, str]:
     """Extract integer amount and currency from either an int or 2026-01-25 {value, currency} dict."""
+    if isinstance(raw_amount, dict):
+        return int(raw_amount.get("value", 0)), str(raw_amount.get("currency", fallback_currency))
+    val = getattr(raw_amount, "value", None)
+    cur = getattr(raw_amount, "currency", None)
+    if isinstance(val, int) and not isinstance(val, bool):
+        return val, cur if isinstance(cur, str) else fallback_currency
