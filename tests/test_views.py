@@ -268,3 +268,9 @@ def test_webhook_verifies_signature_when_secret_configured(mock_verify, mock_set
     ),
 )
 @patch("snippe.verify_webhook", side_effect=Exception("bad signature"))
+def test_webhook_rejects_bad_signature(mock_verify, mock_setting, client):
+    payment = _make_payment(reference="WH-BADSIG")
+    response = _post(
+        client,
+        {"event": "payment.completed", "reference": payment.reference},
+        headers={
