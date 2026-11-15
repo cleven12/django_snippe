@@ -586,3 +586,9 @@ export class SnippeMockServer {
       }
 
       const reference = `ses_${crypto.randomUUID().slice(0, 12)}`;
+      const now = new Date();
+      const expires = new Date(now.getTime() + 60 * 60 * 1000);
+      const session: StoredSession = {
+        reference,
+        amount,
+        currency: String(parsedBody.currency ?? "TZS"),
