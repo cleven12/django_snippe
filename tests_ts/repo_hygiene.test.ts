@@ -34,3 +34,9 @@ function walkFiles(dir: string, results: string[] = []): string[] {
 }
 
 describe("Repository Hygiene & Zero AI Artifact Checks", () => {
+  test("No .claude directory or llms.txt exists in the repository", () => {
+    expect(existsSync(join(REPO_ROOT, ".claude"))).toBe(false);
+    expect(existsSync(join(REPO_ROOT, "llms.txt"))).toBe(false);
+  });
+
+  test("Zero emojis, em-dashes, or unicode arrows in source code and documentation", () => {
