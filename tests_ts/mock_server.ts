@@ -472,3 +472,9 @@ export class SnippeMockServer {
       const amount = Number(parsedBody.amount ?? 0);
       const channel = String(parsedBody.channel ?? "mobile") as "mobile" | "bank";
       const recipientName = String(parsedBody.recipient_name ?? "").trim();
+
+      if (!Number.isInteger(amount) || amount < 5000) {
+        return this.errorJson(400, "validation_error", "Minimum payout amount is 5000 TZS");
+      }
+      if (recipientName.length < 2) {
+        return this.errorJson(400, "validation_error", "recipient_name is required");
