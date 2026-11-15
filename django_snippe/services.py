@@ -160,3 +160,9 @@ def create_mobile_payment(
     currency: str,
     phone_number: str,
     customer: Any,
+    callback_url: Optional[str] = None,
+    webhook_url: Optional[str] = None,
+    metadata: Optional[Dict[str, Any]] = None,
+    idempotency_key: Optional[str] = None,
+) -> SnippePayment:
+    """Create a mobile money payment (USSD push) and store SnippePayment."""
