@@ -166,3 +166,9 @@ resp = c.post(
     HTTP_X_WEBHOOK_SIGNATURE="${webhookSig}",
     HTTP_X_WEBHOOK_TIMESTAMP="${ts}",
 )
+assert resp.status_code == 200, f"Webhook failed: {resp.content}"
+payment.refresh_from_db()
+assert payment.status == "completed"
+assert payment.fee_amount == 75
+assert payment.payment_channel == "M-PESA"
+assert SnippeWebhookEvent.objects.filter(reference=payment.reference, processed=True).exists()
