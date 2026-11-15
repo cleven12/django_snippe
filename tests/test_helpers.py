@@ -76,3 +76,9 @@ class TestPaymentHelper:
         client.create_card_payment.return_value = _mock_api_payment(
             "CARD-1", payment_url="https://pay.snippe.sh/x"
         )
+        mock_get_client.return_value = client
+
+        payment = PaymentHelper.create_card_payment(
+            amount=15000,
+            currency="KES",
+            customer_firstname="Amina",
