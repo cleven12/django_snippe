@@ -142,3 +142,9 @@ class SnippePayout(models.Model):
         verbose_name = "Payout"
         verbose_name_plural = "Payouts"
 
+    def __str__(self) -> str:
+        return f"{self.reference} - {self.status} ({self.amount} {self.currency})"
+
+    @property
+    def is_terminal(self) -> bool:
+        """Return True if the payout is in a final state."""
