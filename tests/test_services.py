@@ -118,3 +118,9 @@ def test_admin_bulk_actions():
     p2.refresh_from_db()
     assert p2.status == "voided"
 
+    admin_actions.mark_payout_failed(
+        po_admin, _make_request(), SnippePayout.objects.filter(pk=po1.pk)
+    )
+    po1.refresh_from_db()
+    assert po1.status == "failed"
+
