@@ -124,3 +124,9 @@ class SnippePayout(models.Model):
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
     narration = models.CharField(max_length=255, blank=True, null=True)
     external_reference = models.CharField(max_length=100, blank=True, null=True)
+    idempotency_key = models.CharField(
+        max_length=30,
+        blank=True,
+        null=True,
+        validators=[validate_idempotency_key],
+    )
