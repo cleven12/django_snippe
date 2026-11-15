@@ -34,3 +34,9 @@ In scope:
 
 Out of scope:
 
+- The upstream [Snippe API](https://docs.snippe.sh/docs/2026-01-25) and [snippe-python-sdk](https://github.com/Neurotech-HQ/snippe-python-sdk)
+- Deployments where `SNIPPE_WEBHOOK_SECRET` is intentionally omitted in production
+
+## Automated Scanning
+
+This repository runs [Dependabot](.github/dependabot.yml) for dependency updates and [CodeQL](.github/workflows/codeql.yml) static analysis on pushes and pull requests to `main`.
