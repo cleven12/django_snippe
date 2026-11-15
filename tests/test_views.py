@@ -256,3 +256,9 @@ def test_webhook_verifies_signature_when_secret_configured(mock_verify, mock_set
             "HTTP_X_WEBHOOK_SIGNATURE": "sig",
             "HTTP_X_WEBHOOK_TIMESTAMP": "12345",
         },
+    )
+    assert response.status_code == 200
+    mock_verify.assert_called_once()
+
+
+@patch(
