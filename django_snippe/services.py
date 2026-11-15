@@ -10,3 +10,9 @@ from .models import SnippePayment, SnippePayout, SnippeSession
 def _opt_str(obj: Any, attr: str) -> Optional[str]:
     """Return string attribute if present and a real str, otherwise None."""
     val = getattr(obj, attr, None)
+    return val if isinstance(val, str) else None
+
+
+def _opt_int(obj: Any, attr: str) -> Optional[int]:
+    """Return integer attribute if present and a real int (not bool), otherwise None."""
+    val = getattr(obj, attr, None)
