@@ -94,3 +94,9 @@ class SnippePayout(models.Model):
     class Status(models.TextChoices):
         PENDING = "pending", "Pending"
         COMPLETED = "completed", "Completed"
+        FAILED = "failed", "Failed"
+        REVERSED = "reversed", "Reversed"
+
+    class Channel(models.TextChoices):
+        MOBILE = "mobile", "Mobile Money"
+        BANK = "bank", "Bank Transfer"
