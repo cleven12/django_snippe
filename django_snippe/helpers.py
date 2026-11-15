@@ -106,3 +106,9 @@ class PaymentHelper:
         customer_email: Optional[str] = None,
         redirect_url: Optional[str] = None,
         cancel_url: Optional[str] = None,
+        callback_url: Optional[str] = None,
+        idempotency_key: Optional[str] = None,
+    ) -> SnippePayment:
+        """
+        Create a card payment record and return SnippePayment with payment_url.
+
