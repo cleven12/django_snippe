@@ -136,3 +136,9 @@ export function buildWebhookPayload2026(params: {
   const ts = params.timestamp ?? Math.floor(Date.now() / 1000);
   const nowIso = new Date(ts * 1000).toISOString();
   return {
+    id: params.id ?? `evt_${crypto.randomUUID().slice(0, 12)}`,
+    api_version: "2026-01-25",
+    event: params.event,
+    reference: params.reference,
+    status: params.status,
+    amount: {
