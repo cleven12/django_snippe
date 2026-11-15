@@ -82,3 +82,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
     expect(res.status).toBe(201);
     const json = await res.json();
     expect(json.data.payment_type).toBe("card");
+    expect(json.data.payment_url).toContain("https://checkout.snippe.sh/pay/");
+  });
+
+  test("POST /v1/payments creates a dynamic QR payment and returns QR data + token", async () => {
+    const res = await mock.fetch(`${baseUrl}/v1/payments`, {
+      method: "POST",
