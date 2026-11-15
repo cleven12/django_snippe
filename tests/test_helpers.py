@@ -46,3 +46,9 @@ class TestPaymentHelper:
     def test_create_mobile_payment_rejects_invalid_phone(self):
         with pytest.raises(PaymentCreationError):
             PaymentHelper.create_mobile_payment(
+                amount=5000,
+                currency="TZS",
+                phone_number="invalid",
+                customer_firstname="John",
+                customer_lastname="Doe",
+            )
