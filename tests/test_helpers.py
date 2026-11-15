@@ -82,3 +82,9 @@ class TestPaymentHelper:
             amount=15000,
             currency="KES",
             customer_firstname="Amina",
+            customer_lastname="Yusuf",
+        )
+
+        assert payment.payment_type == SnippePayment.PaymentType.CARD
+        assert payment.payment_url == "https://pay.snippe.sh/x"
+
