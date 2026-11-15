@@ -274,3 +274,9 @@ def test_webhook_rejects_bad_signature(mock_verify, mock_setting, client):
         client,
         {"event": "payment.completed", "reference": payment.reference},
         headers={
+            "HTTP_X_WEBHOOK_SIGNATURE": "bad",
+            "HTTP_X_WEBHOOK_TIMESTAMP": "12345",
+        },
+    )
+    assert response.status_code == 401
+    assert response.json()["error_code"] == "invalid_webhook_signature"
