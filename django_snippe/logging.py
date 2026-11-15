@@ -28,3 +28,9 @@ class PaymentLogger:
         logger.info(message)
 
     @staticmethod
+    def log_payment_status_change(
+        reference: str,
+        old_status: str,
+        new_status: str,
+        reason: Optional[str] = None,
+    ) -> None:
