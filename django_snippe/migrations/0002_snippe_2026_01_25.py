@@ -88,3 +88,9 @@ class Migration(migrations.Migration):
                 "verbose_name": "Webhook Event",
                 "verbose_name_plural": "Webhook Events",
                 "ordering": ["-created_at"],
+            },
+        ),
+        migrations.AddField(
+            model_name="snippepayment",
+            name="callback_url",
+            field=models.URLField(blank=True, null=True),
