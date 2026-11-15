@@ -28,3 +28,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
       message: "Missing or invalid Authorization Bearer token",
     });
   });
+
+  test("Returns 403 Forbidden when API key lacks required scope (e.g. disbursement:create)", async () => {
+    const readOnlyKey = "snp_scoped_readonly";
+    mock.keyScopes.set(readOnlyKey, new Set(["collection:read"]));
+
+    const res = await mock.fetch(`${baseUrl}/v1/payouts/send`, {
