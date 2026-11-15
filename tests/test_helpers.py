@@ -238,3 +238,9 @@ class TestSessionHelper:
             },
         ]
         mock_get_client.return_value = client
+
+        session = SessionHelper.create_checkout_session(
+            amount=15000,
+            currency="TZS",
+            allowed_methods=["mobile_money", "card"],
+            customer={"first_name": "Jane", "last_name": "Doe", "email": "jane@example.com"},
