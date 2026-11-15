@@ -46,3 +46,9 @@ class SnippeValidationError(SnippeException):
 
 
 class SnippeAuthenticationError(SnippeException):
+    """Raised on HTTP 401 when the API key is missing or invalid."""
+
+    default_code = 401
+    default_error_code = "unauthorized"
+
+
