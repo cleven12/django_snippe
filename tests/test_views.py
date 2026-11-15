@@ -124,3 +124,9 @@ def test_webhook_marks_payment_failed_with_reason(mock_setting, client):
             "event": "payment.failed",
             "reference": payment.reference,
             "failure_reason": "Insufficient balance",
+        },
+    )
+    assert response.status_code == 200
+    payment.refresh_from_db()
+    assert payment.status == SnippePayment.Status.FAILED
+    assert payment.failure_reason == "Insufficient balance"
