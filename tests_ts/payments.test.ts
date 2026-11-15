@@ -52,3 +52,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
       body: JSON.stringify({
         payment_type: "mobile",
         details: { amount: 400, currency: "TZS" },
+        phone_number: "0712345678",
+        customer: { firstname: "John", lastname: "Doe" },
+      }),
+    });
+    expect(res.status).toBe(400);
+    const json = await res.json();
