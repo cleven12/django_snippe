@@ -58,3 +58,9 @@ export interface StoredPayout {
 }
 
 export interface StoredSession {
+  reference: string;
+  amount: number | null;
+  currency: string;
+  allow_custom_amount: boolean;
+  allowed_methods: string[];
+  status: "active" | "completed" | "expired" | "cancelled";
