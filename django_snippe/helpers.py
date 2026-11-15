@@ -34,3 +34,9 @@ class PaymentHelper:
         """
         valid, errors = PaymentValidator.validate_payment_data(
             amount,
+            currency,
+            phone_number,
+            "mobile",
+            idempotency_key=idempotency_key,
+        )
+        if not valid:
