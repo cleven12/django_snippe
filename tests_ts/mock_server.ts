@@ -190,3 +190,9 @@ export class SnippeMockServer {
       return "http://snippe.local";
     }
   }
+
+  public async fetch(input: string | URL | Request, init?: RequestInit): Promise<Response> {
+    const req = input instanceof Request ? input : new Request(String(input), init);
+    return this.handleRequest(req);
+  }
+
