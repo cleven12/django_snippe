@@ -136,3 +136,9 @@ payout = PayoutHelper.create_mobile_payout(
 
 ```python
 from django.dispatch import receiver
+from django_snippe.signals import payment_completed, payout_completed, session_completed
+
+@receiver(payment_completed)
+def handle_payment_completed(sender, payment, **kwargs):
+    print("Payment completed:", payment.reference, payment.amount, payment.currency)
+```
