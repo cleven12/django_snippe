@@ -280,3 +280,9 @@ class SessionValidator:
                 or isinstance(amount, bool)
                 or amount < min_amount
             ):
+                errors.append(
+                    f"amount must be an integer of at least {min_amount} when allow_custom_amount is False"
+                )
+        elif amount is not None:
+            if not isinstance(amount, int) or isinstance(amount, bool) or amount <= 0:
+                errors.append("amount must be a positive integer when provided")
