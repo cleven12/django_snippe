@@ -46,3 +46,9 @@ Copy the `django_snippe/` directory into your Django project root alongside `man
 
 Add `django_snippe` to `INSTALLED_APPS` and configure your Snippe credentials in `settings.py`:
 
+```python
+INSTALLED_APPS = [
+    ...,
+    "django_snippe",
+]
+
