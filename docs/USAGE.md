@@ -16,3 +16,9 @@ PaymentHelper / PayoutHelper / SessionHelper  -->  Snippe API (https://api.snipp
                                                           |
                                                           v
                                             HMAC-SHA256 Verification + Idempotency
+                                                          |
+                                                          v
+                                            Update ORM Model + Dispatch Django Signal
+```
+
+## Django Settings Reference
