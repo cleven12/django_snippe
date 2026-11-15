@@ -82,3 +82,9 @@ class SnippeIdempotencyError(SnippeException):
 
 class SnippeRateLimitError(SnippeException):
     """Raised on HTTP 429 when the Snippe API rate limit is exceeded."""
+
+    default_code = 429
+    default_error_code = "rate_limit_exceeded"
+
+
+class SnippeServerError(SnippeException):
