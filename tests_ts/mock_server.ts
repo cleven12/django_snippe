@@ -646,3 +646,9 @@ export class SnippeMockServer {
 
     // 14. GET /sessions/:reference
     const getSessionMatch = normalizedPath.match(/^\/sessions\/([^/]+)$/);
+    if (req.method === "GET" && getSessionMatch) {
+      const scopeErr = this.checkScope(apiKey, "collection:read");
+      if (scopeErr) return scopeErr;
+
+      const reference = getSessionMatch[1];
+      const session = this.sessions.get(reference);
