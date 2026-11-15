@@ -88,3 +88,9 @@ class SnippeRateLimitError(SnippeException):
 
 
 class SnippeServerError(SnippeException):
+    """Raised on HTTP 500 or 503 upstream Snippe server errors."""
+
+    default_code = 500
+    default_error_code = "internal_server_error"
+
+
