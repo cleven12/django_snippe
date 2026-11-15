@@ -82,3 +82,7 @@ class SnippeWebhookEventAdmin(admin.ModelAdmin):
         "signature",
         "timestamp",
         "processed",
+        "error_message",
+        "created_at",
+    ]
+    ordering = ["-created_at"]
