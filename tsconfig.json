@@ -10,3 +10,4 @@
     "resolveJsonModule": true
   },
   "include": ["tests_ts/**/*.ts"]
+}
