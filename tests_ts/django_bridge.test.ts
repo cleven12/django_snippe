@@ -88,3 +88,9 @@ import json, os, httpx, django
 from django.conf import settings
 from django.core.management import call_command
 from django.test import Client
+
+os.environ["DJANGO_SETTINGS_MODULE"] = "tests.settings"
+django.setup()
+call_command("migrate", verbosity=0)
+
+settings.SNIPPE_API_KEY = "snp_live_bridge_key"
