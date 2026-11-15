@@ -130,3 +130,9 @@ class PaymentHelper:
             from snippe import Customer
 
             customer = Customer(
+                firstname=customer_firstname,
+                lastname=customer_lastname,
+                email=customer_email,
+            )
+            call_kwargs: Dict[str, Any] = {
+                "amount": amount,
