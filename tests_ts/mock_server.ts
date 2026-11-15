@@ -604,3 +604,9 @@ export class SnippeMockServer {
         metadata: parsedBody.metadata ?? {},
         expires_at: expires.toISOString(),
         created_at: now.toISOString(),
+      };
+      this.sessions.set(reference, session);
+      return saveIdempotent(201, { status: "success", data: session });
+    }
+
+    // 12. GET /sessions
