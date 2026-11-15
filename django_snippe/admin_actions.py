@@ -16,3 +16,9 @@ def mark_payment_completed(modeladmin, request, queryset):
 
 
 mark_payment_completed.short_description = "Mark selected payments as completed"
+
+
+def mark_payment_failed(modeladmin, request, queryset):
+    """Mark selected pending payments as failed."""
+    count = 0
+    for payment in queryset.filter(status="pending"):
