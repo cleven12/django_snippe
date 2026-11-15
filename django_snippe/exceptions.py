@@ -70,3 +70,9 @@ class SnippeConflictError(SnippeException):
     """Raised on HTTP 409 when a duplicate reference or conflicting state occurs."""
 
     default_code = 409
+    default_error_code = "conflict"
+
+
+class SnippeIdempotencyError(SnippeException):
+    """Raised on HTTP 422 when an idempotency key is reused with different parameters."""
+
