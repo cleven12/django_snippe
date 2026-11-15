@@ -88,3 +88,9 @@ def get_async_client():
     Return an initialized asynchronous AsyncSnippe API client from Django settings.
 
     Raises:
+        SnippeConfigError: If SNIPPE_API_KEY is missing or client initialization fails.
+    """
+    from snippe import AsyncSnippe
+
+    api_key = get_setting("API_KEY", required=True)
+    base_url = get_setting("BASE_URL")
