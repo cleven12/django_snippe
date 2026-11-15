@@ -64,3 +64,9 @@ class Migration(migrations.Migration):
             name="SnippePayout",
             fields=[
                 (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("reference", models.CharField(max_length=100, unique=True)),
