@@ -412,3 +412,9 @@ export class SnippeMockServer {
       const all = Array.from(this.payments.values());
 
       return Response.json({
+        status: "success",
+        data: {
+          payments: all.slice(offset, offset + limit),
+          limit,
+          offset,
+        },
