@@ -94,3 +94,9 @@ payment = PaymentHelper.create_mobile_payment(
 
 # Re-trigger USSD push if the customer missed the prompt
 PaymentHelper.trigger_push(payment.reference)
+```
+
+### 2. Create a Hosted Checkout Session
+
+```python
+from django_snippe.helpers import SessionHelper
