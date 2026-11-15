@@ -58,3 +58,9 @@ def test_webhook_requires_event_and_reference(mock_setting, client):
 
 
 @patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_marks_payment_completed(mock_setting, client):
+    payment = _make_payment()
+    received = {}
+
+    def _receiver(sender, payment, **kwargs):
+        received["payment"] = payment
