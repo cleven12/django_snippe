@@ -112,3 +112,9 @@ export function verifyWebhookSignature(
   if (!signature || !timestamp) return false;
   const ts = Number(timestamp);
   if (!Number.isFinite(ts)) return false;
+  const nowSec = Math.floor(Date.now() / 1000);
+  if (Math.abs(nowSec - ts) > toleranceSeconds) return false;
+  const cleanSig = signature.startsWith("sha256=") ? signature.slice(7) : signature;
+  const expected = signWebhookPayload(rawBody, timestamp, signingKey);
+  return cleanSig === expected;
+}
