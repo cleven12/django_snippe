@@ -34,3 +34,9 @@ def get_setting(name: str, default: Any = None, required: bool = False) -> Any:
     if required and not value:
         raise SnippeConfigError(f"SNIPPE_{name} is required. Add it to your Django settings.py.")
     return value
+
+
+def get_api_version() -> str:
+    """Return the configured Snippe API version (defaults to 2026-01-25)."""
+    return str(get_setting("API_VERSION", default=API_VERSION))
+
