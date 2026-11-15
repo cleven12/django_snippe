@@ -454,3 +454,9 @@ class PayoutHelper:
         return services.sync_payout_status(reference)
 
     @staticmethod
+    def get_payout_by_reference(reference: str) -> Optional[SnippePayout]:
+        """Look up a local SnippePayout by its reference."""
+        return SnippePayout.objects.filter(reference=reference).first()
+
+    @staticmethod
+    def get_pending_payouts(limit: int = 100) -> List[SnippePayout]:
