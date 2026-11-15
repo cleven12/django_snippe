@@ -298,3 +298,9 @@ def list_payments(limit: int = 20, offset: int = 0) -> Any:
     client = get_client()
     return client.list_payments(limit=limit, offset=offset)
 
+
+def search_payments(query: str, limit: int = 20, offset: int = 0) -> Dict[str, Any]:
+    """Search recorded payments via GET /v1/payments/search."""
+    client = get_client()
+    response = client._client.get(
+        "/payments/search",
