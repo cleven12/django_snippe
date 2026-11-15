@@ -34,3 +34,9 @@ class SnippeException(Exception):
 class SnippeConfigError(SnippeException):
     """Raised when required django-snippe settings are missing or invalid."""
 
+    default_code = 500
+    default_error_code = "configuration_error"
+
+
+class SnippeValidationError(SnippeException):
+    """Raised on HTTP 400 validation errors or malformed input."""
