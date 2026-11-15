@@ -394,3 +394,9 @@ def create_session(
     customer: Optional[Dict[str, Any]] = None,
     redirect_url: Optional[str] = None,
     webhook_url: Optional[str] = None,
+    metadata: Optional[Dict[str, Any]] = None,
+    idempotency_key: Optional[str] = None,
+) -> SnippeSession:
+    """Create a hosted checkout session via POST /api/v1/sessions and store SnippeSession."""
+    client = get_client()
+    payload: Dict[str, Any] = {
