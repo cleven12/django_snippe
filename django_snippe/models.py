@@ -28,3 +28,9 @@ class SnippePayment(models.Model):
         QR = "dynamic-qr", "QR Code"
 
     reference = models.CharField(max_length=100, unique=True)
+    payment_type = models.CharField(max_length=20, choices=PaymentType.choices)
+    amount = models.PositiveIntegerField(validators=[MinValueValidator(100)])
+    currency = models.CharField(max_length=10, validators=[CurrencyValidator.validate_currency])
+    phone_number = models.CharField(
+        max_length=20, blank=True, default="", validators=[PhoneValidator.validate_phone]
+    )
