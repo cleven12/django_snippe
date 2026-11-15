@@ -190,3 +190,9 @@ def create_mobile_payment(
 
 
 def create_card_payment(
+    amount: int,
+    currency: str,
+    phone_number: str,
+    customer: Any,
+    callback_url: str,
+    webhook_url: Optional[str] = None,
