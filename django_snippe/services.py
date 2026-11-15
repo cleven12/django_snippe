@@ -130,3 +130,9 @@ def _save_payout(
     defaults = {
         "channel": channel_type or SnippePayout.Channel.MOBILE,
         "provider": provider,
+        "amount": amount_val,
+        "fee_amount": fees_val,
+        "total_amount": total_val,
+        "currency": currency_val,
+        "recipient_name": (_opt_str(recipient_obj, "name") if recipient_obj else None)
+        or "Recipient",
