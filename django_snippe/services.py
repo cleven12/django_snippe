@@ -94,3 +94,9 @@ def _save_payment(
         "metadata": resolved_meta,
         "expires_at": _parse_dt(_opt_str(result, "expires_at")),
     }
+    payment, _ = SnippePayment.objects.update_or_create(
+        reference=result.reference,
+        defaults=defaults,
+    )
+    return payment
+
