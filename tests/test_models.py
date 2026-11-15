@@ -52,3 +52,9 @@ class TestSnippePayment:
             phone_number="0712345678",
         )
         with pytest.raises(ValidationError):
+            payment.full_clean()
+
+    def test_full_clean_rejects_invalid_phone(self):
+        payment = SnippePayment(
+            reference="PAY-3",
+            payment_type=SnippePayment.PaymentType.MOBILE,
