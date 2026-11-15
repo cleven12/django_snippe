@@ -88,3 +88,9 @@ class TestPaymentValidator:
 
 class TestPayoutValidator:
     def test_valid_mobile_payout(self):
+        valid, errors = PayoutValidator.validate_payout_data(
+            amount=5000,
+            currency="TZS",
+            channel="mobile",
+            recipient_name="Jane Doe",
+            recipient_phone="0712345678",
