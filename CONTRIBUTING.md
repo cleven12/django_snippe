@@ -28,3 +28,9 @@ Tests use a standalone in-memory SQLite configuration at `tests/settings.py`:
 pytest --cov=django_snippe --cov-report=term-missing
 ```
 
+### 3. Linting
+
+```bash
+ruff check django_snippe tests
+```
+
