@@ -184,3 +184,9 @@ For direct SDK access:
 
 ```python
 from django_snippe.conf import get_client, get_async_client
+
+# Synchronous
+client = get_client()
+balance = client.get_balance()
+
+# Asynchronous (ASGI / async views)
