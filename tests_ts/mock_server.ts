@@ -592,3 +592,9 @@ export class SnippeMockServer {
         reference,
         amount,
         currency: String(parsedBody.currency ?? "TZS"),
+        allow_custom_amount: allowCustom,
+        allowed_methods: Array.isArray(parsedBody.allowed_methods)
+          ? parsedBody.allowed_methods
+          : ["mobile_money"],
+        status: "active",
+        checkout_url: `https://checkout.snippe.sh/s/${reference}`,
