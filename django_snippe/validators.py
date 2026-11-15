@@ -136,3 +136,9 @@ class CurrencyValidator:
 
 class PhoneValidator:
     """Django model field validator for East African mobile numbers."""
+
+    @staticmethod
+    def validate_phone(value: str) -> None:
+        if not _is_valid_east_africa_phone(value):
+            raise ValidationError(f"{value!r} is not a valid East African mobile number.")
+
