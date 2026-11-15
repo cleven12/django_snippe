@@ -178,3 +178,9 @@ class PaymentHelper:
 
         except Exception as exc:
             PaymentLogger.log_payment_failed(customer_firstname, str(exc))
+            raise PaymentCreationError(f"Failed to create card payment: {exc}") from exc
+
+    @staticmethod
+    def create_qr_payment(
+        amount: int,
+        currency: str,
