@@ -196,3 +196,9 @@ class TestPayoutHelper:
             PayoutHelper.create_mobile_payout(
                 amount=5000,
                 currency="TZS",
+                recipient_name="J",
+                recipient_phone="0712345678",
+            )
+        assert not SnippePayout.objects.exists()
+
+    @patch("django_snippe.helpers.get_client")
