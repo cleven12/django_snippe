@@ -64,3 +64,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
   });
 
   test("GET /api/v1/sessions, GET /api/v1/sessions/:reference, and POST /api/v1/sessions/:reference/cancel", async () => {
+    const createRes = await mock.fetch(`${baseUrl}/api/v1/sessions`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        amount: 10000,
+        currency: "TZS",
