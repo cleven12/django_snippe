@@ -208,3 +208,9 @@ class TestPayoutHelper:
         mock_get_client.return_value = client
 
         with pytest.raises(PayoutCreationError):
+            PayoutHelper.create_mobile_payout(
+                amount=5000,
+                currency="TZS",
+                recipient_name="Jane Doe",
+                recipient_phone="0712345678",
+            )
