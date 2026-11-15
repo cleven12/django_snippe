@@ -16,3 +16,9 @@ def make_payment(**overrides):
     )
     defaults.update(overrides)
     return SnippePayment.objects.create(**defaults)
+
+
+def make_payout(**overrides):
+    defaults = dict(
+        reference="PAYOUT-1",
+        channel=SnippePayout.Channel.MOBILE,
