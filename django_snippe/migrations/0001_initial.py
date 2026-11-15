@@ -16,3 +16,9 @@ class Migration(migrations.Migration):
                         auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
                     ),
                 ),
+                ("reference", models.CharField(max_length=100, unique=True)),
+                (
+                    "payment_type",
+                    models.CharField(
+                        choices=[
+                            ("mobile", "Mobile Money"),
