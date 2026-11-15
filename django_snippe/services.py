@@ -328,3 +328,9 @@ def create_mobile_payout(
     client = get_client()
     result = client.create_mobile_payout(
         amount=amount,
+        recipient_name=recipient_name,
+        recipient_phone=recipient_phone,
+        narration=narration,
+        webhook_url=webhook_url,
+        metadata=metadata,
+        idempotency_key=idempotency_key,
