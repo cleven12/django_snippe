@@ -184,3 +184,9 @@ class PaymentValidator:
             if not _is_valid_east_africa_phone(phone_number):
                 errors.append("phone_number must be a valid East African mobile number")
         elif payment_type in {"card", "dynamic-qr"}:
+            if phone_number and not _is_valid_east_africa_phone(phone_number):
+                errors.append("phone_number must be a valid East African mobile number")
+        else:
+            errors.append(f"unsupported payment_type: {payment_type}")
+
+        if idempotency_key is not None:
