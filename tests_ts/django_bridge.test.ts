@@ -184,3 +184,9 @@ print("BRIDGE_OK")
     const stderr = await new Response(proc.stderr).text();
     const exitCode = await proc.exited;
 
+    if (exitCode !== 0) {
+      throw new Error(`Django bridge failed: ${stderr}`);
+    }
+    expect(exitCode).toBe(0);
+    expect(stdout).toContain("BRIDGE_OK");
+  });
