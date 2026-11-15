@@ -214,3 +214,9 @@ class TestPayoutHelper:
                 recipient_name="Jane Doe",
                 recipient_phone="0712345678",
             )
+
+
+class TestSessionHelper:
+    @patch("django_snippe.services.get_client")
+    def test_create_and_cancel_checkout_session(self, mock_get_client):
+        client = MagicMock()
