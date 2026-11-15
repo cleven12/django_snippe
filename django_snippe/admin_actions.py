@@ -94,3 +94,9 @@ def retry_payout(modeladmin, request, queryset):
         payout.save()
         count += 1
         PayoutLogger.log_payout_status_change(
+            payout.reference, "failed", "pending", reason="Manual retry from admin"
+        )
+    messages.success(request, f"Retried {count} payout(s)")
+
+
+retry_payout.short_description = "Retry failed payouts (reset to pending)"
