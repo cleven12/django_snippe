@@ -100,3 +100,9 @@ class Migration(migrations.Migration):
                 ("failure_reason", models.TextField(blank=True, null=True)),
                 ("webhook_url", models.URLField(blank=True, null=True)),
                 ("metadata", models.JSONField(blank=True, default=dict)),
+                ("completed_at", models.DateTimeField(blank=True, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+            ],
+            options={
+                "verbose_name": "Payout",
