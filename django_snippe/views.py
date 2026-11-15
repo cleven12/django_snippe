@@ -316,3 +316,9 @@ class SnippeWebhookView(View):
             logger.info("Session %s marked as expired", reference)
         except SnippeSession.DoesNotExist:
             logger.error("Session %s not found when handling expiration", reference)
+
+    def handle_session_cancelled(
+        self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
+    ) -> None:
+        inner = inner or data
+        try:
