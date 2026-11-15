@@ -34,3 +34,9 @@ def make_payout(**overrides):
 class TestSnippePayment:
     def test_create_and_str(self):
         payment = make_payment()
+        assert payment.pk is not None
+        assert payment.status == SnippePayment.Status.PENDING
+        assert "PAY-1" in str(payment)
+
+    def test_reference_must_be_unique(self):
+        make_payment(reference="DUPLICATE")
