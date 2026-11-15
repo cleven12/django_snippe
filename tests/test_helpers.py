@@ -94,3 +94,9 @@ class TestPaymentHelper:
         client.create_qr_payment.return_value = _mock_api_payment(
             "QR-1", qr_code="BASE64QR", token="TOK-1"
         )
+        mock_get_client.return_value = client
+
+        payment = PaymentHelper.create_qr_payment(
+            amount=10000,
+            currency="TZS",
+            phone_number="0712345678",
