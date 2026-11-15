@@ -16,3 +16,9 @@ describe("Snippe 2026-01-25 Webhooks & HMAC-SHA256 Signature Verification", () =
       amount: 50000,
       currency: "TZS",
     });
+
+    expect(payload.api_version).toBe("2026-01-25");
+    expect(payload.amount).toEqual({ value: 50000, currency: "TZS" });
+    expect(payload.data.amount).toEqual({ value: 50000, currency: "TZS" });
+    expect(payload.data.reference).toBe("pay_2026_abc");
+  });
