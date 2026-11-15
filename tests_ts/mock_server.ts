@@ -352,3 +352,9 @@ export class SnippeMockServer {
         fee_amount: fee,
         net_amount: amount - fee,
         psp_reference: `psp_${reference}`,
+        push_count: paymentType === "mobile" ? 1 : 0,
+        expires_at: expires.toISOString(),
+        created_at: now.toISOString(),
+      };
+      this.payments.set(reference, record);
+      return saveIdempotent(201, { status: "success", data: record });
