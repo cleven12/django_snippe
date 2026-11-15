@@ -472,3 +472,9 @@ def get_session(reference: str) -> SnippeSession:
             "metadata": data.get("metadata") or {},
             "expires_at": _parse_dt(data.get("expires_at")),
             "completed_at": _parse_dt(data.get("completed_at")),
+        },
+    )
+    return session
+
+
+def list_sessions(limit: int = 20, offset: int = 0) -> List[Dict[str, Any]]:
