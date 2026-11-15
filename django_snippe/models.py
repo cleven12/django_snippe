@@ -154,3 +154,9 @@ class SnippePayout(models.Model):
             self.Status.REVERSED,
         }
 
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = SnippePayout.objects.filter(pk=self.pk).first()
+            if old_instance and old_instance.status != self.status:
+                PayoutLogger.log_payout_status_change(
+                    self.reference, old_instance.status, self.status
