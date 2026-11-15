@@ -28,3 +28,9 @@ Production-ready Django integration for the [Snippe](https://snippe.sh) payment 
 pip install django-snippe
 ```
 
+### From Git
+
+```bash
+pip install git+https://github.com/cleven12/django_snippe.git
+```
+
