@@ -76,3 +76,9 @@ def test_webhook_marks_payment_completed(mock_setting, client):
     assert payment.status == SnippePayment.Status.COMPLETED
     assert received["payment"].reference == payment.reference
 
+
+@patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_handles_2026_01_25_nested_data_amount_object(mock_setting, client):
+    payment = _make_payment(reference="WH-2026-NESTED")
+    payload = {
+        "id": "evt_2026_001",
