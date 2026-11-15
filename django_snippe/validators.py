@@ -16,3 +16,9 @@ SUPPORTED_SESSION_METHODS = {"mobile_money", "card", "qr", "mobile", "dynamic-qr
 
 SUPPORTED_BANK_CODES = {
     "ABSA",
+    "ACCESS",
+    "AKIBA",
+    "AMANA",
+    "AZANIA",
+    "BOA",
+    "BARODA",
