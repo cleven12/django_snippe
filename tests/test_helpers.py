@@ -10,3 +10,9 @@ from django_snippe.models import SnippePayment, SnippePayout, SnippeSession
 
 pytestmark = pytest.mark.django_db
 
+
+def _mock_api_payment(reference="API-REF-1", payment_url=None, qr_code=None, token=None):
+    api_payment = MagicMock()
+    api_payment.reference = reference
+    api_payment.status = "pending"
+    api_payment.payment_url = payment_url
