@@ -10,3 +10,9 @@ from django.test import RequestFactory
 from django_snippe import admin_actions, services
 from django_snippe.admin import SnippePaymentAdmin, SnippePayoutAdmin, SnippeSessionAdmin
 from django_snippe.models import SnippePayment, SnippePayout, SnippeSession
+
+pytestmark = pytest.mark.django_db
+
+
+def _make_request():
+    rf = RequestFactory()
