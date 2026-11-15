@@ -64,3 +64,9 @@ class PaymentLogger:
         error: Optional[str] = None,
     ) -> None:
         """Log webhook processing outcome."""
+        status = "success" if success else "failed"
+        message = f"Webhook processed | event={event} | ref={reference} | status={status}"
+        if error:
+            message += f" | error={error}"
+            logger.error(message)
+        else:
