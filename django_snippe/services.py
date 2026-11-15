@@ -268,3 +268,9 @@ def trigger_payment_push(
     reference: str,
     phone_number: Optional[str] = None,
 ) -> Dict[str, Any]:
+    """
+    Trigger or re-trigger a USSD push for an existing pending payment.
+    Endpoint: POST /v1/payments/{reference}/push
+    """
+    client = get_client()
+    payload = {"phone_number": phone_number} if phone_number else {}
