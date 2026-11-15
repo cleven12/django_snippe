@@ -46,3 +46,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
   });
 
   test("POST /v1/payments enforces minimum 500 TZS requirement", async () => {
+    const res = await mock.fetch(`${baseUrl}/v1/payments`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        payment_type: "mobile",
+        details: { amount: 400, currency: "TZS" },
