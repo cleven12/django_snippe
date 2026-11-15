@@ -88,3 +88,9 @@ mark_payout_failed.short_description = "Mark selected payouts as failed"
 
 def retry_payout(modeladmin, request, queryset):
     """Retry failed payouts by resetting their status to pending."""
+    count = 0
+    for payout in queryset.filter(status="failed"):
+        payout.status = payout.Status.PENDING
+        payout.save()
+        count += 1
+        PayoutLogger.log_payout_status_change(
