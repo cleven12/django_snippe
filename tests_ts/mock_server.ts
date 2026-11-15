@@ -304,3 +304,9 @@ export class SnippeMockServer {
 
     // 1. POST /payments
     if (req.method === "POST" && normalizedPath === "/payments") {
+      const scopeErr = this.checkScope(apiKey, "collection:create");
+      if (scopeErr) return scopeErr;
+
+      const details = parsedBody.details ?? parsedBody;
+      const amount = Number(details.amount ?? parsedBody.amount ?? 0);
+      const currency = String(details.currency ?? parsedBody.currency ?? "TZS");
