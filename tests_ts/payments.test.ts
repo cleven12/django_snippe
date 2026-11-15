@@ -58,3 +58,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
     });
     expect(res.status).toBe(400);
     const json = await res.json();
+    expect(json.status).toBe("error");
+    expect(json.code).toBe(400);
+    expect(json.error_code).toBe("validation_error");
+  });
+
+  test("POST /v1/payments creates a card payment and returns hosted payment_url", async () => {
