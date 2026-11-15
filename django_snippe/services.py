@@ -280,3 +280,9 @@ def trigger_payment_push(
 
 def sync_payment_status(reference: str) -> SnippePayment:
     """Fetch latest payment status from GET /v1/payments/{reference} and update local record."""
+    client = get_client()
+    result = client.get_payment(reference)
+    existing = SnippePayment.objects.filter(reference=reference).first()
+    phone = existing.phone_number if existing else ""
+    ptype = _opt_str(result, "payment_type") or (
+        existing.payment_type if existing else SnippePayment.PaymentType.MOBILE
