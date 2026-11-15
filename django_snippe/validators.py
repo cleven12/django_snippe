@@ -106,3 +106,9 @@ def validate_idempotency_key(value: Optional[str]) -> None:
         return
     if not isinstance(value, str):
         raise ValidationError("idempotency_key must be a string.")
+    stripped = value.strip()
+    if not stripped or len(stripped) > MAX_IDEMPOTENCY_KEY_LENGTH:
+        raise ValidationError(
+            f"idempotency_key must be between 1 and {MAX_IDEMPOTENCY_KEY_LENGTH} characters."
+        )
+
