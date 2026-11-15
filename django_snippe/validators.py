@@ -64,3 +64,9 @@ EAST_AFRICA_PHONE_REGEX_PARTS = [
 
 
 def _normalize_phone(phone: str) -> str:
+    """Normalize East African mobile number to local 10-digit 0XXXXXXXXX form."""
+    if not phone or not isinstance(phone, str):
+        return ""
+    cleaned = "".join(c for c in phone if c.isdigit())
+    if cleaned.startswith(("255", "254", "256")) and len(cleaned) > 9:
+        cleaned = "0" + cleaned[3:]
