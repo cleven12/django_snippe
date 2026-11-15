@@ -58,3 +58,9 @@ class Migration(migrations.Migration):
                 ("completed_at", models.DateTimeField(blank=True, null=True)),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
                 ("updated_at", models.DateTimeField(auto_now=True)),
+            ],
+            options={
+                "verbose_name": "Checkout Session",
+                "verbose_name_plural": "Checkout Sessions",
+                "ordering": ["-created_at"],
+            },
