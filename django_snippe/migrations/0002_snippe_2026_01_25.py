@@ -148,3 +148,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="snippepayment",
             name="psp_reference",
+            field=models.CharField(blank=True, max_length=100, null=True),
+        ),
+        migrations.AddField(
+            model_name="snippepayout",
+            name="external_reference",
+            field=models.CharField(blank=True, max_length=100, null=True),
