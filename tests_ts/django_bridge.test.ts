@@ -136,3 +136,9 @@ payment = PaymentHelper.create_mobile_payment(
 assert payment.reference == "${payResp.data.reference}"
 assert payment.status == "pending"
 
+push_res = PaymentHelper.trigger_push(payment.reference, phone_number="255754123456")
+assert push_res["status"] == "pushed"
+
+payout = PayoutHelper.create_mobile_payout(
+    amount=10000,
+    currency="TZS",
