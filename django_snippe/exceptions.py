@@ -124,3 +124,6 @@ class PayoutCreationError(SnippeException):
 
 class SessionCreationError(SnippeException):
     """Raised when checkout session creation or cancellation fails."""
+
+    default_code = 400
+    default_error_code = "session_operation_failed"
