@@ -148,3 +148,9 @@ class PaymentHelper:
                 call_kwargs["cancel_url"] = cancel_url
             if callback_url is not None:
                 call_kwargs["callback_url"] = callback_url
+            if metadata is not None:
+                call_kwargs["metadata"] = metadata
+            if idempotency_key is not None:
+                call_kwargs["idempotency_key"] = idempotency_key
+
+            api_payment = client.create_card_payment(**call_kwargs)
