@@ -88,3 +88,9 @@ class SnippePayment(models.Model):
         super().save(*args, **kwargs)
 
 
+class SnippePayout(models.Model):
+    """Stores a payout disbursement record from the Snippe API (2026-01-25)."""
+
+    class Status(models.TextChoices):
+        PENDING = "pending", "Pending"
+        COMPLETED = "completed", "Completed"
