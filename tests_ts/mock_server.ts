@@ -214,3 +214,9 @@ export class SnippeMockServer {
     this.forceRateLimit = false;
   }
 
+  private errorJson(code: number, error_code: string, message: string): Response {
+    return Response.json(
+      {
+        status: "error",
+        code,
+        error_code,
