@@ -250,3 +250,9 @@ def create_qr_payment(
         callback_url=callback_url,
         webhook_url=webhook_url,
         metadata=metadata,
+        idempotency_key=idempotency_key,
+    )
+    return _save_payment(
+        result,
+        phone_number,
+        SnippePayment.PaymentType.QR,
