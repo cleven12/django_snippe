@@ -190,3 +190,9 @@ class PaymentValidator:
             errors.append(f"unsupported payment_type: {payment_type}")
 
         if idempotency_key is not None:
+            try:
+                validate_idempotency_key(idempotency_key)
+            except ValidationError as exc:
+                errors.extend(exc.messages)
+
+        return len(errors) == 0, errors
