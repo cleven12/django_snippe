@@ -46,3 +46,9 @@ def _extract_amount_and_currency(
 
 
 def _save_payment(
+    result: Any,
+    phone_number: str,
+    payment_type: str,
+    webhook_url: Optional[str],
+    metadata: Optional[Dict[str, Any]],
+    *,
