@@ -82,3 +82,9 @@ class SnippePayment(models.Model):
         if self.pk:
             old_instance = SnippePayment.objects.filter(pk=self.pk).first()
             if old_instance and old_instance.status != self.status:
+                PaymentLogger.log_payment_status_change(
+                    self.reference, old_instance.status, self.status
+                )
+        super().save(*args, **kwargs)
+
+
