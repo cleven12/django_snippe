@@ -148,3 +148,9 @@ export function buildWebhookPayload2026(params: {
     payment_channel: params.payment_channel ?? "M-PESA",
     payment_fee: params.payment_fee ?? Math.round(params.amount * 0.01),
     customer: params.customer ?? { firstname: "John", lastname: "Doe" },
+    metadata: params.metadata ?? {},
+    completed_at: params.status === "completed" ? nowIso : null,
+    created_at: nowIso,
+    timestamp: ts,
+    failure_reason: params.failure_reason ?? null,
+    data: {
