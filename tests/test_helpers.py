@@ -70,3 +70,9 @@ class TestPaymentHelper:
             )
         assert not SnippePayment.objects.exists()
 
+    @patch("django_snippe.helpers.get_client")
+    def test_create_card_payment_saves_record(self, mock_get_client):
+        client = MagicMock()
+        client.create_card_payment.return_value = _mock_api_payment(
+            "CARD-1", payment_url="https://pay.snippe.sh/x"
+        )
