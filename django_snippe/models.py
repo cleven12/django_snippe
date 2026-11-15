@@ -118,3 +118,9 @@ class SnippePayout(models.Model):
         blank=True,
         null=True,
         validators=[PhoneValidator.validate_phone],
+    )
+    recipient_bank = models.CharField(max_length=50, blank=True, null=True)
+    recipient_account = models.CharField(max_length=50, blank=True, null=True)
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
+    narration = models.CharField(max_length=255, blank=True, null=True)
+    external_reference = models.CharField(max_length=100, blank=True, null=True)
