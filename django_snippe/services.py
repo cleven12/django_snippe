@@ -40,3 +40,9 @@ def _extract_amount_and_currency(
     cur = getattr(raw_amount, "currency", None)
     if isinstance(val, int) and not isinstance(val, bool):
         return val, cur if isinstance(cur, str) else fallback_currency
+    if isinstance(raw_amount, int) and not isinstance(raw_amount, bool):
+        return raw_amount, fallback_currency
+    return 0, fallback_currency
+
+
+def _save_payment(
