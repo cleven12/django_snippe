@@ -424,3 +424,9 @@ def create_session(
     data = client._handle_response(response)
 
     cust = data.get("customer") or customer or {}
+    cust_name = (
+        cust.get("name")
+        or f"{cust.get('first_name', '')} {cust.get('last_name', '')}".strip()
+        or None
+    )
+    session, _ = SnippeSession.objects.update_or_create(
