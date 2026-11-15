@@ -64,3 +64,9 @@ export interface StoredSession {
   allow_custom_amount: boolean;
   allowed_methods: string[];
   status: "active" | "completed" | "expired" | "cancelled";
+  checkout_url: string;
+  redirect_url?: string;
+  webhook_url?: string;
+  customer?: Record<string, unknown>;
+  metadata: Record<string, unknown>;
+  expires_at: string;
