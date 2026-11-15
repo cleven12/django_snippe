@@ -64,3 +64,9 @@ class TestSnippePayment:
         )
         with pytest.raises(ValidationError):
             payment.full_clean()
+
+    def test_status_change_is_logged(self, caplog):
+        payment = make_payment()
+        with caplog.at_level("INFO", logger="django_snippe.audit"):
+            payment.status = SnippePayment.Status.COMPLETED
+            payment.save()
