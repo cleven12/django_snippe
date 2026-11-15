@@ -22,3 +22,9 @@ class PaymentHelper:
         customer_lastname: str,
         webhook_url: Optional[str] = None,
         metadata: Optional[Dict[str, Any]] = None,
+        customer_email: Optional[str] = None,
+        callback_url: Optional[str] = None,
+        idempotency_key: Optional[str] = None,
+    ) -> SnippePayment:
+        """
+        Create a mobile money payment (USSD push) and persist SnippePayment.
