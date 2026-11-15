@@ -46,3 +46,9 @@ class SnippePayment(models.Model):
     idempotency_key = models.CharField(
         max_length=30,
         blank=True,
+        null=True,
+        validators=[validate_idempotency_key],
+    )
+    fee_amount = models.PositiveIntegerField(blank=True, null=True)
+    net_amount = models.PositiveIntegerField(blank=True, null=True)
+    psp_reference = models.CharField(max_length=100, blank=True, null=True)
