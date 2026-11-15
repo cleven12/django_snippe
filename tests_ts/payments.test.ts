@@ -100,3 +100,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
     const json = await res.json();
     expect(json.data.payment_type).toBe("dynamic-qr");
     expect(json.data.payment_qr_code).toBeDefined();
+    expect(json.data.payment_token).toStartWith("tok_");
+  });
+
+  test("POST /v1/payments/{reference}/push triggers manual USSD push on pending payment", async () => {
+    const createRes = await mock.fetch(`${baseUrl}/v1/payments`, {
+      method: "POST",
