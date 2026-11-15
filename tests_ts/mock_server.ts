@@ -46,3 +46,9 @@ export interface StoredPayout {
   recipient: {
     name: string;
     phone?: string;
+    bank?: string;
+    account?: string;
+  };
+  narration?: string;
+  webhook_url?: string;
+  metadata: Record<string, unknown>;
