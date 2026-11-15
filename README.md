@@ -16,3 +16,9 @@ Production-ready Django integration for the [Snippe](https://snippe.sh) payment 
 - **Collections (`/v1/payments`)**: Mobile money USSD push (`mobile`), hosted card redirects (`card`), dynamic QR codes (`dynamic-qr`), manual USSD push retry (`/v1/payments/{reference}/push`), status sync, search, pagination, and account balance checks.
 - **Hosted Checkout Sessions (`/api/v1/sessions`)**: Create, inspect, list, and cancel Snippe-hosted checkout sessions with fixed or custom amounts.
 - **Disbursements / Payouts (`/v1/payouts/send`)**: Instant mobile money and Tanzanian bank transfer payouts (CRDB, NMB, NBC, ABSA, Equity, Stanbic, and 35+ supported banks) with fee calculation.
+- **Webhook Verification & Idempotency**: `SnippeWebhookView` verifies `X-Webhook-Signature` HMAC-SHA256 signatures, parses `2026-01-25` nested `data.amount` (`{"value": 50000, "currency": "TZS"}`) payloads, deduplicates deliveries via `SnippeWebhookEvent`, and dispatches Django signals.
+- **Django Admin & Bulk Actions**: Built-in ModelAdmin interfaces with search, status filtering, and bulk retry/void/cancel operations.
+- **Fast Local Testing (Bun + TypeScript & Pytest)**: Includes a zero-dependency Bun + TypeScript mock Snippe `2026-01-25` contract server and end-to-end Django bridge test suite that runs locally in under two seconds without external API credentials.
+
+## Installation
+
