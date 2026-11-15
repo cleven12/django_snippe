@@ -106,3 +106,9 @@ responses_map = {
     ("POST", "/api/v1/sessions"): json.loads(${JSON.stringify(JSON.stringify(sessionResp))}),
 }
 
+def handler(request: httpx.Request) -> httpx.Response:
+    key = (request.method, request.url.path)
+    body = responses_map.get(key, {"status": "success", "data": {}})
+    return httpx.Response(200, json=body)
+
+orig_get_client = snippe_conf.get_client
