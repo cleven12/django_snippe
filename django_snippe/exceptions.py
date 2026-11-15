@@ -58,3 +58,9 @@ class SnippePermissionError(SnippeException):
     default_code = 403
     default_error_code = "forbidden_scope"
 
+
+class SnippeNotFoundError(SnippeException):
+    """Raised on HTTP 404 when a requested payment, payout, or session does not exist."""
+
+    default_code = 404
+    default_error_code = "not_found"
