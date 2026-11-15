@@ -166,3 +166,9 @@ export function buildWebhookPayload2026(params: {
       failure_reason: params.failure_reason ?? null,
     },
   };
+}
+
+export class SnippeMockServer {
+  public server: ReturnType<typeof Bun.serve> | null = null;
+  public payments = new Map<string, StoredPayment>();
+  public payouts = new Map<string, StoredPayout>();
