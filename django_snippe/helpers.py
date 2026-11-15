@@ -514,3 +514,9 @@ class SessionHelper:
             SessionLogger.log_session_created(session.reference, session.amount, session.currency)
             return session
         except Exception as exc:
+            SessionLogger.log_session_failed("new-session", str(exc))
+            raise SessionCreationError(f"Failed to create checkout session: {exc}") from exc
+
+    @staticmethod
+    def cancel_checkout_session(reference: str) -> SnippeSession:
+        """Cancel an active checkout session by reference."""
