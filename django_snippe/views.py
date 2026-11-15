@@ -328,3 +328,4 @@ class SnippeWebhookView(View):
             signals.session_cancelled.send(sender=SnippeSession, session=session)
             logger.info("Session %s marked as cancelled", reference)
         except SnippeSession.DoesNotExist:
+            logger.error("Session %s not found when handling cancellation", reference)
