@@ -94,3 +94,9 @@ def test_webhook_handles_2026_01_25_nested_data_amount_object(mock_setting, clie
     }
     response = _post(client, payload)
     assert response.status_code == 200
+    payment.refresh_from_db()
+    assert payment.status == SnippePayment.Status.COMPLETED
+    assert payment.amount == 50000
+    assert payment.currency == "TZS"
+    assert payment.payment_channel == "M-PESA"
+    assert payment.fee_amount == 250
