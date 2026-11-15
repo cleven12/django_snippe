@@ -370,3 +370,9 @@ def calculate_payout_fee(amount: int) -> Any:
 
 
 def sync_payout_status(reference: str) -> SnippePayout:
+    """Fetch latest payout status from GET /v1/payouts/{reference} and update local record."""
+    client = get_client()
+    result = client.get_payout(reference)
+    existing = SnippePayout.objects.filter(reference=reference).first()
+    webhook_url = existing.webhook_url if existing else None
+    res_meta = getattr(result, "metadata", None)
