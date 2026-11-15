@@ -418,3 +418,9 @@ export class SnippeMockServer {
           limit,
           offset,
         },
+      });
+    }
+
+    // 5. POST /payments/:reference/push
+    const pushMatch = normalizedPath.match(/^\/payments\/([^/]+)\/push$/);
+    if (req.method === "POST" && pushMatch) {
