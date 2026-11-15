@@ -130,3 +130,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
 
   test("GET /v1/payments, /v1/payments/{reference}, /v1/payments/search, and /v1/payments/balance", async () => {
     const c1 = await mock.fetch(`${baseUrl}/v1/payments`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        payment_type: "mobile",
+        details: { amount: 6000, currency: "TZS" },
+        phone_number: "0712111222",
