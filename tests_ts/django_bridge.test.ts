@@ -46,3 +46,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
           amount: 10000,
           channel: "mobile",
           recipient_name: "Cleven Godson",
+          recipient_phone: "255784111222",
+        }),
+      })
+    ).json();
+
+    const sessionResp = await (
