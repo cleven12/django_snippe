@@ -568,3 +568,9 @@ export class SnippeMockServer {
         return this.errorJson(404, "not_found", `Payout ${reference} not found`);
       }
       return Response.json({ status: "success", data: payout });
+    }
+
+    // 11. POST /sessions
+    if (req.method === "POST" && normalizedPath === "/sessions") {
+      const scopeErr = this.checkScope(apiKey, "collection:create");
+      if (scopeErr) return scopeErr;
