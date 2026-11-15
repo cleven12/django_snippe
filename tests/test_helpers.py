@@ -106,3 +106,9 @@ class TestPaymentHelper:
 
         assert payment.payment_type == SnippePayment.PaymentType.QR
         assert payment.payment_qr_code == "BASE64QR"
+        assert payment.payment_token == "TOK-1"
+
+    @patch("django_snippe.services.get_client")
+    def test_trigger_push_and_search(self, mock_get_client):
+        client = MagicMock()
+        client._handle_response.return_value = {"status": "pushed", "reference": "MOB-1"}
