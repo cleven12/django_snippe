@@ -226,3 +226,9 @@ export class SnippeMockServer {
     );
   }
 
+  private checkScope(apiKey: string, requiredScope: ApiScope): Response | null {
+    const configured = this.keyScopes.get(apiKey);
+    if (configured && !configured.has(requiredScope)) {
+      return this.errorJson(
+        403,
+        "forbidden_scope",
