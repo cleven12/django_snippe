@@ -88,3 +88,9 @@ export function detectMobileProvider(phone: string): string {
   }
   if (local.startsWith("062") || local.startsWith("061")) {
     return "HALOPESA";
+  }
+  return "MOBILE-MONEY";
+}
+
+export function signWebhookPayload(
+  rawBody: string,
