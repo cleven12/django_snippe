@@ -16,3 +16,9 @@ maintainers = [
     { name = "Cleven", email = "clevengodsontech@gmail.com" },
 ]
 dependencies = [
+    "django>=4.0",
+    "snippe>=0.1.0",
+]
+keywords = [
+    "django",
+    "payments",
