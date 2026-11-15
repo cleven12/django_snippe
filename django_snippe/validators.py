@@ -178,3 +178,9 @@ class PaymentValidator:
                 errors.append(f"amount must be at least {min_amount}")
 
         if not currency or currency not in SUPPORTED_CURRENCIES:
+            errors.append(f"currency must be one of {', '.join(sorted(SUPPORTED_CURRENCIES))}")
+
+        if payment_type == "mobile":
+            if not _is_valid_east_africa_phone(phone_number):
+                errors.append("phone_number must be a valid East African mobile number")
+        elif payment_type in {"card", "dynamic-qr"}:
