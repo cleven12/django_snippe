@@ -142,3 +142,9 @@ class PaymentHelper:
             }
             if phone_number:
                 call_kwargs["phone_number"] = phone_number
+            if redirect_url is not None:
+                call_kwargs["redirect_url"] = redirect_url
+            if cancel_url is not None:
+                call_kwargs["cancel_url"] = cancel_url
+            if callback_url is not None:
+                call_kwargs["callback_url"] = callback_url
