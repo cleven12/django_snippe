@@ -286,3 +286,9 @@ def sync_payment_status(reference: str) -> SnippePayment:
     phone = existing.phone_number if existing else ""
     ptype = _opt_str(result, "payment_type") or (
         existing.payment_type if existing else SnippePayment.PaymentType.MOBILE
+    )
+    webhook_url = existing.webhook_url if existing else None
+    res_meta = getattr(result, "metadata", None)
+    metadata = res_meta if isinstance(res_meta, dict) else (existing.metadata if existing else {})
+    return _save_payment(result, phone, ptype, webhook_url, metadata)
+
