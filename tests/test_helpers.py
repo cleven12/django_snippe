@@ -226,3 +226,9 @@ class TestSessionHelper:
             {
                 "reference": "SES-100",
                 "amount": 15000,
+                "currency": "TZS",
+                "allow_custom_amount": False,
+                "allowed_methods": ["mobile_money", "card"],
+                "status": "active",
+                "checkout_url": "https://checkout.snippe.sh/s/SES-100",
+            },
