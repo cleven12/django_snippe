@@ -490,3 +490,9 @@ export class SnippeMockServer {
       }
 
       this.availableBalance -= totalValue;
+      const reference = `po_${crypto.randomUUID().slice(0, 12)}`;
+      const provider =
+        channel === "mobile"
+          ? detectMobileProvider(String(parsedBody.recipient_phone ?? ""))
+          : String(parsedBody.recipient_bank ?? "CRDB");
+
