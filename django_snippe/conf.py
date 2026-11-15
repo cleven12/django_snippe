@@ -10,3 +10,9 @@ from .exceptions import SnippeConfigError
 DEFAULT_BASE_URL = "https://api.snippe.sh"
 DEFAULT_TIMEOUT = 30.0
 DEFAULT_CURRENCY = "TZS"
+DEFAULT_MIN_PAYMENT_AMOUNT = 500
+DEFAULT_MIN_PAYOUT_AMOUNT = 5000
+DEFAULT_WEBHOOK_TOLERANCE = 300
+
+
+def get_setting(name: str, default: Any = None, required: bool = False) -> Any:
