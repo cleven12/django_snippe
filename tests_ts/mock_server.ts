@@ -70,3 +70,9 @@ export interface StoredSession {
   customer?: Record<string, unknown>;
   metadata: Record<string, unknown>;
   expires_at: string;
+  created_at: string;
+  completed_at?: string;
+}
+
+export function detectMobileProvider(phone: string): string {
+  const digits = phone.replace(/\D/g, "");
