@@ -28,3 +28,9 @@ def make_payout(**overrides):
         recipient_phone="0712345678",
     )
     defaults.update(overrides)
+    return SnippePayout.objects.create(**defaults)
+
+
+class TestSnippePayment:
+    def test_create_and_str(self):
+        payment = make_payment()
