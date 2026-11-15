@@ -70,3 +70,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("reference", models.CharField(max_length=100, unique=True)),
+                (
+                    "channel",
+                    models.CharField(
+                        choices=[("mobile", "Mobile Money"), ("bank", "Bank Transfer")],
+                        max_length=20,
+                    ),
