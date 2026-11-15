@@ -76,3 +76,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
       phone_number: "0712345678",
       customer: { firstname: "John", lastname: "Doe" },
     });
+    const r3 = await mock.fetch(`${baseUrl}/v1/payments`, {
+      method: "POST",
+      headers,
+      body: bodyMismatch,
+    });
+    expect(r3.status).toBe(422);
