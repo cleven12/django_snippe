@@ -76,3 +76,9 @@ class PaymentHelper:
                 status=getattr(api_payment, "status", None)
                 if isinstance(getattr(api_payment, "status", None), str)
                 else SnippePayment.Status.PENDING,
+                callback_url=callback_url,
+                webhook_url=webhook_url,
+                customer_firstname=customer_firstname,
+                customer_lastname=customer_lastname,
+                customer_email=customer_email,
+                idempotency_key=idempotency_key,
