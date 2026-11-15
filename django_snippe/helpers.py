@@ -340,3 +340,9 @@ class PayoutHelper:
             call_kwargs: Dict[str, Any] = {
                 "amount": amount,
                 "currency": currency,
+                "recipient_name": recipient_name,
+                "recipient_phone": recipient_phone,
+                "narration": narration,
+                "webhook_url": webhook_url,
+            }
+            if metadata is not None:
