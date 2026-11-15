@@ -22,3 +22,9 @@ Include, where possible:
 - Steps to reproduce or a minimal proof of concept
 - The version or commit hash affected
 
+You will receive an initial response within 72 hours. Once a fix is verified, we will coordinate disclosure and credit the reporter (unless anonymity is requested).
+
+## Scope
+
+In scope:
+
