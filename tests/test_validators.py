@@ -34,3 +34,9 @@ def test_phone_validator_rejects_invalid_numbers(phone):
         PhoneValidator.validate_phone(phone)
 
 
+@pytest.mark.parametrize("name", ["a", "", "   "])
+def test_validate_recipient_name_rejects_too_short(name):
+    with pytest.raises(ValidationError):
+        validate_recipient_name(name)
+
+
