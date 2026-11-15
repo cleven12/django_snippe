@@ -94,3 +94,9 @@ class Migration(migrations.Migration):
             model_name="snippepayment",
             name="callback_url",
             field=models.URLField(blank=True, null=True),
+        ),
+        migrations.AddField(
+            model_name="snippepayment",
+            name="completed_at",
+            field=models.DateTimeField(blank=True, null=True),
+        ),
