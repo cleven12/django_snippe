@@ -106,3 +106,9 @@ class PayoutLogger:
         logger.info(message)
 
     @staticmethod
+    def log_payout_failed(reference: str, error_message: str) -> None:
+        """Log when a payout creation fails."""
+        logger.error(f"Payout creation failed | ref={reference} | error={error_message}")
+
+
+class SessionLogger:
