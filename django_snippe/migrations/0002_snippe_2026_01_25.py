@@ -64,3 +64,9 @@ class Migration(migrations.Migration):
                 "verbose_name_plural": "Checkout Sessions",
                 "ordering": ["-created_at"],
             },
+        ),
+        migrations.CreateModel(
+            name="SnippeWebhookEvent",
+            fields=[
+                (
+                    "id",
