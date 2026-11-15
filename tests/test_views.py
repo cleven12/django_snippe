@@ -148,3 +148,9 @@ def test_webhook_marks_payment_expired_and_voided(mock_setting, client):
     assert void_payment.status == SnippePayment.Status.VOIDED
 
 
+@patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_marks_payout_completed_failed_and_reversed(mock_setting, client):
+    payout_ok = SnippePayout.objects.create(
+        reference="PO-WH-1",
+        channel=SnippePayout.Channel.MOBILE,
+        amount=5000,
