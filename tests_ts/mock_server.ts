@@ -442,3 +442,9 @@ export class SnippeMockServer {
       return Response.json({
         status: "success",
         data: {
+          reference: payment.reference,
+          status: "pushed",
+          push_count: payment.push_count,
+          phone_number: payment.phone_number,
+        },
+      });
