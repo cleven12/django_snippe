@@ -202,3 +202,9 @@ def create_card_payment(
     cancel_url: Optional[str] = None,
 ) -> SnippePayment:
     """Create a card payment and store SnippePayment."""
+    client = get_client()
+    kwargs: Dict[str, Any] = {
+        "amount": amount,
+        "currency": currency,
+        "phone_number": phone_number,
+        "customer": customer,
