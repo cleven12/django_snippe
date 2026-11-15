@@ -160,3 +160,9 @@ In Snippe API `2026-01-25`, payment creation requests pass `amount` as a flat in
     "payment_fee": 500,
     "completed_at": "2026-01-25T12:00:00Z"
   }
+}
+```
+
+`SnippeWebhookView` automatically parses both nested `2026-01-25` payloads and top-level payloads, verifies `X-Webhook-Signature` and `X-Webhook-Timestamp`, stores the delivery in `SnippeWebhookEvent` for idempotency, updates the corresponding model, and dispatches the appropriate signal:
+
+| Signal | Arguments | Triggered Event |
