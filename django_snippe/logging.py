@@ -94,3 +94,9 @@ class PayoutLogger:
 
     @staticmethod
     def log_payout_status_change(
+        reference: str,
+        old_status: str,
+        new_status: str,
+        reason: Optional[str] = None,
+    ) -> None:
+        """Log when a payout status transitions."""
