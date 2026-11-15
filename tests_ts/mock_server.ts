@@ -202,3 +202,9 @@ export class SnippeMockServer {
       this.server = null;
     }
   }
+
+  public reset(): void {
+    this.payments.clear();
+    this.payouts.clear();
+    this.sessions.clear();
+    this.idempotencyStore.clear();
