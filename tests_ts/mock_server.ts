@@ -184,3 +184,9 @@ export class SnippeMockServer {
       this.server = Bun.serve({
         port,
         fetch: (req) => this.handleRequest(req),
+      });
+      return `http://127.0.0.1:${this.server.port}`;
+    } catch {
+      return "http://snippe.local";
+    }
+  }
