@@ -16,3 +16,9 @@ def _opt_str(obj: Any, attr: str) -> Optional[str]:
 def _opt_int(obj: Any, attr: str) -> Optional[int]:
     """Return integer attribute if present and a real int (not bool), otherwise None."""
     val = getattr(obj, attr, None)
+    return val if isinstance(val, int) and not isinstance(val, bool) else None
+
+
+def _parse_dt(value: Any) -> Optional[datetime]:
+    """Parse an ISO-8601 timestamp string into a timezone-aware datetime object."""
+    if not value:
