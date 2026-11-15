@@ -40,3 +40,9 @@ class PaymentLogger:
             message += f" | reason={reason}"
         logger.info(message)
 
+    @staticmethod
+    def log_payment_failed(reference: str, error_message: str) -> None:
+        """Log when a payment creation or push operation fails."""
+        logger.error(f"Payment creation failed | ref={reference} | error={error_message}")
+
+    @staticmethod
