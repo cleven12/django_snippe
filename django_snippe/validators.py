@@ -160,3 +160,9 @@ class PaymentValidator:
         payment_type: str,
         *,
         enforce_minimum: bool = False,
+        idempotency_key: Optional[str] = None,
+    ) -> Tuple[bool, List[str]]:
+        """
+        Validate payment creation parameters.
+
+        Returns:
