@@ -76,3 +76,9 @@ class SnippePayment(models.Model):
             self.Status.FAILED,
             self.Status.EXPIRED,
             self.Status.VOIDED,
+        }
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = SnippePayment.objects.filter(pk=self.pk).first()
+            if old_instance and old_instance.status != self.status:
