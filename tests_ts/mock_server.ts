@@ -328,3 +328,9 @@ export class SnippeMockServer {
 
       const reference = `pay_${crypto.randomUUID().slice(0, 12)}`;
       const now = new Date();
+      const expires = new Date(now.getTime() + 4 * 60 * 60 * 1000);
+      const fee = Math.round(amount * 0.01);
+
+      const record: StoredPayment = {
+        reference,
+        status: "pending",
