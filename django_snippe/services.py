@@ -406,3 +406,9 @@ def create_session(
     if amount is not None:
         payload["amount"] = amount
     if allowed_methods is not None:
+        payload["allowed_methods"] = list(allowed_methods)
+    if customer is not None:
+        payload["customer"] = customer
+    if redirect_url:
+        payload["redirect_url"] = redirect_url
+    if webhook_url:
