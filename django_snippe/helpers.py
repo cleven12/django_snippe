@@ -244,3 +244,9 @@ class PaymentHelper:
                 payment_token=getattr(api_payment, "payment_token", None),
                 callback_url=callback_url,
                 webhook_url=webhook_url,
+                customer_firstname=customer_firstname,
+                customer_lastname=customer_lastname,
+                customer_email=customer_email,
+                idempotency_key=idempotency_key,
+                metadata=metadata or {},
+            )
