@@ -52,3 +52,9 @@ class TestPaymentValidator:
         assert valid is True
         assert errors == []
 
+    def test_rejects_non_positive_amount(self):
+        valid, errors = PaymentValidator.validate_payment_data(
+            amount=0, currency="TZS", phone_number="0712345678", payment_type="mobile"
+        )
+        assert valid is False
+        assert any("amount" in e for e in errors)
