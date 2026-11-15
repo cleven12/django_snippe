@@ -448,3 +448,9 @@ def create_session(
             "metadata": data.get("metadata") or metadata or {},
             "expires_at": _parse_dt(data.get("expires_at")),
         },
+    )
+    return session
+
+
+def get_session(reference: str) -> SnippeSession:
+    """Retrieve session details from GET /api/v1/sessions/{reference} and sync local record."""
