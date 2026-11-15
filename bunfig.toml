@@ -1,0 +1,3 @@
+[test]
+root = "./tests_ts"
+timeout = 15000
