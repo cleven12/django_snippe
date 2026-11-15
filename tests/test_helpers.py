@@ -202,3 +202,9 @@ class TestPayoutHelper:
         assert not SnippePayout.objects.exists()
 
     @patch("django_snippe.helpers.get_client")
+    def test_create_mobile_payout_wraps_api_errors(self, mock_get_client):
+        client = MagicMock()
+        client.create_mobile_payout.side_effect = RuntimeError("api down")
+        mock_get_client.return_value = client
+
+        with pytest.raises(PayoutCreationError):
