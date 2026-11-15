@@ -58,3 +58,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
       headers,
       body: JSON.stringify({
         amount: 2000,
+        channel: "mobile",
+        recipient_phone: "255781000000",
+        recipient_name: "Jane Doe",
+      }),
+    });
+    expect(res.status).toBe(400);
