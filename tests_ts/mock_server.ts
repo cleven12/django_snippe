@@ -340,3 +340,9 @@ export class SnippeMockServer {
         phone_number: phone,
         customer: parsedBody.customer ?? {},
         payment_url:
+          paymentType === "card" ? `https://checkout.snippe.sh/pay/${reference}` : undefined,
+        payment_qr_code:
+          paymentType === "dynamic-qr" ? `iVBORw0KGgoAAAANSUhEUgAAAAUA_${reference}` : undefined,
+        payment_token: paymentType === "dynamic-qr" ? `tok_${reference}` : undefined,
+        webhook_url: parsedBody.webhook_url,
+        callback_url: details.callback_url,
