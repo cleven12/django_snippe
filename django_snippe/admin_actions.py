@@ -76,3 +76,9 @@ mark_payout_completed.short_description = "Mark selected payouts as completed"
 def mark_payout_failed(modeladmin, request, queryset):
     """Mark selected pending payouts as failed."""
     count = 0
+    for payout in queryset.filter(status="pending"):
+        payout.status = payout.Status.FAILED
+        payout.save()
+        count += 1
+    messages.success(request, f"Marked {count} payout(s) as failed")
+
