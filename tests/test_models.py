@@ -82,3 +82,9 @@ class TestSnippePayout:
 
     def test_full_clean_rejects_short_recipient_name(self):
         payout = SnippePayout(
+            reference="PAYOUT-2",
+            channel=SnippePayout.Channel.BANK,
+            amount=5000,
+            currency="TZS",
+            recipient_name="J",
+        )
