@@ -82,3 +82,9 @@ class SnippeWebhookView(View):
 
                 verify_webhook(
                     body=body,
+                    signature=signature,
+                    timestamp=timestamp,
+                    signing_key=signing_key,
+                )
+            except Exception as exc:
+                logger.warning("Snippe webhook: verification failed - %s", exc)
