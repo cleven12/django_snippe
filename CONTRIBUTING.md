@@ -22,3 +22,9 @@ bun test
 
 ### 2. Python / Django Test Suite
 
+Tests use a standalone in-memory SQLite configuration at `tests/settings.py`:
+
+```bash
+pytest --cov=django_snippe --cov-report=term-missing
+```
+
