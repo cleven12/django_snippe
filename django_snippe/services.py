@@ -136,3 +136,9 @@ def _save_payout(
         "currency": currency_val,
         "recipient_name": (_opt_str(recipient_obj, "name") if recipient_obj else None)
         or "Recipient",
+        "recipient_phone": _opt_str(recipient_obj, "phone") if recipient_obj else None,
+        "recipient_bank": _opt_str(recipient_obj, "bank") if recipient_obj else None,
+        "recipient_account": _opt_str(recipient_obj, "account") if recipient_obj else None,
+        "status": _opt_str(result, "status") or SnippePayout.Status.PENDING,
+        "narration": _opt_str(result, "narration"),
+        "external_reference": _opt_str(result, "external_reference"),
