@@ -40,3 +40,9 @@ def test_validate_recipient_name_rejects_too_short(name):
         validate_recipient_name(name)
 
 
+def test_validate_recipient_name_accepts_valid_name():
+    validate_recipient_name("Jane Doe")
+
+
+class TestPaymentValidator:
+    def test_valid_mobile_payment(self):
