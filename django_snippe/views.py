@@ -274,3 +274,9 @@ class SnippeWebhookView(View):
                 updated.append("failure_reason")
             payout.save(update_fields=updated)
             signals.payout_failed.send(sender=SnippePayout, payout=payout)
+            logger.info("Payout %s marked as failed", reference)
+        except SnippePayout.DoesNotExist:
+            logger.error("Payout %s not found when handling failure", reference)
+
+    def handle_payout_reversed(
+        self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
