@@ -232,3 +232,9 @@ export class SnippeMockServer {
       return this.errorJson(
         403,
         "forbidden_scope",
+        `API key lacks required scope: ${requiredScope}`
+      );
+    }
+    return null;
+  }
+
