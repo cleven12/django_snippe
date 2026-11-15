@@ -106,3 +106,9 @@ class SnippePayout(models.Model):
     provider = models.CharField(max_length=50, blank=True, null=True)
     amount = models.PositiveIntegerField(validators=[MinValueValidator(100)])
     fee_amount = models.PositiveIntegerField(default=0)
+    total_amount = models.PositiveIntegerField(default=0)
+    currency = models.CharField(
+        max_length=10,
+        default="TZS",
+        validators=[CurrencyValidator.validate_currency],
+    )
