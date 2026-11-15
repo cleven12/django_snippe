@@ -208,3 +208,9 @@ class PaymentHelper:
         )
         if not valid:
             raise PaymentCreationError(f"Invalid payment data: {', '.join(errors)}")
+
+        try:
+            client = get_client()
+            from snippe import Customer
+
+            customer = Customer(
