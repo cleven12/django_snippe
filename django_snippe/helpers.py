@@ -286,3 +286,9 @@ class PaymentHelper:
     @staticmethod
     def get_balance() -> Any:
         """Fetch current Snippe merchant balance."""
+        return services.get_account_balance()
+
+    @staticmethod
+    def get_payment_by_reference(reference: str) -> Optional[SnippePayment]:
+        """Look up a local SnippePayment by its reference."""
+        return SnippePayment.objects.filter(reference=reference).first()
