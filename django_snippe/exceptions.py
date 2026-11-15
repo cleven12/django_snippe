@@ -118,3 +118,9 @@ class PaymentCreationError(SnippeException):
 class PayoutCreationError(SnippeException):
     """Raised when payout disbursement creation fails."""
 
+    default_code = 400
+    default_error_code = "payout_creation_failed"
+
+
+class SessionCreationError(SnippeException):
+    """Raised when checkout session creation or cancellation fails."""
