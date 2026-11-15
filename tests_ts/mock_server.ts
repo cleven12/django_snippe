@@ -238,3 +238,9 @@ export class SnippeMockServer {
     return null;
   }
 
+  private async handleRequest(req: Request): Promise<Response> {
+    if (this.forceRateLimit) {
+      return this.errorJson(429, "rate_limit_exceeded", "Too many requests, please retry later");
+    }
+
+    const auth = req.headers.get("Authorization") ?? "";
