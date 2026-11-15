@@ -178,3 +178,9 @@ class SnippeSession(models.Model):
     currency = models.CharField(
         max_length=10,
         default="TZS",
+        validators=[CurrencyValidator.validate_currency],
+    )
+    allow_custom_amount = models.BooleanField(default=False)
+    allowed_methods = models.JSONField(default=list, blank=True)
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.ACTIVE)
+    checkout_url = models.URLField(blank=True, null=True)
