@@ -226,3 +226,9 @@ class SnippeWebhookView(View):
             signals.payment_expired.send(sender=SnippePayment, payment=payment)
             logger.info("Payment %s marked as expired", reference)
         except SnippePayment.DoesNotExist:
+            logger.error("Payment %s not found when handling expiration", reference)
+
+    def handle_payment_voided(
+        self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
+    ) -> None:
+        inner = inner or data
