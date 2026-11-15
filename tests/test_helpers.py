@@ -148,3 +148,9 @@ class TestPaymentHelper:
         )
         assert len(PaymentHelper.get_pending_payments()) == 1
         assert len(PaymentHelper.get_failed_payments()) == 1
+
+
+class TestPayoutHelper:
+    @patch("django_snippe.helpers.get_client")
+    def test_create_mobile_payout_saves_record(self, mock_get_client):
+        client = MagicMock()
