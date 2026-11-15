@@ -100,3 +100,9 @@ class PayoutLogger:
         reason: Optional[str] = None,
     ) -> None:
         """Log when a payout status transitions."""
+        message = f"Payout status changed | ref={reference} | {old_status} -> {new_status}"
+        if reason:
+            message += f" | reason={reason}"
+        logger.info(message)
+
+    @staticmethod
