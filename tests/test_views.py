@@ -196,3 +196,9 @@ def test_webhook_marks_payout_completed_failed_and_reversed(mock_setting, client
         == 200
     )
 
+    payout_ok.refresh_from_db()
+    payout_fail.refresh_from_db()
+    payout_rev.refresh_from_db()
+    assert payout_ok.status == SnippePayout.Status.COMPLETED
+    assert payout_fail.status == SnippePayout.Status.FAILED
+    assert payout_fail.failure_reason == "Account frozen"
