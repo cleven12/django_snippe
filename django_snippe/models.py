@@ -22,3 +22,9 @@ class SnippePayment(models.Model):
         EXPIRED = "expired", "Expired"
         VOIDED = "voided", "Voided"
 
+    class PaymentType(models.TextChoices):
+        MOBILE = "mobile", "Mobile Money"
+        CARD = "card", "Card"
+        QR = "dynamic-qr", "QR Code"
+
+    reference = models.CharField(max_length=100, unique=True)
