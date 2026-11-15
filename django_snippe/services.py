@@ -28,3 +28,9 @@ def _parse_dt(value: Any) -> Optional[datetime]:
     if not isinstance(value, str):
         return None
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def _extract_amount_and_currency(
+    raw_amount: Any, fallback_currency: str = "TZS"
+) -> tuple[int, str]:
+    """Extract integer amount and currency from either an int or 2026-01-25 {value, currency} dict."""
