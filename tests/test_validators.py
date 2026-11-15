@@ -10,3 +10,9 @@ from django_snippe.validators import (
 )
 
 
+@pytest.mark.parametrize("currency", ["TZS", "KES", "UGX"])
+def test_currency_validator_accepts_supported_currencies(currency):
+    CurrencyValidator.validate_currency(currency)
+
+
+def test_currency_validator_rejects_unsupported_currency():
