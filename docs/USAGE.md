@@ -154,3 +154,9 @@ In Snippe API `2026-01-25`, payment creation requests pass `amount` as a flat in
     "status": "completed",
     "amount": {
       "value": 50000,
+      "currency": "TZS"
+    },
+    "payment_channel": "M-PESA",
+    "payment_fee": 500,
+    "completed_at": "2026-01-25T12:00:00Z"
+  }
