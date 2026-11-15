@@ -490,3 +490,9 @@ def list_sessions(limit: int = 20, offset: int = 0) -> List[Dict[str, Any]]:
 def cancel_session(reference: str) -> SnippeSession:
     """Cancel an active checkout session via POST /api/v1/sessions/{reference}/cancel."""
     client = get_client()
+    response = client._client.post(f"/sessions/{reference}/cancel")
+    data = client._handle_response(response)
+
+    session = SnippeSession.objects.filter(reference=reference).first()
+    if session:
+        session.status = data.get("status", SnippeSession.Status.CANCELLED)
