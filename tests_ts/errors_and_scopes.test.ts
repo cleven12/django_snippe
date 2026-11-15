@@ -22,3 +22,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
     expect(res.status).toBe(401);
     const json = await res.json();
     expect(json).toEqual({
+      status: "error",
+      code: 401,
+      error_code: "unauthorized",
+      message: "Missing or invalid Authorization Bearer token",
+    });
+  });
