@@ -4,3 +4,9 @@ from .__version__ import API_VERSION, __version__
 from .exceptions import (
     PaymentCreationError,
     PayoutCreationError,
+    SessionCreationError,
+    SnippeAuthenticationError,
+    SnippeConfigError,
+    SnippeConflictError,
+    SnippeException,
+    SnippeIdempotencyError,
