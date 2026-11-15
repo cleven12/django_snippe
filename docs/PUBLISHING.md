@@ -22,3 +22,9 @@ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://
 ```
 
 Repeat the same configuration on production PyPI using the `pypi` environment.
+
+## Manual Build and Upload
+
+```bash
+pip install build twine
+python -m build
