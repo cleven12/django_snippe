@@ -28,3 +28,7 @@ def test_get_client_builds_client_from_settings(mock_snippe_cls, settings):
     assert mock_snippe_cls.called
 
 
+def test_get_client_requires_api_key(settings):
+    settings.SNIPPE_API_KEY = None
+    with pytest.raises(SnippeConfigError):
+        get_client()
