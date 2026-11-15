@@ -70,3 +70,9 @@ Mount the webhook route in your project's `urls.py`:
 from django.urls import include, path
 
 urlpatterns = [
+    ...,
+    path("payments/", include("django_snippe.urls")),  # POST /payments/webhook/
+]
+```
+
+## Quick Start
