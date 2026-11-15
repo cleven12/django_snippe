@@ -28,3 +28,9 @@ def test_phone_validator_accepts_valid_tanzania_numbers(phone):
     PhoneValidator.validate_phone(phone)
 
 
+@pytest.mark.parametrize("phone", ["", "123", "07123", "not-a-phone"])
+def test_phone_validator_rejects_invalid_numbers(phone):
+    with pytest.raises(ValidationError):
+        PhoneValidator.validate_phone(phone)
+
+
