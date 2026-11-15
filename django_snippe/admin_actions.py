@@ -52,3 +52,9 @@ def void_payment(modeladmin, request, queryset):
     count = 0
     for payment in queryset.filter(status="pending"):
         payment.status = payment.Status.VOIDED
+        payment.save()
+        count += 1
+    messages.warning(request, f"Voided {count} payment(s)")
+
+
+void_payment.short_description = "Void selected payments"
