@@ -40,3 +40,9 @@ describe("Repository Hygiene & Zero AI Artifact Checks", () => {
   });
 
   test("Zero emojis, em-dashes, or unicode arrows in source code and documentation", () => {
+    const files = walkFiles(REPO_ROOT);
+    expect(files.length).toBeGreaterThan(15);
+
+    const violations: string[] = [];
+    for (const file of files) {
+      const content = readFileSync(file, "utf-8");
