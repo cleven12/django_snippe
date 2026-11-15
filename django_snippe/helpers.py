@@ -490,3 +490,9 @@ class SessionHelper:
         Raises:
             SessionCreationError: If validation or the Snippe API request fails.
         """
+        valid, errors = SessionValidator.validate_session_data(
+            amount=amount,
+            currency=currency,
+            allow_custom_amount=allow_custom_amount,
+            allowed_methods=allowed_methods,
+        )
