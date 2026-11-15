@@ -274,3 +274,9 @@ export class SnippeMockServer {
           return this.errorJson(
             400,
             "validation_error",
+            "Idempotency-Key must be between 1 and 30 characters"
+          );
+        }
+        const existing = this.idempotencyStore.get(`${req.method}:${normalizedPath}:${idempKey}`);
+        if (existing) {
+          if (existing.bodyHash !== rawBody) {
