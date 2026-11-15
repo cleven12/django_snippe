@@ -112,3 +112,9 @@ class PaymentCreationError(SnippeException):
     """Raised when payment creation or push trigger fails."""
 
     default_code = 400
+    default_error_code = "payment_creation_failed"
+
+
+class PayoutCreationError(SnippeException):
+    """Raised when payout disbursement creation fails."""
+
