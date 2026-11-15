@@ -232,3 +232,9 @@ class SnippeWebhookEvent(models.Model):
     error_message = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Webhook Event"
+        verbose_name_plural = "Webhook Events"
+
+    def __str__(self) -> str:
