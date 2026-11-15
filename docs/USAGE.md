@@ -100,3 +100,9 @@ session = SessionHelper.create_checkout_session(
         "last_name": "Doe",
         "email": "jane@example.com",
         "phone": "+255781000000",
+    },
+    redirect_url="https://yourdomain.com/orders/complete/",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+    metadata={"cart_id": "CART-99"},
+)
+
