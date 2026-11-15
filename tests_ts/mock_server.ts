@@ -208,3 +208,9 @@ export class SnippeMockServer {
     this.payouts.clear();
     this.sessions.clear();
     this.idempotencyStore.clear();
+    this.keyScopes.clear();
+    this.availableBalance = 10_000_000;
+    this.totalBalance = 10_500_000;
+    this.forceRateLimit = false;
+  }
+
