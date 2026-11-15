@@ -436,3 +436,9 @@ export class SnippeMockServer {
         return this.errorJson(409, "conflict", `Cannot trigger push for ${payment.status} payment`);
       }
       payment.push_count += 1;
+      if (parsedBody.phone_number) {
+        payment.phone_number = String(parsedBody.phone_number);
+      }
+      return Response.json({
+        status: "success",
+        data: {
