@@ -88,3 +88,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
   test("Returns 429 Too Many Requests when rate limit is exceeded", async () => {
     mock.forceRateLimit = true;
     const res = await mock.fetch(`${baseUrl}/v1/payments/balance`, {
+      headers: { Authorization: "Bearer snp_live_key" },
+    });
+    expect(res.status).toBe(429);
+    const json = await res.json();
+    expect(json.error_code).toBe("rate_limit_exceeded");
+  });
