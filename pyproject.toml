@@ -70,3 +70,9 @@ include = [
     "django_snippe/",
     "README.md",
     "LICENSE",
+    "pyproject.toml",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
