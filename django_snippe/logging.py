@@ -112,3 +112,9 @@ class PayoutLogger:
 
 
 class SessionLogger:
+    """Logs hosted checkout session lifecycle events for audit trails."""
+
+    @staticmethod
+    def log_session_created(
+        reference: str,
+        amount: Optional[int],
