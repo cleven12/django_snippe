@@ -94,3 +94,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
     const feeJson = await feeRes.json();
     expect(feeJson.data.total_amount).toBe(20500);
 
+    const createRes = await mock.fetch(`${baseUrl}/v1/payouts/send`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        amount: 10000,
+        channel: "mobile",
