@@ -16,3 +16,9 @@ class SnippePayment(models.Model):
     """Stores a payment record from the Snippe API (2026-01-25)."""
 
     class Status(models.TextChoices):
+        PENDING = "pending", "Pending"
+        COMPLETED = "completed", "Completed"
+        FAILED = "failed", "Failed"
+        EXPIRED = "expired", "Expired"
+        VOIDED = "voided", "Voided"
+
