@@ -208,3 +208,9 @@ class SnippeWebhookView(View):
             payment = SnippePayment.objects.get(reference=reference)
             payment.status = SnippePayment.Status.FAILED
             fields = self._apply_payment_metadata(payment, data, inner)
+            payment.save(update_fields=fields)
+            signals.payment_failed.send(sender=SnippePayment, payment=payment)
+            logger.info("Payment %s marked as failed", reference)
+        except SnippePayment.DoesNotExist:
+            logger.error("Payment %s not found when handling failure", reference)
+
