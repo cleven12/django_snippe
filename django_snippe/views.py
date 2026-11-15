@@ -214,3 +214,9 @@ class SnippeWebhookView(View):
         except SnippePayment.DoesNotExist:
             logger.error("Payment %s not found when handling failure", reference)
 
+    def handle_payment_expired(
+        self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
+    ) -> None:
+        inner = inner or data
+        try:
+            payment = SnippePayment.objects.get(reference=reference)
