@@ -94,3 +94,9 @@ def _is_valid_east_africa_phone(phone: str) -> bool:
     cleaned = _normalize_phone(phone)
     if len(cleaned) != 10:
         return False
+    if not cleaned.startswith("0"):
+        return False
+    second = cleaned[1:2]
+    return second in {"1", "2", "3", "4", "5", "6", "7"}
+
+
