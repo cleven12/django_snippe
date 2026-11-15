@@ -58,3 +58,9 @@ class SnippeWebhookView(View):
         except (ValueError, UnicodeDecodeError) as exc:
             logger.warning("Snippe webhook: invalid JSON body - %s", exc)
             err = WebhookPayloadError(f"Invalid JSON body: {exc}")
+            if raise_exceptions:
+                raise err from exc
+            return JsonResponse(err.to_dict(), status=400)
+
+        signing_key = get_setting("WEBHOOK_SECRET")
+        signature = request.headers.get("X-Webhook-Signature", "")
