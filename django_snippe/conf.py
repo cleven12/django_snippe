@@ -22,3 +22,9 @@ def get_setting(name: str, default: Any = None, required: bool = False) -> Any:
     Args:
         name: Setting suffix without the SNIPPE_ prefix.
         default: Fallback value if the setting is not defined.
+        required: If True, raises SnippeConfigError when missing or empty.
+
+    Returns:
+        The configured setting value or default.
+
+    Raises:
