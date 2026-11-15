@@ -562,3 +562,9 @@ export class SnippeMockServer {
       const scopeErr = this.checkScope(apiKey, "disbursement:read");
       if (scopeErr) return scopeErr;
 
+      const reference = getPayoutMatch[1];
+      const payout = this.payouts.get(reference);
+      if (!payout) {
+        return this.errorJson(404, "not_found", `Payout ${reference} not found`);
+      }
+      return Response.json({ status: "success", data: payout });
