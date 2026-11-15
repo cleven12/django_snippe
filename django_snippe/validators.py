@@ -10,3 +10,9 @@ SUPPORTED_CURRENCIES = {"TZS", "KES", "UGX"}
 
 SUPPORTED_PAYMENT_TYPES = {"mobile", "card", "dynamic-qr"}
 
+SUPPORTED_PAYOUT_CHANNELS = {"mobile", "bank"}
+
+SUPPORTED_SESSION_METHODS = {"mobile_money", "card", "qr", "mobile", "dynamic-qr"}
+
+SUPPORTED_BANK_CODES = {
+    "ABSA",
