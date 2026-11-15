@@ -10,3 +10,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
   };
 
   beforeAll(() => {
+    baseUrl = mock.start();
+  });
+
+  afterAll(() => {
+    mock.stop();
+  });
