@@ -400,3 +400,9 @@ class PayoutHelper:
             amount,
             currency,
             "bank",
+            recipient_name,
+            recipient_bank=recipient_bank,
+            recipient_account=recipient_account,
+            idempotency_key=idempotency_key,
+        )
+        if not valid:
