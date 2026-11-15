@@ -652,3 +652,9 @@ export class SnippeMockServer {
 
       const reference = getSessionMatch[1];
       const session = this.sessions.get(reference);
+      if (!session) {
+        return this.errorJson(404, "not_found", `Session ${reference} not found`);
+      }
+      return Response.json({ status: "success", data: session });
+    }
+
