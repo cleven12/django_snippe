@@ -70,3 +70,9 @@ def _save_payment(
         metadata
         if isinstance(metadata, dict)
         else (res_metadata if isinstance(res_metadata, dict) else {})
+    )
+
+    defaults = {
+        "payment_type": _opt_str(result, "payment_type") or payment_type,
+        "amount": _opt_int(result, "amount") or 0,
+        "currency": _opt_str(result, "currency") or get_default_currency(),
