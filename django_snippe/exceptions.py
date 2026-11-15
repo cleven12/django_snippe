@@ -40,3 +40,9 @@ class SnippeConfigError(SnippeException):
 
 class SnippeValidationError(SnippeException):
     """Raised on HTTP 400 validation errors or malformed input."""
+
+    default_code = 400
+    default_error_code = "validation_error"
+
+
+class SnippeAuthenticationError(SnippeException):
