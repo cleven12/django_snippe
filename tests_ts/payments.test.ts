@@ -112,3 +112,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
         details: { amount: 5000, currency: "TZS" },
         phone_number: "0712345678",
         customer: { firstname: "John", lastname: "Doe" },
+      }),
+    });
+    const { data: created } = await createRes.json();
+
+    const pushRes = await mock.fetch(`${baseUrl}/v1/payments/${created.reference}/push`, {
+      method: "POST",
