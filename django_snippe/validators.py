@@ -220,3 +220,9 @@ class PayoutValidator:
         if not isinstance(amount, int) or isinstance(amount, bool) or amount <= 0:
             errors.append("amount must be a positive integer")
         elif enforce_minimum:
+            min_payout = get_min_payout_amount()
+            if amount < min_payout:
+                errors.append(f"amount must be at least {min_payout}")
+
+        if not currency or currency not in SUPPORTED_CURRENCIES:
+            errors.append(f"currency must be one of {', '.join(sorted(SUPPORTED_CURRENCIES))}")
