@@ -412,3 +412,9 @@ class PayoutHelper:
             client = get_client()
             call_kwargs: Dict[str, Any] = {
                 "amount": amount,
+                "recipient_name": recipient_name,
+                "recipient_bank": recipient_bank.upper(),
+                "recipient_account": recipient_account,
+                "narration": narration,
+                "webhook_url": webhook_url,
+            }
