@@ -484,3 +484,9 @@ class SessionHelper:
         metadata: Optional[Dict[str, Any]] = None,
         idempotency_key: Optional[str] = None,
     ) -> SnippeSession:
+        """
+        Create a hosted checkout session and persist SnippeSession.
+
+        Raises:
+            SessionCreationError: If validation or the Snippe API request fails.
+        """
