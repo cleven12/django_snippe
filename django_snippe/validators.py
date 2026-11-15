@@ -118,3 +118,9 @@ def validate_bank_code(value: Optional[str]) -> None:
     if not value:
         return
     normalized = str(value).strip().upper()
+    if normalized not in SUPPORTED_BANK_CODES:
+        raise ValidationError(
+            f"{value!r} is not a recognized bank code. Supported examples: CRDB, NMB, NBC, ABSA."
+        )
+
+
