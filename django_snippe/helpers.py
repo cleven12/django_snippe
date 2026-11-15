@@ -322,3 +322,9 @@ class PayoutHelper:
         Create a mobile money payout and persist SnippePayout.
 
         Raises:
+            PayoutCreationError: If input validation or the Snippe API request fails.
+        """
+        valid, errors = PayoutValidator.validate_payout_data(
+            amount,
+            currency,
+            "mobile",
