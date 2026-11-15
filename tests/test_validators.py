@@ -46,3 +46,9 @@ def test_validate_recipient_name_accepts_valid_name():
 
 class TestPaymentValidator:
     def test_valid_mobile_payment(self):
+        valid, errors = PaymentValidator.validate_payment_data(
+            amount=5000, currency="TZS", phone_number="0712345678", payment_type="mobile"
+        )
+        assert valid is True
+        assert errors == []
+
