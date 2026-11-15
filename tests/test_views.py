@@ -232,3 +232,9 @@ def test_webhook_handles_session_events(mock_setting, client):
 
 
 @patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_unknown_event_is_ignored_gracefully(mock_setting, client):
+    payment = _make_payment(reference="WH-UNKNOWN")
+    response = _post(client, {"event": "payment.something_new", "reference": payment.reference})
+    assert response.status_code == 200
+    payment.refresh_from_db()
+    assert payment.status == SnippePayment.Status.PENDING
