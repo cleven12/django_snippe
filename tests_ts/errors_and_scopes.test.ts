@@ -46,3 +46,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
         recipient_phone: "255712345678",
       }),
     });
+    expect(res.status).toBe(403);
+    const json = await res.json();
+    expect(json.error_code).toBe("forbidden_scope");
+  });
+
+  test("Supports Idempotency-Key deduplication and returns 422 on payload mismatch", async () => {
