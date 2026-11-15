@@ -106,3 +106,9 @@ export function verifyWebhookSignature(
   rawBody: string,
   signature: string,
   timestamp: string,
+  signingKey: string,
+  toleranceSeconds = 300
+): boolean {
+  if (!signature || !timestamp) return false;
+  const ts = Number(timestamp);
+  if (!Number.isFinite(ts)) return false;
