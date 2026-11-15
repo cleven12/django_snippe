@@ -106,3 +106,9 @@ def test_admin_bulk_actions():
 
     admin_actions.mark_payment_completed(
         pay_admin, _make_request(), SnippePayment.objects.filter(pk=p1.pk)
+    )
+    p1.refresh_from_db()
+    assert p1.status == "completed"
+
+    admin_actions.retry_payment(pay_admin, _make_request(), SnippePayment.objects.filter(pk=p2.pk))
+    p2.refresh_from_db()
