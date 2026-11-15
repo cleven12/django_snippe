@@ -34,3 +34,9 @@ def test_services_create_mobile_card_qr_and_sync(mock_get_client):
     pay_res.payment_type = "mobile"
     pay_res.payment_url = None
     pay_res.payment_qr_code = None
+    pay_res.payment_token = None
+    pay_res.expires_at = "2026-01-25T16:00:00Z"
+    pay_res.fee_amount = 50
+    pay_res.net_amount = 2450
+    pay_res.psp_reference = "PSP-1"
+    pay_res.failure_reason = None
