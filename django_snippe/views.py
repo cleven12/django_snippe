@@ -118,3 +118,9 @@ class SnippeWebhookView(View):
                 status=200,
             )
 
+        webhook_record, _ = SnippeWebhookEvent.objects.update_or_create(
+            delivery_id=delivery_id,
+            defaults={
+                "event_type": event,
+                "reference": reference,
+                "payload": data,
