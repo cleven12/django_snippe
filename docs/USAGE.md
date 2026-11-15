@@ -94,3 +94,9 @@ session = SessionHelper.create_checkout_session(
     amount=25000,
     currency="TZS",
     allow_custom_amount=False,
+    allowed_methods=["mobile_money", "card"],
+    customer={
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "email": "jane@example.com",
+        "phone": "+255781000000",
