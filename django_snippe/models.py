@@ -226,3 +226,9 @@ class SnippeWebhookEvent(models.Model):
     event_type = models.CharField(max_length=64)
     reference = models.CharField(max_length=100, db_index=True)
     payload = models.JSONField(default=dict)
+    signature = models.CharField(max_length=255, blank=True, default="")
+    timestamp = models.CharField(max_length=64, blank=True, default="")
+    processed = models.BooleanField(default=False)
+    error_message = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
