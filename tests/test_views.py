@@ -82,3 +82,9 @@ def test_webhook_handles_2026_01_25_nested_data_amount_object(mock_setting, clie
     payment = _make_payment(reference="WH-2026-NESTED")
     payload = {
         "id": "evt_2026_001",
+        "event": "payment.completed",
+        "data": {
+            "reference": payment.reference,
+            "status": "completed",
+            "amount": {"value": 50000, "currency": "TZS"},
+            "payment_channel": "M-PESA",
