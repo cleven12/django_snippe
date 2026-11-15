@@ -58,3 +58,9 @@ mobile_payment = PaymentHelper.create_mobile_payment(
 PaymentHelper.trigger_push(mobile_payment.reference, phone_number="255712345678")
 
 # 2. Card Payment (returns payment_url for customer redirect)
+card_payment = PaymentHelper.create_card_payment(
+    amount=15000,
+    currency="TZS",
+    phone_number="0712345678",
+    customer_firstname="Amina",
+    customer_lastname="Yusuf",
