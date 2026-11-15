@@ -106,3 +106,9 @@ def _save_payout(
     webhook_url: Optional[str],
     metadata: Optional[Dict[str, Any]],
     *,
+    idempotency_key: Optional[str] = None,
+) -> SnippePayout:
+    """Persist or update a SnippePayout model from an SDK Payout response."""
+    amount_val, currency_val = _extract_amount_and_currency(
+        getattr(result, "amount", 0), get_default_currency()
+    )
