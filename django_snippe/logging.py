@@ -4,3 +4,9 @@ import logging
 from typing import Any, Optional
 
 from django.contrib.auth.models import AnonymousUser
+
+logger = logging.getLogger("django_snippe.audit")
+
+
+class PaymentLogger:
+    """Logs payment lifecycle activities for audit trails."""
