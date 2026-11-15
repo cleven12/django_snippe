@@ -10,3 +10,9 @@ def make_payment(**overrides):
     defaults = dict(
         reference="PAY-1",
         payment_type=SnippePayment.PaymentType.MOBILE,
+        amount=5000,
+        currency="TZS",
+        phone_number="0712345678",
+    )
+    defaults.update(overrides)
+    return SnippePayment.objects.create(**defaults)
