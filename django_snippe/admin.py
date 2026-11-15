@@ -22,3 +22,9 @@ class SnippePaymentAdmin(admin.ModelAdmin):
     search_fields = ["reference", "phone_number", "customer_email", "psp_reference"]
     readonly_fields = ["reference", "created_at", "updated_at"]
     ordering = ["-created_at"]
+    actions = [
+        mark_payment_completed,
+        mark_payment_failed,
+        retry_payment,
+        void_payment,
+    ]
