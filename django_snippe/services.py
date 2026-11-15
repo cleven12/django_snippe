@@ -166,3 +166,9 @@ def create_mobile_payment(
     idempotency_key: Optional[str] = None,
 ) -> SnippePayment:
     """Create a mobile money payment (USSD push) and store SnippePayment."""
+    client = get_client()
+    result = client.create_mobile_payment(
+        amount=amount,
+        currency=currency,
+        phone_number=phone_number,
+        customer=customer,
