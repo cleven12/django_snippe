@@ -112,3 +112,9 @@ def test_webhook_idempotency_skips_duplicate_delivery(mock_setting, client):
     assert first.status_code == 200
     assert second.status_code == 200
     assert second.json().get("idempotent") is True
+    assert SnippeWebhookEvent.objects.filter(delivery_id="evt_dup_123").count() == 1
+
+
+@patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_marks_payment_failed_with_reason(mock_setting, client):
+    payment = _make_payment(reference="WH-FAIL")
