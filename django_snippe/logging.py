@@ -22,3 +22,9 @@ class PaymentLogger:
     ) -> None:
         """Log when a payment record is created."""
         message = (
+            f"Payment created | ref={reference} | type={payment_type} | "
+            f"amount={amount} {currency} | phone={phone_number} | user={_get_user(user)}"
+        )
+        logger.info(message)
+
+    @staticmethod
