@@ -136,3 +136,9 @@ def test_webhook_marks_payment_failed_with_reason(mock_setting, client):
 def test_webhook_marks_payment_expired_and_voided(mock_setting, client):
     exp_payment = _make_payment(reference="WH-EXP")
     void_payment = _make_payment(reference="WH-VOID")
+
+    r1 = _post(client, {"event": "payment.expired", "reference": exp_payment.reference})
+    r2 = _post(client, {"event": "payment.voided", "reference": void_payment.reference})
+
+    assert r1.status_code == 200
+    assert r2.status_code == 200
