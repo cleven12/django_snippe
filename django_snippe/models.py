@@ -148,3 +148,9 @@ class SnippePayout(models.Model):
     @property
     def is_terminal(self) -> bool:
         """Return True if the payout is in a final state."""
+        return self.status in {
+            self.Status.COMPLETED,
+            self.Status.FAILED,
+            self.Status.REVERSED,
+        }
+
