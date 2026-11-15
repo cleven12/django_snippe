@@ -58,3 +58,9 @@ class SnippeSessionAdmin(admin.ModelAdmin):
         "reference",
         "amount",
         "currency",
+        "allow_custom_amount",
+        "status",
+        "created_at",
+    ]
+    list_filter = ["status", "currency", "allow_custom_amount"]
+    search_fields = ["reference", "customer_name", "customer_email", "customer_phone"]
