@@ -310,3 +310,9 @@ class SnippeWebhookView(View):
         inner = inner or data
         try:
             session = SnippeSession.objects.get(reference=reference)
+            session.status = SnippeSession.Status.EXPIRED
+            session.save(update_fields=["status", "updated_at"])
+            signals.session_expired.send(sender=SnippeSession, session=session)
+            logger.info("Session %s marked as expired", reference)
+        except SnippeSession.DoesNotExist:
+            logger.error("Session %s not found when handling expiration", reference)
