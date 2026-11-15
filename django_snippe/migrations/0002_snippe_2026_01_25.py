@@ -100,3 +100,9 @@ class Migration(migrations.Migration):
             name="completed_at",
             field=models.DateTimeField(blank=True, null=True),
         ),
+        migrations.AddField(
+            model_name="snippepayment",
+            name="customer_email",
+            field=models.EmailField(blank=True, max_length=254, null=True),
+        ),
+        migrations.AddField(
