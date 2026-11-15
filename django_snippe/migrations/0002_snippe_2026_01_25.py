@@ -202,3 +202,9 @@ class Migration(migrations.Migration):
                 blank=True,
                 default="",
                 max_length=20,
+                validators=[django_snippe.validators.PhoneValidator.validate_phone],
+            ),
+        ),
+        migrations.AlterField(
+            model_name="snippepayout",
+            name="amount",
