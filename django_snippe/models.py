@@ -238,3 +238,5 @@ class SnippeWebhookEvent(models.Model):
         verbose_name_plural = "Webhook Events"
 
     def __str__(self) -> str:
+        state = "processed" if self.processed else "failed"
+        return f"{self.event_type} ({self.reference}) - {state}"
