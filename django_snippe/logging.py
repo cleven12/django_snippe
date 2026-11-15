@@ -118,3 +118,9 @@ class SessionLogger:
     def log_session_created(
         reference: str,
         amount: Optional[int],
+        currency: str,
+        user: Any = None,
+    ) -> None:
+        """Log when a checkout session is created."""
+        amount_str = f"{amount} {currency}" if amount is not None else f"custom {currency}"
+        logger.info(
