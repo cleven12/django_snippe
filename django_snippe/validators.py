@@ -232,3 +232,9 @@ class PayoutValidator:
             or not isinstance(recipient_name, str)
             or len(recipient_name.strip()) < 2
         ):
+            errors.append("recipient_name is required")
+
+        if channel == "mobile":
+            if not _is_valid_east_africa_phone(recipient_phone):
+                errors.append(
+                    "recipient_phone must be a valid East African mobile number for mobile payouts"
