@@ -136,3 +136,9 @@ bank_payout = PayoutHelper.create_bank_payout(
     recipient_name="Vendor Company Ltd",
     recipient_bank="CRDB",
     recipient_account="0150000000000",
+    narration="Invoice INV-2026-09",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+)
+```
+
+## Webhooks & Signals (`2026-01-25` Payload Schema)
