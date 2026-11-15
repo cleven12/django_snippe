@@ -238,3 +238,9 @@ def test_webhook_unknown_event_is_ignored_gracefully(mock_setting, client):
     assert response.status_code == 200
     payment.refresh_from_db()
     assert payment.status == SnippePayment.Status.PENDING
+
+
+@patch(
+    "django_snippe.views.get_setting",
+    side_effect=lambda name, default=None, required=False: (
+        "whsec_test" if name == "WEBHOOK_SECRET" else default
