@@ -286,3 +286,9 @@ export class SnippeMockServer {
               "Idempotency-Key was already used with different request parameters"
             );
           }
+          return Response.json(existing.response, { status: existing.status });
+        }
+      }
+    }
+
+    const saveIdempotent = (status: number, bodyObj: unknown): Response => {
