@@ -58,3 +58,9 @@ class TestPaymentHelper:
     def test_create_mobile_payment_wraps_api_errors(self, mock_get_client):
         client = MagicMock()
         client.create_mobile_payment.side_effect = RuntimeError("api down")
+        mock_get_client.return_value = client
+
+        with pytest.raises(PaymentCreationError):
+            PaymentHelper.create_mobile_payment(
+                amount=5000,
+                currency="TZS",
