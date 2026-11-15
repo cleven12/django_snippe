@@ -76,3 +76,9 @@ qr_payment = PaymentHelper.create_qr_payment(
     phone_number="0712345678",
     customer_firstname="Baraka",
     customer_lastname="Mushi",
+    webhook_url="https://yourdomain.com/payments/webhook/",
+)
+
+# 4. Sync Status, Search, and Check Account Balance
+synced = PaymentHelper.sync_payment(mobile_payment.reference)
+results = PaymentHelper.search_payments("0712345678", limit=20, offset=0)
