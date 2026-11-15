@@ -256,3 +256,9 @@ class PaymentHelper:
             )
             return payment
 
+        except Exception as exc:
+            PaymentLogger.log_payment_failed(phone_number, str(exc))
+            raise PaymentCreationError(f"Failed to create QR payment: {exc}") from exc
+
+    @staticmethod
+    def trigger_push(reference: str, phone_number: Optional[str] = None) -> Dict[str, Any]:
