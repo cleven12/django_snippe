@@ -550,3 +550,9 @@ export class SnippeMockServer {
         data: {
           items: items.slice(offset, offset + limit),
           total: items.length,
+          limit,
+          offset,
+        },
+      });
+    }
+
