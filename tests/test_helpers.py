@@ -16,3 +16,9 @@ def _mock_api_payment(reference="API-REF-1", payment_url=None, qr_code=None, tok
     api_payment.reference = reference
     api_payment.status = "pending"
     api_payment.payment_url = payment_url
+    api_payment.payment_qr_code = qr_code
+    api_payment.payment_token = token
+    return api_payment
+
+
+class TestPaymentHelper:
