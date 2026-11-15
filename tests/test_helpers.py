@@ -34,3 +34,9 @@ class TestPaymentHelper:
             phone_number="0712345678",
             customer_firstname="John",
             customer_lastname="Doe",
+            idempotency_key="idem-mob-1",
+        )
+
+        assert isinstance(payment, SnippePayment)
+        assert payment.reference == "MOB-1"
+        assert payment.payment_type == SnippePayment.PaymentType.MOBILE
