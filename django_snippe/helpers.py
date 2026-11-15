@@ -502,3 +502,9 @@ class SessionHelper:
         try:
             session = services.create_session(
                 amount=amount,
+                currency=currency,
+                allow_custom_amount=allow_custom_amount,
+                allowed_methods=allowed_methods,
+                customer=customer,
+                redirect_url=redirect_url,
+                webhook_url=webhook_url,
