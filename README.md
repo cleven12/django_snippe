@@ -160,3 +160,9 @@ bun test
 pytest
 ruff check django_snippe tests
 ```
+
+## Contributing & Security
+
+Pull requests are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md).
+
+To report a security vulnerability privately, follow the instructions in [SECURITY.md](SECURITY.md).
