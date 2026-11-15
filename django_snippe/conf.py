@@ -82,3 +82,9 @@ def get_client():
     except Exception as exc:
         raise SnippeConfigError(f"Failed to initialize Snippe client: {exc}") from exc
 
+
+def get_async_client():
+    """
+    Return an initialized asynchronous AsyncSnippe API client from Django settings.
+
+    Raises:
