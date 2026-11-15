@@ -34,3 +34,9 @@ pytest --cov=django_snippe --cov-report=term-missing
 ruff check django_snippe tests
 ```
 
+## Pull Request Guidelines
+
+- Keep changes focused on a single concern per pull request.
+- Do not include emojis, unicode arrows, em-dashes, or AI-generated lockfiles (`tests_ts/repo_hygiene.test.ts` enforces this automatically).
+- Ensure both `bun test` and `pytest` pass before submitting.
+- Maintainer release instructions are documented in [docs/PUBLISHING.md](docs/PUBLISHING.md).
