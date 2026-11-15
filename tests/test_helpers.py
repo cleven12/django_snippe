@@ -124,3 +124,9 @@ class TestPaymentHelper:
             amount=1000,
             currency="TZS",
             phone_number="0712345678",
+        )
+        found = PaymentHelper.get_payment_by_reference("LOOKUP-1")
+        assert found is not None
+        assert PaymentHelper.get_payment_by_reference("MISSING") is None
+
+    def test_get_pending_and_failed_payments(self):
