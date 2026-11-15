@@ -52,3 +52,9 @@ export interface StoredPayout {
   narration?: string;
   webhook_url?: string;
   metadata: Record<string, unknown>;
+  created_at: string;
+  completed_at?: string;
+  failure_reason?: string;
+}
+
+export interface StoredSession {
