@@ -142,3 +142,9 @@ def _save_payout(
         "status": _opt_str(result, "status") or SnippePayout.Status.PENDING,
         "narration": _opt_str(result, "narration"),
         "external_reference": _opt_str(result, "external_reference"),
+        "idempotency_key": idempotency_key,
+        "failure_reason": _opt_str(result, "failure_reason"),
+        "webhook_url": webhook_url,
+        "metadata": resolved_meta,
+        "completed_at": _parse_dt(_opt_str(result, "completed_at")),
+    }
