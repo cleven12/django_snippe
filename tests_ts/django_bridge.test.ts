@@ -28,3 +28,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
           customer: { firstname: "John", lastname: "Sarwi" },
         }),
       })
+    ).json();
+
+    const pushResp = await (
+      await mock.fetch(`${baseUrl}/payments/${payResp.data.reference}/push`, {
+        method: "POST",
+        headers,
