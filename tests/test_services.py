@@ -64,3 +64,9 @@ def test_services_create_mobile_card_qr_and_sync(mock_get_client):
 
     synced = services.sync_payment_status("SRV-PAY-1")
     assert synced.status == "completed"
+
+
+def test_admin_bulk_actions():
+    p1 = SnippePayment.objects.create(
+        reference="ADM-P1",
+        payment_type="mobile",
