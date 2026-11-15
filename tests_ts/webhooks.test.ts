@@ -10,3 +10,9 @@ describe("Snippe 2026-01-25 Webhooks & HMAC-SHA256 Signature Verification", () =
 
   test("2026-01-25 webhook payload wraps amount as { value, currency } object", () => {
     const payload = buildWebhookPayload2026({
+      event: "payment.completed",
+      reference: "pay_2026_abc",
+      status: "completed",
+      amount: 50000,
+      currency: "TZS",
+    });
