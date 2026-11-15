@@ -22,3 +22,9 @@ def _make_request():
     setattr(request, "_messages", messages)
     return request
 
+
+@patch("django_snippe.services.get_client")
+def test_services_create_mobile_card_qr_and_sync(mock_get_client):
+    client = MagicMock()
+    pay_res = MagicMock()
+    pay_res.reference = "SRV-PAY-1"
