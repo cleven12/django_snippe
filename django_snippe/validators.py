@@ -274,3 +274,9 @@ class SessionValidator:
 
         if not allow_custom_amount:
             min_amount = get_min_payment_amount()
+            if (
+                amount is None
+                or not isinstance(amount, int)
+                or isinstance(amount, bool)
+                or amount < min_amount
+            ):
