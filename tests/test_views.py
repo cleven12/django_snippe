@@ -160,3 +160,9 @@ def test_webhook_marks_payout_completed_failed_and_reversed(mock_setting, client
     )
     payout_fail = SnippePayout.objects.create(
         reference="PO-WH-2",
+        channel=SnippePayout.Channel.MOBILE,
+        amount=5000,
+        currency="TZS",
+        recipient_name="Jane Doe",
+        recipient_phone="0712345678",
+    )
