@@ -100,3 +100,9 @@ PaymentHelper.trigger_push(payment.reference)
 
 ```python
 from django_snippe.helpers import SessionHelper
+
+session = SessionHelper.create_checkout_session(
+    amount=25000,
+    currency="TZS",
+    allowed_methods=["mobile_money", "card"],
+    customer={
