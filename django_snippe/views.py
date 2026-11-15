@@ -46,3 +46,9 @@ class SnippeWebhookView(View):
 
     This registers: POST /payments/webhook/
     """
+
+    def post(self, request, *args, **kwargs):
+        raise_exceptions = bool(get_setting("WEBHOOK_RAISE_EXCEPTIONS", default=False))
+
+        try:
+            body = request.body.decode("utf-8")
