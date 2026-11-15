@@ -76,3 +76,9 @@ class SnippeWebhookEventAdmin(admin.ModelAdmin):
     search_fields = ["delivery_id", "reference", "event_type"]
     readonly_fields = [
         "delivery_id",
+        "event_type",
+        "reference",
+        "payload",
+        "signature",
+        "timestamp",
+        "processed",
