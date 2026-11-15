@@ -262,3 +262,9 @@ export class SnippeMockServer {
     if (req.method === "POST") {
       rawBody = await req.text();
       if (rawBody.trim().length > 0) {
+        try {
+          parsedBody = JSON.parse(rawBody);
+        } catch {
+          return this.errorJson(400, "validation_error", "Malformed JSON request body");
+        }
+      }
