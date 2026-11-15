@@ -472,3 +472,9 @@ class PayoutHelper:
 class SessionHelper:
     """High-level helper methods for Snippe 2026-01-25 hosted checkout sessions."""
 
+    @staticmethod
+    def create_checkout_session(
+        amount: Optional[int] = None,
+        currency: str = "TZS",
+        allow_custom_amount: bool = False,
+        allowed_methods: Optional[Sequence[str]] = None,
