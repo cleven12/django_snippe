@@ -526,3 +526,9 @@ class SessionHelper:
             SessionLogger.log_session_failed(reference, str(exc))
             raise SessionCreationError(
                 f"Failed to cancel checkout session {reference}: {exc}"
+            ) from exc
+
+    @staticmethod
+    def get_session_by_reference(reference: str) -> Optional[SnippeSession]:
+        """Look up a local SnippeSession by its reference."""
+        return SnippeSession.objects.filter(reference=reference).first()
