@@ -64,3 +64,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
       customer: { firstname: "John", lastname: "Doe" },
     });
 
+    const r1 = await mock.fetch(`${baseUrl}/v1/payments`, { method: "POST", headers, body: body1 });
+    const r2 = await mock.fetch(`${baseUrl}/v1/payments`, { method: "POST", headers, body: body1 });
+    expect(r1.status).toBe(201);
+    expect(r2.status).toBe(201);
+    expect((await r1.json()).data.reference).toBe((await r2.json()).data.reference);
+
