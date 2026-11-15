@@ -94,3 +94,9 @@ class SnippeWebhookView(View):
                 return JsonResponse(err.to_dict(), status=401)
 
         event, reference, inner = _extract_event_and_reference(data)
+
+        if not event or not reference:
+            logger.error("Snippe webhook: missing event or reference in payload")
+            err = WebhookPayloadError("Missing 'event' or 'reference' in webhook payload")
+            if raise_exceptions:
+                raise err
