@@ -16,3 +16,9 @@ function walkFiles(dir: string, results: string[] = []): string[] {
         ".venv_check",
         "node_modules",
         "__pycache__",
+        "dist",
+        "build",
+      ].includes(entry)
+    ) {
+      continue;
+    }
