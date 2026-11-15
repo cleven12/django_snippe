@@ -154,3 +154,9 @@ def _save_payout(
     )
     return payout
 
+
+def create_mobile_payment(
+    amount: int,
+    currency: str,
+    phone_number: str,
+    customer: Any,
