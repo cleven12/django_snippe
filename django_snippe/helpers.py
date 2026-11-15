@@ -304,3 +304,9 @@ class PaymentHelper:
         return list(SnippePayment.objects.filter(status=SnippePayment.Status.FAILED)[:limit])
 
 
+class PayoutHelper:
+    """High-level helper methods for Snippe payout disbursement operations."""
+
+    @staticmethod
+    def create_mobile_payout(
+        amount: int,
