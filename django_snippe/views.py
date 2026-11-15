@@ -106,3 +106,9 @@ class SnippeWebhookView(View):
 
         delivery_id = (
             request.headers.get("X-Webhook-Id")
+            or data.get("id")
+            or _compute_delivery_id(event, reference, timestamp, body)
+        )
+        existing_event = SnippeWebhookEvent.objects.filter(
+            delivery_id=delivery_id, processed=True
+        ).first()
