@@ -52,3 +52,9 @@ SUPPORTED_BANK_CODES = {
     "UBA",
     "UCHUMI",
     "YETU",
+}
+
+MAX_IDEMPOTENCY_KEY_LENGTH = 30
+
+EAST_AFRICA_PHONE_REGEX_PARTS = [
+    r"^(\+?255|0)[67]\d{8}$",
