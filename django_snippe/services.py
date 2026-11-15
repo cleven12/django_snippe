@@ -22,3 +22,9 @@ def _opt_int(obj: Any, attr: str) -> Optional[int]:
 def _parse_dt(value: Any) -> Optional[datetime]:
     """Parse an ISO-8601 timestamp string into a timezone-aware datetime object."""
     if not value:
+        return None
+    if isinstance(value, datetime):
+        return value
+    if not isinstance(value, str):
+        return None
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
