@@ -70,3 +70,9 @@ def get_client():
     """
     from snippe import Snippe
 
+    api_key = get_setting("API_KEY", required=True)
+    base_url = get_setting("BASE_URL")
+    timeout = get_setting("TIMEOUT", default=DEFAULT_TIMEOUT)
+
+    try:
+        kwargs = {"api_key": api_key, "timeout": timeout}
