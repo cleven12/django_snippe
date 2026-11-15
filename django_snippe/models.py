@@ -208,3 +208,9 @@ class SnippeSession(models.Model):
             else f"custom {self.currency}"
         )
         return f"{self.reference} - {self.status} ({amt})"
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = SnippeSession.objects.filter(pk=self.pk).first()
+            if old_instance and old_instance.status != self.status:
+                SessionLogger.log_session_status_change(
