@@ -220,3 +220,9 @@ class SnippeWebhookView(View):
         inner = inner or data
         try:
             payment = SnippePayment.objects.get(reference=reference)
+            payment.status = SnippePayment.Status.EXPIRED
+            fields = self._apply_payment_metadata(payment, data, inner)
+            payment.save(update_fields=fields)
+            signals.payment_expired.send(sender=SnippePayment, payment=payment)
+            logger.info("Payment %s marked as expired", reference)
+        except SnippePayment.DoesNotExist:
