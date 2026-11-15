@@ -112,3 +112,9 @@ class SnippePayout(models.Model):
         default="TZS",
         validators=[CurrencyValidator.validate_currency],
     )
+    recipient_name = models.CharField(max_length=100, validators=[validate_recipient_name])
+    recipient_phone = models.CharField(
+        max_length=20,
+        blank=True,
+        null=True,
+        validators=[PhoneValidator.validate_phone],
