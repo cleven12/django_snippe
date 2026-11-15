@@ -298,3 +298,9 @@ class PaymentHelper:
         """Return up to limit pending payments."""
         return list(SnippePayment.objects.filter(status=SnippePayment.Status.PENDING)[:limit])
 
+    @staticmethod
+    def get_failed_payments(limit: int = 100) -> List[SnippePayment]:
+        """Return up to limit failed payments."""
+        return list(SnippePayment.objects.filter(status=SnippePayment.Status.FAILED)[:limit])
+
+
