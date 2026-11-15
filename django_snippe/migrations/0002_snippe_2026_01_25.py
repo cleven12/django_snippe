@@ -232,3 +232,9 @@ class Migration(migrations.Migration):
             model_name="snippepayout",
             name="recipient_phone",
             field=models.CharField(
+                blank=True,
+                max_length=20,
+                null=True,
+                validators=[django_snippe.validators.PhoneValidator.validate_phone],
+            ),
+        ),
