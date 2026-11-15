@@ -22,3 +22,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
   });
 
   test("Mobile money provider auto-detection covers M-Pesa, Airtel Money, Mixx by Yas, HaloPesa", () => {
+    expect(detectMobileProvider("255754123456")).toBe("M-PESA");
+    expect(detectMobileProvider("0784123456")).toBe("AIRTEL-MONEY");
+    expect(detectMobileProvider("0713123456")).toBe("MIXX-BY-YAS");
+    expect(detectMobileProvider("0622123456")).toBe("HALOPESA");
+  });
+
