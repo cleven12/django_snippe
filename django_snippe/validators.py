@@ -142,3 +142,9 @@ class PhoneValidator:
         if not _is_valid_east_africa_phone(value):
             raise ValidationError(f"{value!r} is not a valid East African mobile number.")
 
+
+def validate_recipient_name(value: str) -> None:
+    """Django model field validator for payout recipient names."""
+    if not value or not isinstance(value, str) or len(value.strip()) < 2:
+        raise ValidationError("recipient_name must be at least 2 characters.")
+
