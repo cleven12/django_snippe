@@ -94,3 +94,4 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
     const json = await res.json();
     expect(json.error_code).toBe("rate_limit_exceeded");
   });
+});
