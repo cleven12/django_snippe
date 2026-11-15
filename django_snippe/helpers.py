@@ -232,3 +232,9 @@ class PaymentHelper:
             if idempotency_key is not None:
                 call_kwargs["idempotency_key"] = idempotency_key
 
+            api_payment = client.create_qr_payment(**call_kwargs)
+
+            payment = SnippePayment.objects.create(
+                reference=api_payment.reference,
+                payment_type=SnippePayment.PaymentType.QR,
+                amount=amount,
