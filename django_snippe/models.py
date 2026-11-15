@@ -100,3 +100,9 @@ class SnippePayout(models.Model):
     class Channel(models.TextChoices):
         MOBILE = "mobile", "Mobile Money"
         BANK = "bank", "Bank Transfer"
+
+    reference = models.CharField(max_length=100, unique=True)
+    channel = models.CharField(max_length=20, choices=Channel.choices)
+    provider = models.CharField(max_length=50, blank=True, null=True)
+    amount = models.PositiveIntegerField(validators=[MinValueValidator(100)])
+    fee_amount = models.PositiveIntegerField(default=0)
