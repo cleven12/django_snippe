@@ -580,3 +580,9 @@ export class SnippeMockServer {
       if (!allowCustom && (amount === null || !Number.isInteger(amount) || amount < 500)) {
         return this.errorJson(
           400,
+          "validation_error",
+          "Session amount must be at least 500 TZS when allow_custom_amount is false"
+        );
+      }
+
+      const reference = `ses_${crypto.randomUUID().slice(0, 12)}`;
