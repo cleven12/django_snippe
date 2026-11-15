@@ -136,3 +136,9 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AddField(
+            model_name="snippepayment",
+            name="net_amount",
+            field=models.PositiveIntegerField(blank=True, null=True),
+        ),
+        migrations.AddField(
+            model_name="snippepayment",
