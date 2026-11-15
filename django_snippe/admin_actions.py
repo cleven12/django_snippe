@@ -34,3 +34,9 @@ mark_payment_failed.short_description = "Mark selected payments as failed"
 def retry_payment(modeladmin, request, queryset):
     """Retry failed payments by resetting their status to pending."""
     count = 0
+    for payment in queryset.filter(status="failed"):
+        payment.status = payment.Status.PENDING
+        payment.save()
+        count += 1
+        PaymentLogger.log_payment_status_change(
+            payment.reference, "failed", "pending", reason="Manual retry from admin"
