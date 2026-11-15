@@ -40,3 +40,9 @@ def test_services_create_mobile_card_qr_and_sync(mock_get_client):
     pay_res.net_amount = 2450
     pay_res.psp_reference = "PSP-1"
     pay_res.failure_reason = None
+    pay_res.metadata = {"order": 1}
+
+    client.create_mobile_payment.return_value = pay_res
+    pay_res_completed = MagicMock()
+    pay_res_completed.reference = "SRV-PAY-1"
+    pay_res_completed.amount = 2500
