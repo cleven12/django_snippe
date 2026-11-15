@@ -88,3 +88,9 @@ def test_admin_bulk_actions():
         channel="mobile",
         amount=5000,
         currency="TZS",
+        recipient_name="Jane Doe",
+        recipient_phone="0712345678",
+        status="pending",
+    )
+    s1 = SnippeSession.objects.create(
+        reference="ADM-S1",
