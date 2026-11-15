@@ -40,3 +40,9 @@ class SnippePayoutAdmin(admin.ModelAdmin):
         "recipient_name",
         "status",
         "created_at",
+    ]
+    list_filter = ["status", "channel", "currency"]
+    search_fields = ["reference", "recipient_name", "recipient_phone", "recipient_account"]
+    readonly_fields = ["reference", "created_at", "updated_at"]
+    ordering = ["-created_at"]
+    actions = [
