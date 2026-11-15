@@ -46,3 +46,9 @@ class TestSnippePayment:
     def test_full_clean_rejects_unsupported_currency(self):
         payment = SnippePayment(
             reference="PAY-2",
+            payment_type=SnippePayment.PaymentType.MOBILE,
+            amount=5000,
+            currency="USD",
+            phone_number="0712345678",
+        )
+        with pytest.raises(ValidationError):
