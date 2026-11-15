@@ -256,3 +256,9 @@ class PayoutValidator:
             except ValidationError as exc:
                 errors.extend(exc.messages)
 
+        return len(errors) == 0, errors
+
+
+class SessionValidator:
+    """Validation helpers for Snippe 2026-01-25 hosted checkout sessions."""
+
