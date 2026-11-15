@@ -64,3 +64,9 @@ def mark_payout_completed(modeladmin, request, queryset):
     """Mark selected pending payouts as completed."""
     count = 0
     for payout in queryset.filter(status="pending"):
+        payout.status = payout.Status.COMPLETED
+        payout.save()
+        count += 1
+    messages.success(request, f"Marked {count} payout(s) as completed")
+
+
