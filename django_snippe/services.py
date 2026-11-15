@@ -232,3 +232,9 @@ def create_card_payment(
 
 def create_qr_payment(
     amount: int,
+    currency: str,
+    phone_number: str,
+    customer: Any,
+    callback_url: Optional[str] = None,
+    webhook_url: Optional[str] = None,
+    metadata: Optional[Dict[str, Any]] = None,
