@@ -46,3 +46,9 @@ def get_default_currency() -> str:
     return str(get_setting("DEFAULT_CURRENCY", default=DEFAULT_CURRENCY)).upper()
 
 
+def get_min_payment_amount() -> int:
+    """Return minimum payment amount in smallest currency unit (500 TZS default)."""
+    return int(get_setting("MIN_PAYMENT_AMOUNT", default=DEFAULT_MIN_PAYMENT_AMOUNT))
+
+
+def get_min_payout_amount() -> int:
