@@ -148,3 +148,9 @@ class SnippeWebhookView(View):
             raise
 
         return JsonResponse({"status": "ok", "reference": reference}, status=200)
+
+    def _apply_payment_metadata(
+        self, payment: SnippePayment, data: Dict[str, Any], inner: Dict[str, Any]
+    ) -> List[str]:
+        """Extract 2026-01-25 nested amount, fee, channel, and failure fields onto SnippePayment."""
+        updated = ["status", "updated_at"]
