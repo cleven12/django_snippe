@@ -436,3 +436,9 @@ class PayoutHelper:
                 narration=narration,
                 idempotency_key=idempotency_key,
                 webhook_url=webhook_url,
+                metadata=metadata or {},
+            )
+
+            PayoutLogger.log_payout_created(
+                payout.reference, "bank", amount, currency, recipient_name
+            )
