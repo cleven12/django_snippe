@@ -100,3 +100,9 @@ import django_snippe.conf as snippe_conf
 from snippe import Snippe
 
 responses_map = {
+    ("POST", "/api/v1/payments"): json.loads(${JSON.stringify(JSON.stringify(payResp))}),
+    ("POST", "/api/v1/payments/${payResp.data.reference}/push"): json.loads(${JSON.stringify(JSON.stringify(pushResp))}),
+    ("POST", "/api/v1/payouts/send"): json.loads(${JSON.stringify(JSON.stringify(payoutResp))}),
+    ("POST", "/api/v1/sessions"): json.loads(${JSON.stringify(JSON.stringify(sessionResp))}),
+}
+
