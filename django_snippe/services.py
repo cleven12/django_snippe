@@ -58,3 +58,9 @@ def _save_payment(
 ) -> SnippePayment:
     """Persist or update a SnippePayment model from an SDK Payment response."""
     cust_first = _opt_str(customer, "firstname")
+    cust_last = _opt_str(customer, "lastname")
+    cust_email = _opt_str(customer, "email")
+    if isinstance(customer, dict):
+        cust_first = customer.get("firstname") or customer.get("first_name")
+        cust_last = customer.get("lastname") or customer.get("last_name")
+        cust_email = customer.get("email")
