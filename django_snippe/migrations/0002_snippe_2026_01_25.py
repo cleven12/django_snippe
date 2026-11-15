@@ -4,3 +4,9 @@ import django.core.validators
 from django.db import migrations, models
 
 import django_snippe.validators
+
+
+class Migration(migrations.Migration):
+    dependencies = [
+        ("django_snippe", "0001_initial"),
+    ]
