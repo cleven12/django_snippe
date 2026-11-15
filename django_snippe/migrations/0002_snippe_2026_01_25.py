@@ -124,3 +124,9 @@ class Migration(migrations.Migration):
             model_name="snippepayment",
             name="fee_amount",
             field=models.PositiveIntegerField(blank=True, null=True),
+        ),
+        migrations.AddField(
+            model_name="snippepayment",
+            name="idempotency_key",
+            field=models.CharField(
+                blank=True,
