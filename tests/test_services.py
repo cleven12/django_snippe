@@ -46,3 +46,9 @@ def test_services_create_mobile_card_qr_and_sync(mock_get_client):
     pay_res_completed = MagicMock()
     pay_res_completed.reference = "SRV-PAY-1"
     pay_res_completed.amount = 2500
+    pay_res_completed.currency = "TZS"
+    pay_res_completed.status = "completed"
+    pay_res_completed.payment_type = "mobile"
+    pay_res_completed.expires_at = "2026-01-25T16:00:00Z"
+    client.get_payment.return_value = pay_res_completed
+    mock_get_client.return_value = client
