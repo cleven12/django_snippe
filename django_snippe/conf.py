@@ -28,3 +28,9 @@ def get_setting(name: str, default: Any = None, required: bool = False) -> Any:
         The configured setting value or default.
 
     Raises:
+        SnippeConfigError: If required is True and the setting is missing or empty.
+    """
+    value = getattr(settings, f"SNIPPE_{name}", default)
+    if required and not value:
+        raise SnippeConfigError(f"SNIPPE_{name} is required. Add it to your Django settings.py.")
+    return value
