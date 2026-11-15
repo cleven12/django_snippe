@@ -220,3 +220,9 @@ def create_card_payment(
     result = client.create_card_payment(**kwargs)
     return _save_payment(
         result,
+        phone_number,
+        SnippePayment.PaymentType.CARD,
+        webhook_url,
+        metadata,
+        callback_url=redirect_url or callback_url,
+        customer=customer,
