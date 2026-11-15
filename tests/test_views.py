@@ -208,3 +208,9 @@ def test_webhook_marks_payout_completed_failed_and_reversed(mock_setting, client
 @patch("django_snippe.views.get_setting", return_value=None)
 def test_webhook_handles_session_events(mock_setting, client):
     s_comp = SnippeSession.objects.create(reference="SES-1", amount=5000, currency="TZS")
+    s_exp = SnippeSession.objects.create(reference="SES-2", amount=5000, currency="TZS")
+    s_canc = SnippeSession.objects.create(reference="SES-3", amount=5000, currency="TZS")
+
+    assert (
+        _post(client, {"event": "session.completed", "reference": s_comp.reference}).status_code
+        == 200
