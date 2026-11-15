@@ -250,3 +250,9 @@ def test_webhook_unknown_event_is_ignored_gracefully(mock_setting, client):
 def test_webhook_verifies_signature_when_secret_configured(mock_verify, mock_setting, client):
     payment = _make_payment(reference="WH-SIGNED")
     response = _post(
+        client,
+        {"event": "payment.completed", "reference": payment.reference},
+        headers={
+            "HTTP_X_WEBHOOK_SIGNATURE": "sig",
+            "HTTP_X_WEBHOOK_TIMESTAMP": "12345",
+        },
