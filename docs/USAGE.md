@@ -172,3 +172,9 @@ In Snippe API `2026-01-25`, payment creation requests pass `amount` as a flat in
 | `payment_expired` | `payment` (`SnippePayment`) | `payment.expired` |
 | `payment_voided` | `payment` (`SnippePayment`) | `payment.voided` |
 | `payout_completed` | `payout` (`SnippePayout`) | `payout.completed` |
+| `payout_failed` | `payout` (`SnippePayout`) | `payout.failed` |
+| `payout_reversed` | `payout` (`SnippePayout`) | `payout.reversed` |
+| `session_completed` | `session` (`SnippeSession`) | `session.completed` |
+| `session_expired` | `session` (`SnippeSession`) | `session.expired` |
+| `session_cancelled` | `session` (`SnippeSession`) | `session.cancelled` |
+
