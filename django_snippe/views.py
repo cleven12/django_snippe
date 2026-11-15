@@ -130,3 +130,9 @@ class SnippeWebhookView(View):
                 "error_message": None,
             },
         )
+
+        try:
+            handler = getattr(self, f"handle_{event.replace('.', '_')}", None)
+            if handler:
+                handler(reference, data, inner)
+            else:
