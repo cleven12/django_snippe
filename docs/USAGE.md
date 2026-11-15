@@ -70,3 +70,9 @@ card_payment = PaymentHelper.create_card_payment(
 )
 
 # 3. Dynamic QR Payment (returns payment_qr_code and payment_token)
+qr_payment = PaymentHelper.create_qr_payment(
+    amount=10000,
+    currency="TZS",
+    phone_number="0712345678",
+    customer_firstname="Baraka",
+    customer_lastname="Mushi",
