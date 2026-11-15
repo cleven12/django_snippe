@@ -4,3 +4,9 @@ Complete integration reference for `django-snippe` aligned with the official [Sn
 
 ## Architecture Overview
 
+```text
+Customer / Merchant App
+   |
+   v
+PaymentHelper / PayoutHelper / SessionHelper  -->  Snippe API (https://api.snippe.sh)
+   |                                                      |
