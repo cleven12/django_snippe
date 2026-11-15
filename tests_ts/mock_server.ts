@@ -520,3 +520,9 @@ export class SnippeMockServer {
 
     // 8. GET /payouts/fee
     if (req.method === "GET" && normalizedPath === "/payouts/fee") {
+      const scopeErr = this.checkScope(apiKey, "disbursement:read");
+      if (scopeErr) return scopeErr;
+
+      const amount = Number(url.searchParams.get("amount") ?? 5000);
+      const feeAmount = 500;
+      return Response.json({
