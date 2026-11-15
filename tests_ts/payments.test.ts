@@ -88,3 +88,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
   test("POST /v1/payments creates a dynamic QR payment and returns QR data + token", async () => {
     const res = await mock.fetch(`${baseUrl}/v1/payments`, {
       method: "POST",
+      headers,
+      body: JSON.stringify({
+        payment_type: "dynamic-qr",
+        details: { amount: 12000, currency: "TZS" },
+        phone_number: "0712345678",
+        customer: { firstname: "Baraka", lastname: "Mushi" },
