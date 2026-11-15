@@ -280,3 +280,9 @@ class SnippeWebhookView(View):
 
     def handle_payout_reversed(
         self, reference: str, data: Dict[str, Any], inner: Optional[Dict[str, Any]] = None
+    ) -> None:
+        inner = inner or data
+        try:
+            payout = SnippePayout.objects.get(reference=reference)
+            payout.status = SnippePayout.Status.REVERSED
+            payout.save(update_fields=["status", "updated_at"])
