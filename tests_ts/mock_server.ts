@@ -430,3 +430,9 @@ export class SnippeMockServer {
       const reference = pushMatch[1];
       const payment = this.payments.get(reference);
       if (!payment) {
+        return this.errorJson(404, "not_found", `Payment ${reference} not found`);
+      }
+      if (payment.status !== "pending") {
+        return this.errorJson(409, "conflict", `Cannot trigger push for ${payment.status} payment`);
+      }
+      payment.push_count += 1;
