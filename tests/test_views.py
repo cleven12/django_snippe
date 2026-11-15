@@ -100,3 +100,9 @@ def test_webhook_handles_2026_01_25_nested_data_amount_object(mock_setting, clie
     assert payment.currency == "TZS"
     assert payment.payment_channel == "M-PESA"
     assert payment.fee_amount == 250
+    assert payment.completed_at is not None
+
+
+@patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_idempotency_skips_duplicate_delivery(mock_setting, client):
+    payment = _make_payment(reference="WH-IDEMP-1")
