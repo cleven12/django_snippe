@@ -76,3 +76,9 @@ class SnippeConflictError(SnippeException):
 class SnippeIdempotencyError(SnippeException):
     """Raised on HTTP 422 when an idempotency key is reused with different parameters."""
 
+    default_code = 422
+    default_error_code = "idempotency_key_mismatch"
+
+
+class SnippeRateLimitError(SnippeException):
+    """Raised on HTTP 429 when the Snippe API rate limit is exceeded."""
