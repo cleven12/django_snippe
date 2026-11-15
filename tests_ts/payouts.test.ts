@@ -28,3 +28,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
     expect(detectMobileProvider("0622123456")).toBe("HALOPESA");
   });
 
+  test("POST /v1/payouts/send creates a mobile payout and deducts balance + fee immediately", async () => {
+    const initialBalance = mock.availableBalance;
+    const res = await mock.fetch(`${baseUrl}/v1/payouts/send`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
