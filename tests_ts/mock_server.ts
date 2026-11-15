@@ -256,3 +256,9 @@ export class SnippeMockServer {
       .replace(/\/+$/, "") || "/";
 
     const idempKey = req.headers.get("Idempotency-Key");
+    let rawBody = "";
+    let parsedBody: Record<string, any> = {};
+
+    if (req.method === "POST") {
+      rawBody = await req.text();
+      if (rawBody.trim().length > 0) {
