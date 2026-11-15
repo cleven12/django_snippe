@@ -34,3 +34,9 @@ class SnippePayment(models.Model):
     phone_number = models.CharField(
         max_length=20, blank=True, default="", validators=[PhoneValidator.validate_phone]
     )
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
+    payment_url = models.URLField(blank=True, null=True)
+    payment_qr_code = models.TextField(blank=True, null=True)
+    payment_token = models.CharField(max_length=100, blank=True, null=True)
+    callback_url = models.URLField(blank=True, null=True)
+    webhook_url = models.URLField(blank=True, null=True)
