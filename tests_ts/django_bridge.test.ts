@@ -142,3 +142,9 @@ assert push_res["status"] == "pushed"
 payout = PayoutHelper.create_mobile_payout(
     amount=10000,
     currency="TZS",
+    recipient_name="Cleven Godson",
+    recipient_phone="255784111222",
+    narration="Bonus payout",
+    idempotency_key="bridge-po-1",
+)
+assert payout.reference == "${payoutResp.data.reference}"
