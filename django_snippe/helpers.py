@@ -70,3 +70,9 @@ class PaymentHelper:
             payment = SnippePayment.objects.create(
                 reference=api_payment.reference,
                 payment_type=SnippePayment.PaymentType.MOBILE,
+                amount=amount,
+                currency=currency,
+                phone_number=phone_number,
+                status=getattr(api_payment, "status", None)
+                if isinstance(getattr(api_payment, "status", None), str)
+                else SnippePayment.Status.PENDING,
