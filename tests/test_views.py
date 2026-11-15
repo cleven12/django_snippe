@@ -190,3 +190,9 @@ def test_webhook_marks_payout_completed_failed_and_reversed(mock_setting, client
             },
         ).status_code
         == 200
+    )
+    assert (
+        _post(client, {"event": "payout.reversed", "reference": payout_rev.reference}).status_code
+        == 200
+    )
+
