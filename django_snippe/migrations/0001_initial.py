@@ -52,3 +52,9 @@ class Migration(migrations.Migration):
                 ("metadata", models.JSONField(blank=True, default=dict)),
                 ("expires_at", models.DateTimeField(blank=True, null=True)),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+            ],
+            options={
+                "verbose_name": "Payment",
+                "verbose_name_plural": "Payments",
+                "ordering": ["-created_at"],
