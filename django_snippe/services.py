@@ -436,3 +436,9 @@ def create_session(
             "currency": data.get("currency", currency),
             "allow_custom_amount": data.get("allow_custom_amount", allow_custom_amount),
             "allowed_methods": data.get(
+                "allowed_methods", list(allowed_methods or ["mobile_money"])
+            ),
+            "status": data.get("status", SnippeSession.Status.ACTIVE),
+            "checkout_url": data.get("checkout_url") or data.get("url"),
+            "redirect_url": data.get("redirect_url", redirect_url),
+            "webhook_url": data.get("webhook_url", webhook_url),
