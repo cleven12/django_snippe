@@ -100,3 +100,9 @@ def test_admin_bulk_actions():
     )
 
     site = AdminSite()
+    pay_admin = SnippePaymentAdmin(SnippePayment, site)
+    po_admin = SnippePayoutAdmin(SnippePayout, site)
+    ses_admin = SnippeSessionAdmin(SnippeSession, site)
+
+    admin_actions.mark_payment_completed(
+        pay_admin, _make_request(), SnippePayment.objects.filter(pk=p1.pk)
