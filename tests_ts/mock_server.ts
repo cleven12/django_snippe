@@ -250,3 +250,9 @@ export class SnippeMockServer {
     const apiKey = auth.slice("Bearer ".length).trim();
 
     const url = new URL(req.url);
+    const normalizedPath = url.pathname
+      .replace(/^\/api\/v1/, "")
+      .replace(/^\/v1/, "")
+      .replace(/\/+$/, "") || "/";
+
+    const idempKey = req.headers.get("Idempotency-Key");
