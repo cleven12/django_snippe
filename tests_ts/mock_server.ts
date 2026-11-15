@@ -634,3 +634,9 @@ export class SnippeMockServer {
     if (req.method === "POST" && cancelSessionMatch) {
       const scopeErr = this.checkScope(apiKey, "collection:create");
       if (scopeErr) return scopeErr;
+
+      const reference = cancelSessionMatch[1];
+      const session = this.sessions.get(reference);
+      if (!session) {
+        return this.errorJson(404, "not_found", `Session ${reference} not found`);
+      }
