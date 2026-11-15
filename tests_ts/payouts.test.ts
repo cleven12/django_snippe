@@ -106,3 +106,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
     });
     const created = (await createRes.json()).data;
 
+    const getRes = await mock.fetch(`${baseUrl}/v1/payouts/${created.reference}`, { headers });
+    expect(getRes.status).toBe(200);
+    expect((await getRes.json()).data.reference).toBe(created.reference);
+
+    const listRes = await mock.fetch(`${baseUrl}/v1/payouts?limit=10&offset=0`, { headers });
+    expect(listRes.status).toBe(200);
