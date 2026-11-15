@@ -76,3 +76,9 @@ class TestPaymentValidator:
     def test_card_payment_does_not_require_phone(self):
         valid, errors = PaymentValidator.validate_payment_data(
             amount=5000, currency="TZS", phone_number="", payment_type="card"
+        )
+        assert valid is True
+
+    def test_rejects_unsupported_payment_type(self):
+        valid, errors = PaymentValidator.validate_payment_data(
+            amount=5000, currency="TZS", phone_number="0712345678", payment_type="bitcoin"
