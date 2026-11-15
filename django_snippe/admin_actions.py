@@ -10,3 +10,9 @@ def mark_payment_completed(modeladmin, request, queryset):
     count = 0
     for payment in queryset.filter(status__in=["pending", "expired"]):
         payment.status = payment.Status.COMPLETED
+        payment.save()
+        count += 1
+    messages.success(request, f"Marked {count} payment(s) as completed")
+
+
+mark_payment_completed.short_description = "Mark selected payments as completed"
