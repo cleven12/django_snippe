@@ -40,3 +40,8 @@ DATABASES = {
     }
 }
 
+ROOT_URLCONF = "tests.urls"
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SNIPPE_API_KEY = "snp_test_key"
+SNIPPE_WEBHOOK_SECRET = "whsec_test_secret"
