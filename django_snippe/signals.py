@@ -10,3 +10,9 @@ payment_voided = Signal()
 
 # Payout signals (provides: payout=SnippePayout)
 payout_completed = Signal()
+payout_failed = Signal()
+payout_reversed = Signal()
+
+# Session signals (provides: session=SnippeSession)
+session_completed = Signal()
+session_expired = Signal()
