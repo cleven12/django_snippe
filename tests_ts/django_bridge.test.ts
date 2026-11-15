@@ -16,3 +16,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
       "Content-Type": "application/json",
     };
 
+    // 1. Generate contract-verified responses from Bun SnippeMockServer
+    const payResp = await (
+      await mock.fetch(`${baseUrl}/payments`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
