@@ -22,3 +22,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
   });
 
   test("POST /v1/payments creates a mobile money payment (USSD push)", async () => {
+    const res = await mock.fetch(`${baseUrl}/v1/payments`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        payment_type: "mobile",
+        details: { amount: 5000, currency: "TZS" },
