@@ -10,3 +10,9 @@ from .validators import (
     validate_idempotency_key,
     validate_recipient_name,
 )
+
+
+class SnippePayment(models.Model):
+    """Stores a payment record from the Snippe API (2026-01-25)."""
+
+    class Status(models.TextChoices):
