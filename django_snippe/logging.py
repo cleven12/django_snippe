@@ -34,3 +34,9 @@ class PaymentLogger:
         new_status: str,
         reason: Optional[str] = None,
     ) -> None:
+        """Log when a payment status transitions."""
+        message = f"Payment status changed | ref={reference} | {old_status} -> {new_status}"
+        if reason:
+            message += f" | reason={reason}"
+        logger.info(message)
+
