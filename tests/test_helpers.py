@@ -232,3 +232,9 @@ class TestSessionHelper:
                 "status": "active",
                 "checkout_url": "https://checkout.snippe.sh/s/SES-100",
             },
+            {
+                "reference": "SES-100",
+                "status": "cancelled",
+            },
+        ]
+        mock_get_client.return_value = client
