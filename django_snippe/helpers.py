@@ -274,3 +274,9 @@ class PaymentHelper:
             ) from exc
 
     @staticmethod
+    def sync_payment(reference: str) -> SnippePayment:
+        """Synchronize local SnippePayment status with the upstream Snippe API."""
+        return services.sync_payment_status(reference)
+
+    @staticmethod
+    def search_payments(query: str, limit: int = 20, offset: int = 0) -> Dict[str, Any]:
