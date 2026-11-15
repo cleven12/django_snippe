@@ -10,3 +10,9 @@ class Migration(migrations.Migration):
     dependencies = [
         ("django_snippe", "0001_initial"),
     ]
+
+    operations = [
+        migrations.CreateModel(
+            name="SnippeSession",
+            fields=[
+                (
