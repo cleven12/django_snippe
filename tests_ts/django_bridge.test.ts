@@ -112,3 +112,9 @@ def handler(request: httpx.Request) -> httpx.Response:
     return httpx.Response(200, json=body)
 
 orig_get_client = snippe_conf.get_client
+def patched_get_client():
+    c = Snippe(api_key="snp_live_bridge_key")
+    c._client = httpx.Client(base_url="https://api.snippe.sh/api/v1", transport=httpx.MockTransport(handler))
+    return c
+
+import django_snippe.helpers as helpers_mod
