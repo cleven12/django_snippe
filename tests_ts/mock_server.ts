@@ -400,3 +400,9 @@ export class SnippeMockServer {
           offset,
         },
       });
+    }
+
+    // 4. GET /payments
+    if (req.method === "GET" && normalizedPath === "/payments") {
+      const scopeErr = this.checkScope(apiKey, "collection:read");
+      if (scopeErr) return scopeErr;
