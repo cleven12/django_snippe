@@ -352,3 +352,9 @@ class PayoutHelper:
 
             try:
                 api_payout = client.create_mobile_payout(**call_kwargs)
+            except TypeError:
+                call_kwargs.pop("currency", None)
+                api_payout = client.create_mobile_payout(**call_kwargs)
+
+            payout = SnippePayout.objects.create(
+                reference=api_payout.reference,
