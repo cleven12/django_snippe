@@ -214,3 +214,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name="snippepayout",
+            name="currency",
+            field=models.CharField(
+                default="TZS",
+                max_length=10,
+                validators=[django_snippe.validators.CurrencyValidator.validate_currency],
+            ),
