@@ -220,3 +220,9 @@ class SnippeSession(models.Model):
 
 
 class SnippeWebhookEvent(models.Model):
+    """Stores received webhook deliveries for idempotency and audit inspection."""
+
+    delivery_id = models.CharField(max_length=128, unique=True)
+    event_type = models.CharField(max_length=64)
+    reference = models.CharField(max_length=100, db_index=True)
+    payload = models.JSONField(default=dict)
