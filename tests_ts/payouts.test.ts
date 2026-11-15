@@ -82,3 +82,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
       }),
     });
     expect(res.status).toBe(201);
+    const json = await res.json();
+    expect(json.data.channel).toEqual({ type: "bank", provider: "CRDB" });
+    expect(json.data.recipient.bank).toBe("CRDB");
+    expect(json.data.recipient.account).toBe("0150000000000");
+  });
+
