@@ -82,3 +82,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
     const repoRoot = resolve(import.meta.dir, "..");
     const venvPython = resolve(repoRoot, ".venv/bin/python");
     const pythonBin = existsSync(venvPython) ? venvPython : "python3";
+
+    const pyScript = `
+import json, os, httpx, django
+from django.conf import settings
+from django.core.management import call_command
+from django.test import Client
