@@ -172,3 +172,9 @@ class PaymentHelper:
             )
 
             PaymentLogger.log_payment_created(
+                payment.reference, "card", amount, currency, customer_firstname
+            )
+            return payment
+
+        except Exception as exc:
+            PaymentLogger.log_payment_failed(customer_firstname, str(exc))
