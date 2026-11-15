@@ -16,3 +16,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
   beforeEach(() => {
     mock.reset();
   });
+
+  test("Returns 401 Unauthorized when Authorization Bearer header is missing or invalid", async () => {
+    const res = await mock.fetch(`${baseUrl}/v1/payments/balance`);
+    expect(res.status).toBe(401);
+    const json = await res.json();
+    expect(json).toEqual({
