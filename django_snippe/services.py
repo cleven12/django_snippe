@@ -460,3 +460,9 @@ def get_session(reference: str) -> SnippeSession:
 
     session, _ = SnippeSession.objects.update_or_create(
         reference=data.get("reference", reference),
+        defaults={
+            "amount": data.get("amount"),
+            "currency": data.get("currency", "TZS"),
+            "allow_custom_amount": data.get("allow_custom_amount", False),
+            "allowed_methods": data.get("allowed_methods", []),
+            "status": data.get("status", SnippeSession.Status.ACTIVE),
