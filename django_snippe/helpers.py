@@ -154,3 +154,9 @@ class PaymentHelper:
                 call_kwargs["idempotency_key"] = idempotency_key
 
             api_payment = client.create_card_payment(**call_kwargs)
+
+            payment = SnippePayment.objects.create(
+                reference=api_payment.reference,
+                payment_type=SnippePayment.PaymentType.CARD,
+                amount=amount,
+                currency=currency,
