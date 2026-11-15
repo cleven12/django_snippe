@@ -70,3 +70,9 @@ def test_admin_bulk_actions():
     p1 = SnippePayment.objects.create(
         reference="ADM-P1",
         payment_type="mobile",
+        amount=1000,
+        currency="TZS",
+        phone_number="0712345678",
+        status="pending",
+    )
+    p2 = SnippePayment.objects.create(
