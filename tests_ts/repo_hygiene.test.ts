@@ -28,3 +28,9 @@ function walkFiles(dir: string, results: string[] = []): string[] {
       walkFiles(full, results);
     } else if (/\.(py|md|toml|yml|yaml|json|ts)$/.test(entry)) {
       results.push(full);
+    }
+  }
+  return results;
+}
+
+describe("Repository Hygiene & Zero AI Artifact Checks", () => {
