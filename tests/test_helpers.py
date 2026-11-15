@@ -52,3 +52,9 @@ class TestPaymentHelper:
                 customer_firstname="John",
                 customer_lastname="Doe",
             )
+        assert not SnippePayment.objects.exists()
+
+    @patch("django_snippe.helpers.get_client")
+    def test_create_mobile_payment_wraps_api_errors(self, mock_get_client):
+        client = MagicMock()
+        client.create_mobile_payment.side_effect = RuntimeError("api down")
