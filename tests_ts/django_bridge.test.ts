@@ -118,3 +118,9 @@ def patched_get_client():
     return c
 
 import django_snippe.helpers as helpers_mod
+import django_snippe.services as services_mod
+helpers_mod.get_client = patched_get_client
+services_mod.get_client = patched_get_client
+
+from django_snippe.helpers import PaymentHelper, PayoutHelper, SessionHelper
+from django_snippe.models import SnippePayment, SnippePayout, SnippeSession, SnippeWebhookEvent
