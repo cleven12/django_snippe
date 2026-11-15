@@ -148,3 +148,9 @@ For full API reference, settings options, and webhook details, see [docs/USAGE.m
 ## Local Development & Fast Testing
 
 This repository provides both a Python `pytest` test suite and a fast **Bun + TypeScript** API `2026-01-25` contract and end-to-end bridge test runner.
+
+```bash
+git clone https://github.com/cleven12/django_snippe.git
+cd django_snippe
+
+# Run fast Bun + TypeScript contract & Django bridge tests (< 2s, no external keys required)
