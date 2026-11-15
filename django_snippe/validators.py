@@ -148,3 +148,9 @@ def validate_recipient_name(value: str) -> None:
     if not value or not isinstance(value, str) or len(value.strip()) < 2:
         raise ValidationError("recipient_name must be at least 2 characters.")
 
+
+class PaymentValidator:
+    """Validation helpers for payment creation requests."""
+
+    @staticmethod
+    def validate_payment_data(
