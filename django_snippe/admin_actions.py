@@ -40,3 +40,9 @@ def retry_payment(modeladmin, request, queryset):
         count += 1
         PaymentLogger.log_payment_status_change(
             payment.reference, "failed", "pending", reason="Manual retry from admin"
+        )
+    messages.success(request, f"Retried {count} payment(s)")
+
+
+retry_payment.short_description = "Retry failed payments (reset to pending)"
+
