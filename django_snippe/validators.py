@@ -298,3 +298,4 @@ class SessionValidator:
                 if invalid:
                     errors.append(f"unsupported session payment methods: {', '.join(invalid)}")
 
+        return len(errors) == 0, errors
