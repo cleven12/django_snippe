@@ -154,3 +154,9 @@ class SnippeWebhookView(View):
     ) -> List[str]:
         """Extract 2026-01-25 nested amount, fee, channel, and failure fields onto SnippePayment."""
         updated = ["status", "updated_at"]
+
+        amount_obj = inner.get("amount") if "amount" in inner else data.get("amount")
+        if isinstance(amount_obj, dict):
+            if "value" in amount_obj and isinstance(amount_obj["value"], int):
+                payment.amount = amount_obj["value"]
+                updated.append("amount")
