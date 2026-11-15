@@ -172,3 +172,9 @@ def create_mobile_payment(
         currency=currency,
         phone_number=phone_number,
         customer=customer,
+        callback_url=callback_url,
+        webhook_url=webhook_url,
+        metadata=metadata,
+        idempotency_key=idempotency_key,
+    )
+    return _save_payment(
