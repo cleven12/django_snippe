@@ -82,3 +82,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
       body: bodyMismatch,
     });
     expect(r3.status).toBe(422);
+    expect((await r3.json()).error_code).toBe("idempotency_key_mismatch");
+  });
+
+  test("Returns 429 Too Many Requests when rate limit is exceeded", async () => {
+    mock.forceRateLimit = true;
+    const res = await mock.fetch(`${baseUrl}/v1/payments/balance`, {
