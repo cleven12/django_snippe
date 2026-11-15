@@ -28,3 +28,9 @@ class SnippePaymentAdmin(admin.ModelAdmin):
         retry_payment,
         void_payment,
     ]
+
+
+@admin.register(SnippePayout)
+class SnippePayoutAdmin(admin.ModelAdmin):
+    list_display = [
+        "reference",
