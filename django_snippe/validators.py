@@ -124,3 +124,9 @@ def validate_bank_code(value: Optional[str]) -> None:
         )
 
 
+class CurrencyValidator:
+    """Django model field validator for currency codes."""
+
+    @staticmethod
+    def validate_currency(value: str) -> None:
+        if not value or str(value).upper() not in SUPPORTED_CURRENCIES:
