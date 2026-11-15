@@ -268,3 +268,9 @@ export class SnippeMockServer {
           return this.errorJson(400, "validation_error", "Malformed JSON request body");
         }
       }
+
+      if (idempKey !== null) {
+        if (idempKey.trim().length === 0 || idempKey.length > 30) {
+          return this.errorJson(
+            400,
+            "validation_error",
