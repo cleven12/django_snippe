@@ -160,3 +160,9 @@ class SnippeWebhookView(View):
             if "value" in amount_obj and isinstance(amount_obj["value"], int):
                 payment.amount = amount_obj["value"]
                 updated.append("amount")
+            if "currency" in amount_obj and amount_obj["currency"]:
+                payment.currency = str(amount_obj["currency"])
+                updated.append("currency")
+
+        channel = inner.get("payment_channel") or data.get("payment_channel")
+        if channel:
