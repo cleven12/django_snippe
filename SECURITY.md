@@ -28,3 +28,9 @@ You will receive an initial response within 72 hours. Once a fix is verified, we
 
 In scope:
 
+- `django_snippe/` package code: `X-Webhook-Signature` HMAC-SHA256 verification, replay protection, idempotency deduplication, model/field validators, Django admin actions, and signals
+- Local test harness in `tests/` and `tests_ts/`
+- GitHub Actions workflows in `.github/workflows/`
+
+Out of scope:
+
