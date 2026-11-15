@@ -70,3 +70,9 @@ class SnippeWebhookView(View):
             try:
                 from snippe import verify_webhook
 
+                verify_webhook(
+                    body=body,
+                    signature=signature,
+                    timestamp=timestamp,
+                    signing_key=signing_key,
+                    tolerance=get_webhook_tolerance(),
