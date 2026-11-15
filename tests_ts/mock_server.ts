@@ -82,3 +82,9 @@ export function detectMobileProvider(phone: string): string {
   }
   if (local.startsWith("078") || local.startsWith("068") || local.startsWith("069")) {
     return "AIRTEL-MONEY";
+  }
+  if (local.startsWith("071") || local.startsWith("065") || local.startsWith("067")) {
+    return "MIXX-BY-YAS";
+  }
+  if (local.startsWith("062") || local.startsWith("061")) {
+    return "HALOPESA";
