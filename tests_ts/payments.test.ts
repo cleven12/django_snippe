@@ -142,3 +142,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
     const p1 = (await c1.json()).data;
 
     const getRes = await mock.fetch(`${baseUrl}/v1/payments/${p1.reference}`, { headers });
+    expect(getRes.status).toBe(200);
+    expect((await getRes.json()).data.reference).toBe(p1.reference);
+
+    const listRes = await mock.fetch(`${baseUrl}/v1/payments?limit=10&offset=0`, { headers });
+    expect(listRes.status).toBe(200);
+    expect((await listRes.json()).data.payments.length).toBe(1);
