@@ -316,3 +316,9 @@ export class SnippeMockServer {
       if (!Number.isInteger(amount) || amount < 500) {
         return this.errorJson(400, "validation_error", "Minimum payment amount is 500 TZS");
       }
+      if (!["TZS", "KES", "UGX"].includes(currency)) {
+        return this.errorJson(400, "validation_error", `Unsupported currency: ${currency}`);
+      }
+      if (!["mobile", "card", "dynamic-qr"].includes(paymentType)) {
+        return this.errorJson(400, "validation_error", `Unsupported payment_type: ${paymentType}`);
+      }
