@@ -34,3 +34,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
       method: "POST",
       headers,
       body: JSON.stringify({
+        amount: 50000,
+        channel: "mobile",
+        recipient_phone: "255781000000",
+        recipient_name: "Jane Doe",
+        narration: "Salary payment January 2026",
+        metadata: { employee_id: "EMP-001" },
