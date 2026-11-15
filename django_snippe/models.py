@@ -160,3 +160,9 @@ class SnippePayout(models.Model):
             if old_instance and old_instance.status != self.status:
                 PayoutLogger.log_payout_status_change(
                     self.reference, old_instance.status, self.status
+                )
+        super().save(*args, **kwargs)
+
+
+class SnippeSession(models.Model):
+    """Stores a hosted checkout session from the Snippe API (/api/v1/sessions)."""
