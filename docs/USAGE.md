@@ -52,3 +52,9 @@ mobile_payment = PaymentHelper.create_mobile_payment(
     webhook_url="https://yourdomain.com/payments/webhook/",
     metadata={"order_id": "ORD-123"},
     idempotency_key="ord-123-mob",
+)
+
+# Re-trigger USSD push manually (POST /v1/payments/{reference}/push)
+PaymentHelper.trigger_push(mobile_payment.reference, phone_number="255712345678")
+
+# 2. Card Payment (returns payment_url for customer redirect)
