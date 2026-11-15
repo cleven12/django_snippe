@@ -166,3 +166,9 @@ class SnippeWebhookView(View):
 
         channel = inner.get("payment_channel") or data.get("payment_channel")
         if channel:
+            payment.payment_channel = str(channel)
+            updated.append("payment_channel")
+
+        fee = inner.get("payment_fee") if "payment_fee" in inner else data.get("payment_fee")
+        if isinstance(fee, int):
+            payment.fee_amount = fee
