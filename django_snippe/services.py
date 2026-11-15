@@ -340,3 +340,9 @@ def create_mobile_payout(
 
 def create_bank_payout(
     amount: int,
+    recipient_name: str,
+    recipient_bank: str,
+    recipient_account: str,
+    narration: Optional[str] = None,
+    webhook_url: Optional[str] = None,
+    metadata: Optional[Dict[str, Any]] = None,
