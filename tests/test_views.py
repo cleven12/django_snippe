@@ -220,3 +220,9 @@ def test_webhook_handles_session_events(mock_setting, client):
     )
     assert (
         _post(client, {"event": "session.cancelled", "reference": s_canc.reference}).status_code
+        == 200
+    )
+
+    s_comp.refresh_from_db()
+    s_exp.refresh_from_db()
+    s_canc.refresh_from_db()
