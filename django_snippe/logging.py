@@ -70,3 +70,9 @@ class PaymentLogger:
             message += f" | error={error}"
             logger.error(message)
         else:
+            logger.info(message)
+
+
+class PayoutLogger:
+    """Logs payout disbursement activities for audit trails."""
+
