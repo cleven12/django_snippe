@@ -118,3 +118,9 @@ export function verifyWebhookSignature(
   const expected = signWebhookPayload(rawBody, timestamp, signingKey);
   return cleanSig === expected;
 }
+
+export function buildWebhookPayload2026(params: {
+  id?: string;
+  event: string;
+  reference: string;
+  status: string;
