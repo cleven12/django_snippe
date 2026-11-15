@@ -88,3 +88,9 @@ class SnippeWebhookView(View):
                 )
             except Exception as exc:
                 logger.warning("Snippe webhook: verification failed - %s", exc)
+                err = WebhookVerificationError(f"Webhook verification failed: {exc}")
+                if raise_exceptions:
+                    raise err from exc
+                return JsonResponse(err.to_dict(), status=401)
+
+        event, reference, inner = _extract_event_and_reference(data)
