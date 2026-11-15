@@ -364,3 +364,9 @@ def create_bank_payout(
 
 
 def calculate_payout_fee(amount: int) -> Any:
+    """Calculate payout disbursement fee via GET /v1/payouts/fee."""
+    client = get_client()
+    return client.calculate_payout_fee(amount=amount)
+
+
+def sync_payout_status(reference: str) -> SnippePayout:
