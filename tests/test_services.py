@@ -76,3 +76,9 @@ def test_admin_bulk_actions():
         status="pending",
     )
     p2 = SnippePayment.objects.create(
+        reference="ADM-P2",
+        payment_type="mobile",
+        amount=1000,
+        currency="TZS",
+        phone_number="0712345678",
+        status="failed",
