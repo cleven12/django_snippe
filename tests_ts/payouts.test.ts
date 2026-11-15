@@ -70,3 +70,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
 
   test("POST /v1/payouts/send creates a bank transfer payout", async () => {
     const res = await mock.fetch(`${baseUrl}/v1/payouts/send`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        amount: 100000,
+        channel: "bank",
+        recipient_bank: "CRDB",
