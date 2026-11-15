@@ -46,3 +46,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
     expect(json.data.amount).toBe(25000);
     expect(json.data.checkout_url).toContain("https://checkout.snippe.sh/s/");
   });
+
+  test("POST /api/v1/sessions supports allow_custom_amount without fixed amount", async () => {
+    const res = await mock.fetch(`${baseUrl}/api/v1/sessions`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
