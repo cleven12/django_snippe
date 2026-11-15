@@ -106,3 +106,9 @@ class Migration(migrations.Migration):
             field=models.EmailField(blank=True, max_length=254, null=True),
         ),
         migrations.AddField(
+            model_name="snippepayment",
+            name="customer_firstname",
+            field=models.CharField(blank=True, max_length=100, null=True),
+        ),
+        migrations.AddField(
+            model_name="snippepayment",
