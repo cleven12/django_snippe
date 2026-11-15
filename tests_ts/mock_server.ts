@@ -154,3 +154,9 @@ export function buildWebhookPayload2026(params: {
     timestamp: ts,
     failure_reason: params.failure_reason ?? null,
     data: {
+      reference: params.reference,
+      status: params.status,
+      amount: {
+        value: params.amount,
+        currency: params.currency ?? "TZS",
+      },
