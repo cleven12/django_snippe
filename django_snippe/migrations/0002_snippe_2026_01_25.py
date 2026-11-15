@@ -112,3 +112,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name="snippepayment",
+            name="customer_lastname",
+            field=models.CharField(blank=True, max_length=100, null=True),
+        ),
+        migrations.AddField(
+            model_name="snippepayment",
+            name="failure_reason",
