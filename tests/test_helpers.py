@@ -184,3 +184,9 @@ class TestPayoutHelper:
             recipient_name="Vendor Co",
             recipient_bank="CRDB",
             recipient_account="0150000000000",
+        )
+
+        assert isinstance(payout, SnippePayout)
+        assert payout.reference == "PO-BANK-1"
+        assert payout.channel == SnippePayout.Channel.BANK
+        assert payout.recipient_bank == "CRDB"
