@@ -22,3 +22,9 @@ def _post(client, payload, headers=None):
         **(headers or {}),
     )
 
+
+@pytest.fixture
+def client():
+    return Client()
+
+
