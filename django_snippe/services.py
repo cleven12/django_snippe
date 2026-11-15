@@ -100,3 +100,9 @@ def _save_payment(
     )
     return payment
 
+
+def _save_payout(
+    result: Any,
+    webhook_url: Optional[str],
+    metadata: Optional[Dict[str, Any]],
+    *,
