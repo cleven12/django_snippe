@@ -64,3 +64,9 @@ Changelog = "https://github.com/cleven12/django_snippe/releases"
 
 [tool.hatch.build.targets.wheel]
 packages = ["django_snippe"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "django_snippe/",
+    "README.md",
+    "LICENSE",
