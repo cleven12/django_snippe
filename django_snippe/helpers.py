@@ -268,3 +268,9 @@ class PaymentHelper:
             PaymentLogger.log_payment_push_triggered(reference, phone_number=phone_number)
             return result
         except Exception as exc:
+            PaymentLogger.log_payment_failed(reference, str(exc))
+            raise PaymentCreationError(
+                f"Failed to trigger USSD push for {reference}: {exc}"
+            ) from exc
+
+    @staticmethod
