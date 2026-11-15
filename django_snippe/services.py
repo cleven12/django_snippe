@@ -196,3 +196,9 @@ def create_card_payment(
     customer: Any,
     callback_url: str,
     webhook_url: Optional[str] = None,
+    metadata: Optional[Dict[str, Any]] = None,
+    idempotency_key: Optional[str] = None,
+    redirect_url: Optional[str] = None,
+    cancel_url: Optional[str] = None,
+) -> SnippePayment:
+    """Create a card payment and store SnippePayment."""
