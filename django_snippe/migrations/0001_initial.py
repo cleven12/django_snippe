@@ -82,3 +82,9 @@ class Migration(migrations.Migration):
                 ("recipient_name", models.CharField(max_length=100)),
                 ("recipient_phone", models.CharField(blank=True, max_length=20, null=True)),
                 ("recipient_bank", models.CharField(blank=True, max_length=50, null=True)),
+                ("recipient_account", models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("pending", "Pending"),
