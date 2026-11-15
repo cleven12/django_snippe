@@ -304,3 +304,9 @@ def search_payments(query: str, limit: int = 20, offset: int = 0) -> Dict[str, A
     client = get_client()
     response = client._client.get(
         "/payments/search",
+        params={"q": query, "limit": limit, "offset": offset},
+    )
+    return client._handle_response(response)
+
+
+def get_account_balance() -> Any:
