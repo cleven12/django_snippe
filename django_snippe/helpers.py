@@ -112,3 +112,9 @@ class PaymentHelper:
         """
         Create a card payment record and return SnippePayment with payment_url.
 
+        Raises:
+            PaymentCreationError: If input validation or the Snippe API request fails.
+        """
+        valid, errors = PaymentValidator.validate_payment_data(
+            amount,
+            currency,
