@@ -82,3 +82,9 @@ class PayoutLogger:
         channel: str,
         amount: int,
         currency: str,
+        recipient_name: str,
+        user: Any = None,
+    ) -> None:
+        """Log when a payout record is created."""
+        message = (
+            f"Payout created | ref={reference} | channel={channel} | "
