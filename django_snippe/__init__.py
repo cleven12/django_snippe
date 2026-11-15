@@ -22,3 +22,9 @@ from .exceptions import (
 __all__ = [
     "__version__",
     "API_VERSION",
+    "SnippeException",
+    "SnippeConfigError",
+    "SnippeValidationError",
+    "SnippeAuthenticationError",
+    "SnippePermissionError",
+    "SnippeNotFoundError",
