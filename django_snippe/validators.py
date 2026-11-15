@@ -196,3 +196,9 @@ class PaymentValidator:
                 errors.extend(exc.messages)
 
         return len(errors) == 0, errors
+
+
+class PayoutValidator:
+    """Validation helpers for payout disbursement creation."""
+
+    @staticmethod
