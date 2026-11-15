@@ -28,3 +28,9 @@ class PaymentHelper:
     ) -> SnippePayment:
         """
         Create a mobile money payment (USSD push) and persist SnippePayment.
+
+        Raises:
+            PaymentCreationError: If input validation or the Snippe API request fails.
+        """
+        valid, errors = PaymentValidator.validate_payment_data(
+            amount,
