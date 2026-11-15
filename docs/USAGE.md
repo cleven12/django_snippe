@@ -130,3 +130,9 @@ mobile_payout = PayoutHelper.create_mobile_payout(
 )
 
 # Bank Transfer Payout (CRDB, NMB, NBC, ABSA, STANBIC, EQUITY, etc.)
+bank_payout = PayoutHelper.create_bank_payout(
+    amount=150000,
+    currency="TZS",
+    recipient_name="Vendor Company Ltd",
+    recipient_bank="CRDB",
+    recipient_account="0150000000000",
