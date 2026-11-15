@@ -448,3 +448,9 @@ class PayoutHelper:
             PayoutLogger.log_payout_failed(recipient_account, str(exc))
             raise PayoutCreationError(f"Failed to create bank payout: {exc}") from exc
 
+    @staticmethod
+    def sync_payout(reference: str) -> SnippePayout:
+        """Synchronize local SnippePayout status with the upstream Snippe API."""
+        return services.sync_payout_status(reference)
+
+    @staticmethod
