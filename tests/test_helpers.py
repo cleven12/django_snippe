@@ -88,3 +88,9 @@ class TestPaymentHelper:
         assert payment.payment_type == SnippePayment.PaymentType.CARD
         assert payment.payment_url == "https://pay.snippe.sh/x"
 
+    @patch("django_snippe.helpers.get_client")
+    def test_create_qr_payment_saves_record(self, mock_get_client):
+        client = MagicMock()
+        client.create_qr_payment.return_value = _mock_api_payment(
+            "QR-1", qr_code="BASE64QR", token="TOK-1"
+        )
