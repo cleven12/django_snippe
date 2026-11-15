@@ -40,3 +40,9 @@ def _make_payment(reference="WH-REF", status=SnippePayment.Status.PENDING):
 
 
 @patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_rejects_invalid_json(mock_setting, client):
+    response = client.post(WEBHOOK_URL, data="not-json", content_type="application/json")
+    assert response.status_code == 400
+    body = response.json()
+    assert body["status"] == "error"
+    assert body["error_code"] == "invalid_webhook_payload"
