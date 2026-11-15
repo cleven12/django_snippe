@@ -112,3 +112,9 @@ def validate_idempotency_key(value: Optional[str]) -> None:
             f"idempotency_key must be between 1 and {MAX_IDEMPOTENCY_KEY_LENGTH} characters."
         )
 
+
+def validate_bank_code(value: Optional[str]) -> None:
+    """Validate Tanzanian bank code for bank payouts."""
+    if not value:
+        return
+    normalized = str(value).strip().upper()
