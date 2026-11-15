@@ -112,3 +112,7 @@ class TestPayoutValidator:
         assert valid is True
 
     def test_rejects_unsupported_channel(self):
+        valid, errors = PayoutValidator.validate_payout_data(
+            amount=5000, currency="TZS", channel="crypto", recipient_name="Jane Doe"
+        )
+        assert valid is False
