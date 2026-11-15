@@ -88,3 +88,9 @@ def test_webhook_handles_2026_01_25_nested_data_amount_object(mock_setting, clie
             "status": "completed",
             "amount": {"value": 50000, "currency": "TZS"},
             "payment_channel": "M-PESA",
+            "payment_fee": 250,
+            "completed_at": "2026-01-25T12:00:00Z",
+        },
+    }
+    response = _post(client, payload)
+    assert response.status_code == 200
