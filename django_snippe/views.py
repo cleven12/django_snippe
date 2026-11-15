@@ -172,3 +172,9 @@ class SnippeWebhookView(View):
         fee = inner.get("payment_fee") if "payment_fee" in inner else data.get("payment_fee")
         if isinstance(fee, int):
             payment.fee_amount = fee
+            updated.append("fee_amount")
+
+        reason = inner.get("failure_reason") or data.get("failure_reason")
+        if reason:
+            payment.failure_reason = str(reason)
+            updated.append("failure_reason")
