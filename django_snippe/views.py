@@ -52,3 +52,9 @@ class SnippeWebhookView(View):
 
         try:
             body = request.body.decode("utf-8")
+            data = json.loads(body)
+            if not isinstance(data, dict):
+                raise ValueError("Webhook payload must be a JSON object")
+        except (ValueError, UnicodeDecodeError) as exc:
+            logger.warning("Snippe webhook: invalid JSON body - %s", exc)
+            err = WebhookPayloadError(f"Invalid JSON body: {exc}")
