@@ -28,3 +28,6 @@ Repeat the same configuration on production PyPI using the `pypi` environment.
 ```bash
 pip install build twine
 python -m build
+twine check dist/*
+twine upload dist/*
+```
