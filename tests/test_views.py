@@ -28,3 +28,9 @@ def client():
     return Client()
 
 
+def _make_payment(reference="WH-REF", status=SnippePayment.Status.PENDING):
+    return SnippePayment.objects.create(
+        reference=reference,
+        payment_type=SnippePayment.PaymentType.MOBILE,
+        amount=1000,
+        currency="TZS",
