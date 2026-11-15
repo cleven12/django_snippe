@@ -142,3 +142,9 @@ class SessionLogger:
 
     @staticmethod
     def log_session_failed(reference: str, error_message: str) -> None:
+        """Log when a session operation fails."""
+        logger.error(f"Session operation failed | ref={reference} | error={error_message}")
+
+
+def _get_user(user: Any) -> str:
+    """Extract a readable user identifier from a Django user object."""
