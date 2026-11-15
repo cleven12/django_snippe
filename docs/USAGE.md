@@ -190,3 +190,6 @@ client = get_client()
 balance = client.get_balance()
 
 # Asynchronous (ASGI / async views)
+async with get_async_client() as async_client:
+    balance = await async_client.get_balance()
+```
