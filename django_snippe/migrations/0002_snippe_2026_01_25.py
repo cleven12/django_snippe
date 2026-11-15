@@ -28,3 +28,9 @@ class Migration(migrations.Migration):
                     models.CharField(
                         default="TZS",
                         max_length=10,
+                        validators=[django_snippe.validators.CurrencyValidator.validate_currency],
+                    ),
+                ),
+                ("allow_custom_amount", models.BooleanField(default=False)),
+                ("allowed_methods", models.JSONField(blank=True, default=list)),
+                (
