@@ -88,3 +88,9 @@ balance = PaymentHelper.get_balance()
 ## Hosted Checkout Sessions (`/api/v1/sessions`)
 
 ```python
+from django_snippe.helpers import SessionHelper
+
+session = SessionHelper.create_checkout_session(
+    amount=25000,
+    currency="TZS",
+    allow_custom_amount=False,
