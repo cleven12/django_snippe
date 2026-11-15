@@ -22,3 +22,9 @@ dependencies = [
 keywords = [
     "django",
     "payments",
+    "snippe",
+    "mobile-money",
+    "mpesa",
+    "airtel-money",
+    "tanzania",
+    "kenya",
