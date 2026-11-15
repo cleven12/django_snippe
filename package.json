@@ -10,3 +10,7 @@
     "test:sessions": "bun test tests_ts/sessions.test.ts",
     "test:webhooks": "bun test tests_ts/webhooks.test.ts",
     "test:errors": "bun test tests_ts/errors_and_scopes.test.ts",
+    "test:bridge": "bun test tests_ts/django_bridge.test.ts",
+    "test:hygiene": "bun test tests_ts/repo_hygiene.test.ts"
+  }
+}
