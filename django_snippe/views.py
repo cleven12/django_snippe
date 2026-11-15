@@ -76,3 +76,9 @@ class SnippeWebhookView(View):
                     timestamp=timestamp,
                     signing_key=signing_key,
                     tolerance=get_webhook_tolerance(),
+                )
+            except TypeError:
+                from snippe import verify_webhook
+
+                verify_webhook(
+                    body=body,
