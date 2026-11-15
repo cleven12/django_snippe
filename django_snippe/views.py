@@ -322,3 +322,9 @@ class SnippeWebhookView(View):
     ) -> None:
         inner = inner or data
         try:
+            session = SnippeSession.objects.get(reference=reference)
+            session.status = SnippeSession.Status.CANCELLED
+            session.save(update_fields=["status", "updated_at"])
+            signals.session_cancelled.send(sender=SnippeSession, session=session)
+            logger.info("Session %s marked as cancelled", reference)
+        except SnippeSession.DoesNotExist:
