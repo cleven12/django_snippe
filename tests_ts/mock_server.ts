@@ -574,3 +574,9 @@ export class SnippeMockServer {
     if (req.method === "POST" && normalizedPath === "/sessions") {
       const scopeErr = this.checkScope(apiKey, "collection:create");
       if (scopeErr) return scopeErr;
+
+      const allowCustom = Boolean(parsedBody.allow_custom_amount ?? false);
+      const amount = parsedBody.amount !== undefined ? Number(parsedBody.amount) : null;
+      if (!allowCustom && (amount === null || !Number.isInteger(amount) || amount < 500)) {
+        return this.errorJson(
+          400,
