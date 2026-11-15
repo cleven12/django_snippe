@@ -196,3 +196,9 @@ export class SnippeMockServer {
     return this.handleRequest(req);
   }
 
+  public stop(): void {
+    if (this.server) {
+      this.server.stop(true);
+      this.server = null;
+    }
+  }
