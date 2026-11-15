@@ -292,3 +292,9 @@ class SessionValidator:
 
         if allowed_methods is not None:
             if not isinstance(allowed_methods, (list, tuple)) or len(allowed_methods) == 0:
+                errors.append("allowed_methods must be a non-empty list when provided")
+            else:
+                invalid = [m for m in allowed_methods if m not in SUPPORTED_SESSION_METHODS]
+                if invalid:
+                    errors.append(f"unsupported session payment methods: {', '.join(invalid)}")
+
