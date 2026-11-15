@@ -64,3 +64,9 @@ describe("Django <-> Bun Mock Snippe 2026-01-25 End-to-End Integration Bridge", 
     ).json();
 
     const webhookSecret = "whsec_bridge_2026_secret";
+    const ts = String(Math.floor(Date.now() / 1000));
+    const sampleWebhook = buildWebhookPayload2026({
+      id: "evt_bridge_001",
+      event: "payment.completed",
+      reference: payResp.data.reference,
+      status: "completed",
