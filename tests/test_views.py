@@ -106,3 +106,9 @@ def test_webhook_handles_2026_01_25_nested_data_amount_object(mock_setting, clie
 @patch("django_snippe.views.get_setting", return_value=None)
 def test_webhook_idempotency_skips_duplicate_delivery(mock_setting, client):
     payment = _make_payment(reference="WH-IDEMP-1")
+    payload = {"id": "evt_dup_123", "event": "payment.completed", "reference": payment.reference}
+    first = _post(client, payload)
+    second = _post(client, payload)
+    assert first.status_code == 200
+    assert second.status_code == 200
+    assert second.json().get("idempotent") is True
