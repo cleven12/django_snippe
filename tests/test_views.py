@@ -202,3 +202,9 @@ def test_webhook_marks_payout_completed_failed_and_reversed(mock_setting, client
     assert payout_ok.status == SnippePayout.Status.COMPLETED
     assert payout_fail.status == SnippePayout.Status.FAILED
     assert payout_fail.failure_reason == "Account frozen"
+    assert payout_rev.status == SnippePayout.Status.REVERSED
+
+
+@patch("django_snippe.views.get_setting", return_value=None)
+def test_webhook_handles_session_events(mock_setting, client):
+    s_comp = SnippeSession.objects.create(reference="SES-1", amount=5000, currency="TZS")
