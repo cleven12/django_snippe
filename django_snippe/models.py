@@ -166,3 +166,9 @@ class SnippePayout(models.Model):
 
 class SnippeSession(models.Model):
     """Stores a hosted checkout session from the Snippe API (/api/v1/sessions)."""
+
+    class Status(models.TextChoices):
+        ACTIVE = "active", "Active"
+        COMPLETED = "completed", "Completed"
+        EXPIRED = "expired", "Expired"
+        CANCELLED = "cancelled", "Cancelled"
