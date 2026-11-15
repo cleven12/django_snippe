@@ -388,3 +388,9 @@ def list_payouts(limit: int = 20, offset: int = 0) -> Any:
 
 def create_session(
     amount: Optional[int] = None,
+    currency: str = "TZS",
+    allow_custom_amount: bool = False,
+    allowed_methods: Optional[Sequence[str]] = None,
+    customer: Optional[Dict[str, Any]] = None,
+    redirect_url: Optional[str] = None,
+    webhook_url: Optional[str] = None,
