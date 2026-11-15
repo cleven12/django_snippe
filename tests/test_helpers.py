@@ -178,3 +178,9 @@ class TestPayoutHelper:
         client.create_bank_payout.return_value = api_payout
         mock_get_client.return_value = client
 
+        payout = PayoutHelper.create_bank_payout(
+            amount=50000,
+            currency="TZS",
+            recipient_name="Vendor Co",
+            recipient_bank="CRDB",
+            recipient_account="0150000000000",
