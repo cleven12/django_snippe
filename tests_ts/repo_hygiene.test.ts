@@ -52,3 +52,4 @@ describe("Repository Hygiene & Zero AI Artifact Checks", () => {
     }
     expect(violations).toEqual([]);
   });
+});
