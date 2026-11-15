@@ -100,3 +100,9 @@ def retry_payout(modeladmin, request, queryset):
 
 
 retry_payout.short_description = "Retry failed payouts (reset to pending)"
+
+
+def cancel_selected_sessions(modeladmin, request, queryset):
+    """Cancel selected active checkout sessions."""
+    count = 0
+    for session in queryset.filter(status="active"):
