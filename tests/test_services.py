@@ -130,3 +130,9 @@ def test_admin_bulk_actions():
 
     admin_actions.mark_payout_completed(
         po_admin, _make_request(), SnippePayout.objects.filter(pk=po1.pk)
+    )
+    po1.refresh_from_db()
+    assert po1.status == "completed"
+
+    admin_actions.cancel_selected_sessions(
+        ses_admin, _make_request(), SnippeSession.objects.filter(pk=s1.pk)
