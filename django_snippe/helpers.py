@@ -424,3 +424,9 @@ class PayoutHelper:
                 call_kwargs["idempotency_key"] = idempotency_key
 
             api_payout = client.create_bank_payout(**call_kwargs)
+
+            payout = SnippePayout.objects.create(
+                reference=api_payout.reference,
+                channel=SnippePayout.Channel.BANK,
+                amount=amount,
+                currency=currency,
