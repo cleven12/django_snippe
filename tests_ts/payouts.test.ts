@@ -46,3 +46,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
     const json = await res.json();
     expect(json.data.reference).toStartWith("po_");
     expect(json.data.amount).toEqual({ value: 50000, currency: "TZS" });
+    expect(json.data.fees).toEqual({ value: 500, currency: "TZS" });
+    expect(json.data.total).toEqual({ value: 50500, currency: "TZS" });
+    expect(json.data.channel).toEqual({ type: "mobile", provider: "AIRTEL-MONEY" });
+    expect(mock.availableBalance).toBe(initialBalance - 50500);
+  });
+
