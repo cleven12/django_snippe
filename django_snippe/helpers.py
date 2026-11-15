@@ -166,3 +166,9 @@ class PaymentHelper:
                 webhook_url=webhook_url,
                 customer_firstname=customer_firstname,
                 customer_lastname=customer_lastname,
+                customer_email=customer_email,
+                idempotency_key=idempotency_key,
+                metadata=metadata or {},
+            )
+
+            PaymentLogger.log_payment_created(
