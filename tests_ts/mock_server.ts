@@ -364,3 +364,9 @@ export class SnippeMockServer {
     if (req.method === "GET" && normalizedPath === "/payments/balance") {
       const scopeErr = this.checkScope(apiKey, "collection:read");
       if (scopeErr) return scopeErr;
+
+      return Response.json({
+        status: "success",
+        data: {
+          available_balance: this.availableBalance,
+          balance: this.totalBalance,
