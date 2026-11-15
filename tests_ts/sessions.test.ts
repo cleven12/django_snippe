@@ -52,3 +52,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
       method: "POST",
       headers,
       body: JSON.stringify({
+        allow_custom_amount: true,
+        currency: "TZS",
+        allowed_methods: ["mobile_money"],
+      }),
+    });
+    expect(res.status).toBe(201);
