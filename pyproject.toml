@@ -4,3 +4,9 @@ build-backend = "hatchling.build"
 
 [project]
 name = "django-snippe"
+version = "1.0.0"
+description = "Django integration for the Snippe payment gateway (API 2026-01-25) - mobile money, cards, QR, sessions, and payouts"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [
