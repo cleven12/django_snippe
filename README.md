@@ -142,3 +142,9 @@ from django_snippe.signals import payment_completed, payout_completed, session_c
 def handle_payment_completed(sender, payment, **kwargs):
     print("Payment completed:", payment.reference, payment.amount, payment.currency)
 ```
+
+For full API reference, settings options, and webhook details, see [docs/USAGE.md](docs/USAGE.md).
+
+## Local Development & Fast Testing
+
+This repository provides both a Python `pytest` test suite and a fast **Bun + TypeScript** API `2026-01-25` contract and end-to-end bridge test runner.
