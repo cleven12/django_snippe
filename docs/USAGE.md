@@ -34,3 +34,9 @@ PaymentHelper / PayoutHelper / SessionHelper  -->  Snippe API (https://api.snipp
 | `SNIPPE_MIN_PAYMENT_AMOUNT` | No | `500` | Minimum collection amount (500 TZS per 2026-01-25 spec) |
 | `SNIPPE_MIN_PAYOUT_AMOUNT` | No | `5000` | Minimum disbursement amount (5,000 TZS per 2026-01-25 spec) |
 | `SNIPPE_WEBHOOK_TOLERANCE` | No | `300` | Maximum allowed webhook timestamp age in seconds |
+| `SNIPPE_WEBHOOK_RAISE_EXCEPTIONS` | No | `False` | Raise exceptions instead of returning HTTP 400/401 JSON responses |
+
+## Accepting Payments (`/v1/payments`)
+
+```python
+from django_snippe.helpers import PaymentHelper
