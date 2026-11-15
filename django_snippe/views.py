@@ -136,3 +136,9 @@ class SnippeWebhookView(View):
             if handler:
                 handler(reference, data, inner)
             else:
+                logger.debug("Snippe webhook: no handler for event %s", event)
+            webhook_record.processed = True
+            webhook_record.save(update_fields=["processed"])
+            PaymentLogger.log_webhook_processing(event, reference, True)
+        except Exception as exc:
+            webhook_record.error_message = str(exc)
