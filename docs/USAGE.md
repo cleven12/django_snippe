@@ -40,3 +40,9 @@ PaymentHelper / PayoutHelper / SessionHelper  -->  Snippe API (https://api.snipp
 
 ```python
 from django_snippe.helpers import PaymentHelper
+
+# 1. Mobile Money (USSD Push - min 500 TZS)
+mobile_payment = PaymentHelper.create_mobile_payment(
+    amount=5000,
+    currency="TZS",
+    phone_number="0712345678",
