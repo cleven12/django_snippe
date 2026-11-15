@@ -556,3 +556,9 @@ export class SnippeMockServer {
       });
     }
 
+    // 10. GET /payouts/:reference
+    const getPayoutMatch = normalizedPath.match(/^\/payouts\/([^/]+)$/);
+    if (req.method === "GET" && getPayoutMatch) {
+      const scopeErr = this.checkScope(apiKey, "disbursement:read");
+      if (scopeErr) return scopeErr;
+
