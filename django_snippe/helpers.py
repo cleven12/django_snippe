@@ -82,3 +82,9 @@ class PaymentHelper:
                 customer_lastname=customer_lastname,
                 customer_email=customer_email,
                 idempotency_key=idempotency_key,
+                metadata=metadata or {},
+            )
+
+            PaymentLogger.log_payment_created(
+                payment.reference, "mobile", amount, currency, phone_number
+            )
