@@ -496,3 +496,9 @@ export class SnippeMockServer {
           ? detectMobileProvider(String(parsedBody.recipient_phone ?? ""))
           : String(parsedBody.recipient_bank ?? "CRDB");
 
+      const payout: StoredPayout = {
+        reference,
+        status: "pending",
+        amount: { value: amount, currency: "TZS" },
+        fees: { value: feeValue, currency: "TZS" },
+        total: { value: totalValue, currency: "TZS" },
