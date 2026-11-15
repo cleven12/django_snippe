@@ -226,3 +226,9 @@ class Migration(migrations.Migration):
             name="recipient_name",
             field=models.CharField(
                 max_length=100, validators=[django_snippe.validators.validate_recipient_name]
+            ),
+        ),
+        migrations.AlterField(
+            model_name="snippepayout",
+            name="recipient_phone",
+            field=models.CharField(
