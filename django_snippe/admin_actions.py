@@ -46,3 +46,9 @@ def retry_payment(modeladmin, request, queryset):
 
 retry_payment.short_description = "Retry failed payments (reset to pending)"
 
+
+def void_payment(modeladmin, request, queryset):
+    """Void selected pending payments."""
+    count = 0
+    for payment in queryset.filter(status="pending"):
+        payment.status = payment.Status.VOIDED
