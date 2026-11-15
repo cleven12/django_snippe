@@ -352,3 +352,9 @@ def create_bank_payout(
     client = get_client()
     result = client.create_bank_payout(
         amount=amount,
+        recipient_name=recipient_name,
+        recipient_bank=recipient_bank,
+        recipient_account=recipient_account,
+        narration=narration,
+        webhook_url=webhook_url,
+        metadata=metadata,
