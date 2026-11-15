@@ -532,3 +532,9 @@ export class SnippeMockServer {
           fee_amount: feeAmount,
           total_amount: amount + feeAmount,
           currency: "TZS",
+        },
+      });
+    }
+
+    // 9. GET /payouts
+    if (req.method === "GET" && normalizedPath === "/payouts") {
