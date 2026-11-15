@@ -292,3 +292,9 @@ def sync_payment_status(reference: str) -> SnippePayment:
     metadata = res_meta if isinstance(res_meta, dict) else (existing.metadata if existing else {})
     return _save_payment(result, phone, ptype, webhook_url, metadata)
 
+
+def list_payments(limit: int = 20, offset: int = 0) -> Any:
+    """List payments from GET /v1/payments with pagination."""
+    client = get_client()
+    return client.list_payments(limit=limit, offset=offset)
+
