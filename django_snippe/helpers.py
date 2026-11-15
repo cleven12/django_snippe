@@ -328,3 +328,9 @@ class PayoutHelper:
             amount,
             currency,
             "mobile",
+            recipient_name,
+            recipient_phone,
+            idempotency_key=idempotency_key,
+        )
+        if not valid:
+            raise PayoutCreationError(f"Invalid payout data: {', '.join(errors)}")
