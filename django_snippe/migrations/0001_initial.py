@@ -58,3 +58,9 @@ class Migration(migrations.Migration):
                 "verbose_name": "Payment",
                 "verbose_name_plural": "Payments",
                 "ordering": ["-created_at"],
+            },
+        ),
+        migrations.CreateModel(
+            name="SnippePayout",
+            fields=[
+                (
