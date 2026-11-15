@@ -46,3 +46,9 @@ class PaymentLogger:
         logger.error(f"Payment creation failed | ref={reference} | error={error_message}")
 
     @staticmethod
+    def log_payment_push_triggered(reference: str, phone_number: Optional[str] = None) -> None:
+        """Log when a USSD push retry is triggered for a pending payment."""
+        phone_part = f" | phone={phone_number}" if phone_number else ""
+        logger.info(f"Payment USSD push triggered | ref={reference}{phone_part}")
+
+    @staticmethod
