@@ -16,3 +16,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
   afterAll(() => {
     mock.stop();
   });
+
+  beforeEach(() => {
+    mock.reset();
+  });
+
+  test("Mobile money provider auto-detection covers M-Pesa, Airtel Money, Mixx by Yas, HaloPesa", () => {
