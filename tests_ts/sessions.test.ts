@@ -76,3 +76,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
 
     const getRes = await mock.fetch(`${baseUrl}/api/v1/sessions/${session.reference}`, { headers });
     expect(getRes.status).toBe(200);
+    expect((await getRes.json()).data.status).toBe("active");
+
+    const listRes = await mock.fetch(`${baseUrl}/api/v1/sessions`, { headers });
+    expect(listRes.status).toBe(200);
+    expect((await listRes.json()).data.sessions.length).toBe(1);
+
