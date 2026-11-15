@@ -394,3 +394,9 @@ export class SnippeMockServer {
       return Response.json({
         status: "success",
         data: {
+          payments: matched.slice(offset, offset + limit),
+          total: matched.length,
+          limit,
+          offset,
+        },
+      });
