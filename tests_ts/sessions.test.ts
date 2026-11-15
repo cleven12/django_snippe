@@ -40,3 +40,9 @@ describe("Snippe 2026-01-25 Payment Sessions (Hosted Checkout) API Contract", ()
       }),
     });
     expect(res.status).toBe(201);
+    const json = await res.json();
+    expect(json.data.reference).toStartWith("ses_");
+    expect(json.data.status).toBe("active");
+    expect(json.data.amount).toBe(25000);
+    expect(json.data.checkout_url).toContain("https://checkout.snippe.sh/s/");
+  });
