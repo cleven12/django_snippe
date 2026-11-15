@@ -142,3 +142,9 @@ class SnippeWebhookView(View):
             PaymentLogger.log_webhook_processing(event, reference, True)
         except Exception as exc:
             webhook_record.error_message = str(exc)
+            webhook_record.save(update_fields=["error_message"])
+            PaymentLogger.log_webhook_processing(event, reference, False, error=str(exc))
+            logger.error("Snippe webhook handler error for %s: %s", event, exc, exc_info=True)
+            raise
+
+        return JsonResponse({"status": "ok", "reference": reference}, status=200)
