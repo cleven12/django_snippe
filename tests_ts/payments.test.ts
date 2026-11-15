@@ -76,3 +76,9 @@ describe("Snippe 2026-01-25 Payments API Contract", () => {
           cancel_url: "https://example.com/cancel",
         },
         phone_number: "0712345678",
+        customer: { firstname: "Amina", lastname: "Yusuf" },
+      }),
+    });
+    expect(res.status).toBe(201);
+    const json = await res.json();
+    expect(json.data.payment_type).toBe("card");
