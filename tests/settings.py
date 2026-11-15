@@ -4,3 +4,9 @@ SECRET_KEY = "test-secret-key-not-for-production"
 DEBUG = True
 USE_TZ = True
 
+INSTALLED_APPS = [
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.admin",
