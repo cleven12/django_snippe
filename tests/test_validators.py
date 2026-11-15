@@ -94,3 +94,9 @@ class TestPayoutValidator:
             channel="mobile",
             recipient_name="Jane Doe",
             recipient_phone="0712345678",
+        )
+        assert valid is True
+        assert errors == []
+
+    def test_requires_recipient_name(self):
+        valid, errors = PayoutValidator.validate_payout_data(
