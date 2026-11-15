@@ -286,3 +286,9 @@ class SnippeWebhookView(View):
             payout = SnippePayout.objects.get(reference=reference)
             payout.status = SnippePayout.Status.REVERSED
             payout.save(update_fields=["status", "updated_at"])
+            signals.payout_reversed.send(sender=SnippePayout, payout=payout)
+            logger.info("Payout %s marked as reversed", reference)
+        except SnippePayout.DoesNotExist:
+            logger.error("Payout %s not found when handling reversal", reference)
+
+    def handle_session_completed(
