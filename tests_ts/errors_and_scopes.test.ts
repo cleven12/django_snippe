@@ -10,3 +10,9 @@ describe("Snippe 2026-01-25 Error Envelopes, Scopes, Idempotency & Rate Limits",
   });
 
   afterAll(() => {
+    mock.stop();
+  });
+
+  beforeEach(() => {
+    mock.reset();
+  });
