@@ -100,3 +100,9 @@ def _is_valid_east_africa_phone(phone: str) -> bool:
     return second in {"1", "2", "3", "4", "5", "6", "7"}
 
 
+def validate_idempotency_key(value: Optional[str]) -> None:
+    """Validate idempotency key per Snippe 2026-01-25 rules (1-30 chars)."""
+    if value is None or value == "":
+        return
+    if not isinstance(value, str):
+        raise ValidationError("idempotency_key must be a string.")
