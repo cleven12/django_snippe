@@ -184,3 +184,9 @@ def test_webhook_marks_payout_completed_failed_and_reversed(mock_setting, client
         _post(
             client,
             {
+                "event": "payout.failed",
+                "reference": payout_fail.reference,
+                "failure_reason": "Account frozen",
+            },
+        ).status_code
+        == 200
