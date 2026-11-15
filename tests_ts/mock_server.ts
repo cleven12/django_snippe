@@ -454,3 +454,9 @@ export class SnippeMockServer {
     const getPayMatch = normalizedPath.match(/^\/payments\/([^/]+)$/);
     if (req.method === "GET" && getPayMatch) {
       const scopeErr = this.checkScope(apiKey, "collection:read");
+      if (scopeErr) return scopeErr;
+
+      const reference = getPayMatch[1];
+      const payment = this.payments.get(reference);
+      if (!payment) {
+        return this.errorJson(404, "not_found", `Payment ${reference} not found`);
