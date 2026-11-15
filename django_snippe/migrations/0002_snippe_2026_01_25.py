@@ -160,3 +160,9 @@ class Migration(migrations.Migration):
             name="fee_amount",
             field=models.PositiveIntegerField(default=0),
         ),
+        migrations.AddField(
+            model_name="snippepayout",
+            name="idempotency_key",
+            field=models.CharField(
+                blank=True,
+                max_length=30,
