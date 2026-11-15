@@ -22,3 +22,9 @@ def test_currency_validator_rejects_unsupported_currency():
 
 @pytest.mark.parametrize(
     "phone",
+    ["0712345678", "255712345678", "+255712345678", "0742345678"],
+)
+def test_phone_validator_accepts_valid_tanzania_numbers(phone):
+    PhoneValidator.validate_phone(phone)
+
+
