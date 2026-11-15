@@ -382,3 +382,9 @@ export class SnippeMockServer {
 
       const q = (url.searchParams.get("q") ?? "").toLowerCase();
       const limit = Math.min(100, Number(url.searchParams.get("limit") ?? 20));
+      const offset = Number(url.searchParams.get("offset") ?? 0);
+
+      const matched = Array.from(this.payments.values()).filter(
+        (p) =>
+          p.reference.toLowerCase().includes(q) ||
+          p.phone_number.toLowerCase().includes(q) ||
