@@ -358,3 +358,9 @@ export class SnippeMockServer {
       };
       this.payments.set(reference, record);
       return saveIdempotent(201, { status: "success", data: record });
+    }
+
+    // 2. GET /payments/balance
+    if (req.method === "GET" && normalizedPath === "/payments/balance") {
+      const scopeErr = this.checkScope(apiKey, "collection:read");
+      if (scopeErr) return scopeErr;
