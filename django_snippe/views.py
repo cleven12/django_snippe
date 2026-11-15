@@ -112,3 +112,9 @@ class SnippeWebhookView(View):
         existing_event = SnippeWebhookEvent.objects.filter(
             delivery_id=delivery_id, processed=True
         ).first()
+        if existing_event:
+            return JsonResponse(
+                {"status": "ok", "idempotent": True, "reference": reference},
+                status=200,
+            )
+
