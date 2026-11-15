@@ -496,3 +496,9 @@ class SessionHelper:
             allow_custom_amount=allow_custom_amount,
             allowed_methods=allowed_methods,
         )
+        if not valid:
+            raise SessionCreationError(f"Invalid session data: {', '.join(errors)}")
+
+        try:
+            session = services.create_session(
+                amount=amount,
