@@ -64,3 +64,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
       }),
     });
     expect(res.status).toBe(400);
+    const json = await res.json();
+    expect(json.error_code).toBe("validation_error");
+  });
+
+  test("POST /v1/payouts/send creates a bank transfer payout", async () => {
+    const res = await mock.fetch(`${baseUrl}/v1/payouts/send`, {
