@@ -70,3 +70,9 @@ class TestSnippePayment:
         with caplog.at_level("INFO", logger="django_snippe.audit"):
             payment.status = SnippePayment.Status.COMPLETED
             payment.save()
+        assert any("status changed" in record.message for record in caplog.records)
+
+
+class TestSnippePayout:
+    def test_create_and_str(self):
+        payout = make_payout()
