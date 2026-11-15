@@ -268,3 +268,9 @@ class SnippeWebhookView(View):
             payout = SnippePayout.objects.get(reference=reference)
             payout.status = SnippePayout.Status.FAILED
             updated = ["status", "updated_at"]
+            reason = inner.get("failure_reason") or data.get("failure_reason")
+            if reason:
+                payout.failure_reason = str(reason)
+                updated.append("failure_reason")
+            payout.save(update_fields=updated)
+            signals.payout_failed.send(sender=SnippePayout, payout=payout)
