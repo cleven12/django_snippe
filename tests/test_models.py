@@ -22,3 +22,9 @@ def make_payout(**overrides):
     defaults = dict(
         reference="PAYOUT-1",
         channel=SnippePayout.Channel.MOBILE,
+        amount=5000,
+        currency="TZS",
+        recipient_name="Jane Doe",
+        recipient_phone="0712345678",
+    )
+    defaults.update(overrides)
