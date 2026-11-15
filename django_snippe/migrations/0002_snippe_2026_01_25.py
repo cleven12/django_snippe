@@ -154,3 +154,9 @@ class Migration(migrations.Migration):
             model_name="snippepayout",
             name="external_reference",
             field=models.CharField(blank=True, max_length=100, null=True),
+        ),
+        migrations.AddField(
+            model_name="snippepayout",
+            name="fee_amount",
+            field=models.PositiveIntegerField(default=0),
+        ),
