@@ -166,3 +166,9 @@ class TestPayoutHelper:
             recipient_phone="0712345678",
         )
 
+        assert isinstance(payout, SnippePayout)
+        assert payout.reference == "PO-1"
+        assert payout.channel == SnippePayout.Channel.MOBILE
+
+    @patch("django_snippe.helpers.get_client")
+    def test_create_bank_payout_saves_record(self, mock_get_client):
