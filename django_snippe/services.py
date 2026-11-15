@@ -496,3 +496,9 @@ def cancel_session(reference: str) -> SnippeSession:
     session = SnippeSession.objects.filter(reference=reference).first()
     if session:
         session.status = data.get("status", SnippeSession.Status.CANCELLED)
+        session.save(update_fields=["status", "updated_at"])
+        return session
+
+    return SnippeSession.objects.create(
+        reference=reference,
+        status=data.get("status", SnippeSession.Status.CANCELLED),
