@@ -88,3 +88,9 @@ describe("Snippe 2026-01-25 Payouts (Disbursements) API Contract", () => {
     expect(json.data.recipient.account).toBe("0150000000000");
   });
 
+  test("GET /v1/payouts/fee, /v1/payouts, and /v1/payouts/{reference}", async () => {
+    const feeRes = await mock.fetch(`${baseUrl}/v1/payouts/fee?amount=20000`, { headers });
+    expect(feeRes.status).toBe(200);
+    const feeJson = await feeRes.json();
+    expect(feeJson.data.total_amount).toBe(20500);
+
