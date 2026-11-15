@@ -40,3 +40,9 @@ pip install git+https://github.com/cleven12/django_snippe.git
 curl -L https://github.com/cleven12/django_snippe/archive/refs/heads/main.tar.gz | tar xz
 ```
 
+Copy the `django_snippe/` directory into your Django project root alongside `manage.py`.
+
+## Configuration
+
+Add `django_snippe` to `INSTALLED_APPS` and configure your Snippe credentials in `settings.py`:
+
