@@ -94,3 +94,9 @@ class PaymentHelper:
             PaymentLogger.log_payment_failed(phone_number, str(exc))
             raise PaymentCreationError(f"Failed to create mobile payment: {exc}") from exc
 
+    @staticmethod
+    def create_card_payment(
+        amount: int,
+        currency: str,
+        customer_firstname: str,
+        customer_lastname: str,
